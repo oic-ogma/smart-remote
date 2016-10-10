@@ -9,5 +9,11 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-mounter": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-import-resolver-meteor": "^0.3.3",
+    "eslint-plugin-import": "^2.0.0",
+    "eslint-plugin-react": "^6.4.0"
   }
 }
