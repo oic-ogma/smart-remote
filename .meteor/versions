@@ -66,6 +66,7 @@ templating-runtime@1.2.15
 templating-tools@1.0.5
 tracker@1.1.0
 ui@1.0.12
+ultimatejs:tracker-react@1.0.5
 underscore@1.0.9
 universe:i18n@1.9.0
 universe:utilities@2.3.3
