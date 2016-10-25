@@ -6,8 +6,8 @@ FlowRouter.route('/', {
   action() {
     Tracker.autorun(function() {
       mount(MainPage, {
-
+        content: (<MainPage />),
       });
     });
-  }
+  },
 });
