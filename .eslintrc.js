@@ -64,7 +64,7 @@ module.exports = {
     /**
      * Possible errors
      */
-    "comma-dangle": [1, "only-multiline"],    // http://eslint.org/docs/rules/comma-dangle
+    "comma-dangle": [1, "always-multiline"],    // http://eslint.org/docs/rules/comma-dangle
     "no-cond-assign": [2, "always"], // http://eslint.org/docs/rules/no-cond-assign
     "no-console": 1,                 // http://eslint.org/docs/rules/no-console
     "no-debugger": 1,                // http://eslint.org/docs/rules/no-debugger
