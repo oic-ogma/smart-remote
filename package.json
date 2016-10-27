@@ -6,8 +6,10 @@
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
+    "bootstrap": "^3.3.7",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.3.2",
+    "react-bootstrap": "^0.30.5",
     "react-dom": "^15.3.2",
     "react-mounter": "^1.2.0"
   },
