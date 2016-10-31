@@ -33,17 +33,15 @@ Meteor.methods({
       },
     };
 
-    try {
-      let userObject =  Accounts.createUser({
-        email: address,
-      });
-      if (userObject) {
-        result = Accounts.sendEnrollmentEmail(userObject);
-      }
-    } catch (err) {
-      return err;
-    } finally {
-      return result;
+    let userObject = Accounts.createUser({
+      email: address,
+    });
+    if (userObject) {
+      Accounts.sendEnrollmentEmail(userObject);
+      console.log(address + "にメールが送信された");
+      return userObject;
+    } else {
+      return new Meteor.Error('送信が失敗した');
     }
   },
 });
