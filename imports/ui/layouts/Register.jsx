@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Accounts } from "meteor/accounts-base";
 
 export default class Login extends React.Component {
   handleSubmit(event) {
