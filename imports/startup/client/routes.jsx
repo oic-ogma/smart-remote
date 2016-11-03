@@ -14,7 +14,7 @@ FlowRouter.route('/register', {
   },
 });
 
-FlowRouter.route('/enroll-account/:token', {
+FlowRouter.route('/enroll-account/:token/:language', {
   action() {
     Tracker.autorun(() => {
       mount(MainPage, {

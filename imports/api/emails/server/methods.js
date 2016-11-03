@@ -26,7 +26,7 @@ Meteor.methods({
       html( user, url ) {
         let emailData = {};
         emailData.address = user.emails[0].address;
-        emailData.urlWithoutHash = url.replace( '#/', '' );
+        emailData.urlWithoutHash = url.replace( '#/', '' ) + '/' + language;
         emailData.supportEmail = "support@smart-remote.tech";
         let html  = SSR.render('enrollment', emailData);
         return html;
