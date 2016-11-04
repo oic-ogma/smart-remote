@@ -27,7 +27,7 @@ export default class EnrollAccount extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     Accounts.resetPassword(FlowRouter.getParam("token"), event.target.password.value, (error) => {
-      if ( error ) {
+      if (error) {
         console.log("失敗");
       }
     });

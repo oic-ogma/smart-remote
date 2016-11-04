@@ -11,15 +11,19 @@ export default class Login extends React.Component {
     };
     this.onLocale = this.onLocale.bind(this);
   }
+
   onLocale(locale) {
     this.setState({locale});
   }
+
   componentWillMount() {
     i18n.onChangeLocale(this.onLocale);
   }
+
   componentWillUnmount() {
     i18n.offChangeLocale(this.onLocale);
   }
+
   handleSubmit(event) {
     event.preventDefault();
     let emailVar = event.target.registerEmail.value;
