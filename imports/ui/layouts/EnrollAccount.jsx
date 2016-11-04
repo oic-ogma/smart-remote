@@ -1,5 +1,4 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
 import LanguageSelector from '../components/LanguageSelector.jsx';
 
