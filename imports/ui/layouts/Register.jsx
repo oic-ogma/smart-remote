@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
+import LanguageSelector from '../components/LanguageSelector.jsx';
 
 export default class Login extends React.Component {
   constructor() {
@@ -31,6 +32,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <div>
+        <LanguageSelector/>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-group col-md-offset-4 col-md-4">
             <input  type="email" name="registerEmail" placeholder={i18n.getTranslation('register', 'email')}></input>
