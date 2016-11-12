@@ -17,6 +17,7 @@
     "eslint": "^3.7.1",
     "eslint-import-resolver-meteor": "^0.3.3",
     "eslint-plugin-import": "^2.0.0",
-    "eslint-plugin-react": "^6.4.0"
+    "eslint-plugin-react": "^6.4.0",
+    "gulp-chimp": "^2.1.0"
   }
 }
