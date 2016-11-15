@@ -1,4 +1,6 @@
 import i18n from 'meteor/universe:i18n';
+import { check } from 'meteor/check';
+import { validate } from 'isemail';
 
 const setServerLocale = (language) => {
   if (language !== 'ja') {
@@ -16,32 +18,37 @@ const setEmailTemplates = () => {
 
 Meteor.methods({
   sendEnrollmentEmail: (language, address) => {
-    setServerLocale(language);
-    setEmailTemplates();
-    SSR.compileTemplate('enrollment', Assets.getText('emails/' + i18n.getLocale() + '/enrollment.html'));
-    Accounts.emailTemplates.enrollAccount = {
-      subject() {
-        return i18n.getTranslation('emailTemplates.enrollAccount', 'subject');
-      },
-      html( user, url ) {
-        let emailData = {};
-        emailData.address = user.emails[0].address;
-        emailData.urlWithoutHash = url.replace( '#/', '' ) + '/' + language;
-        emailData.supportEmail = "support@smart-remote.tech";
-        let html  = SSR.render('enrollment', emailData);
-        return html;
-      },
-    };
+    check(language, String);
+    if (validate(address)) {
+      setServerLocale(language);
+      setEmailTemplates();
+      SSR.compileTemplate('enrollment', Assets.getText('emails/' + i18n.getLocale() + '/enrollment.html'));
+      Accounts.emailTemplates.enrollAccount = {
+        subject() {
+          return i18n.getTranslation('emailTemplates.enrollAccount', 'subject');
+        },
+        html( user, url ) {
+          let emailData = {};
+          emailData.address = user.emails[0].address;
+          emailData.urlWithoutHash = url.replace( '#/', '' ) + '/' + language;
+          emailData.supportEmail = "support@smart-remote.tech";
+          let html  = SSR.render('enrollment', emailData);
+          return html;
+        },
+      };
 
-    let userObject = Accounts.createUser({
-      email: address,
-    });
-    if (userObject) {
-      Accounts.sendEnrollmentEmail(userObject);
-      console.log(address + "にメールが送信された");
-      return userObject;
+      let userObject = Accounts.createUser({
+        email: address,
+      });
+      if (userObject) {
+        Accounts.sendEnrollmentEmail(userObject);
+        console.log(address + "にメールが送信された");
+        return userObject;
+      } else {
+        throw new Meteor.Error('Failed to send.');
+      }
     } else {
-      return new Meteor.Error('送信が失敗した');
+      throw new Meteor.Error('Invalid parameters.');
     }
   },
 });
