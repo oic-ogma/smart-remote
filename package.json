@@ -5,8 +5,13 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bootstrap": "^3.3.7",
+    "faker": "^3.1.0",
+    "isemail": "^2.2.1",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.3.2",
+    "react-bootstrap": "^0.30.5",
     "react-dom": "^15.3.2",
     "react-mounter": "^1.2.0"
   },
@@ -14,6 +19,7 @@
     "eslint": "^3.7.1",
     "eslint-import-resolver-meteor": "^0.3.3",
     "eslint-plugin-import": "^2.0.0",
-    "eslint-plugin-react": "^6.4.0"
+    "eslint-plugin-react": "^6.4.0",
+    "gulp-chimp": "^2.1.0"
   }
 }
