@@ -26,9 +26,15 @@ export default class EnrollAccount extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const params = {
+      country: event.target.country.value,
+      city: event.target.city.value,
+    };
     Accounts.resetPassword(FlowRouter.getParam("token"), event.target.password.value, (error) => {
       if (error) {
-        console.log("失敗");
+        console.log(error);
+      } else {
+        Meteor.call('addEnrollmentInfo', params);
       }
     });
   }
@@ -39,9 +45,9 @@ export default class EnrollAccount extends React.Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-group col-md-offset-4 col-md-4">
             <div><input  type="password" name="password" placeholder={i18n.getTranslation('enrollAccount', 'password')}></input></div>
-            <div><input type="password" placeholder={i18n.getTranslation('enrollAccount', 'confirmPassword')}></input></div>
-            <div><input type="text" placeholder={i18n.getTranslation('enrollAccount', 'country')}></input></div>
-            <div><input type="text" placeholder={i18n.getTranslation('enrollAccount', 'city')}></input></div>
+            <div><input type="password" name="confirmPassword" placeholder={i18n.getTranslation('enrollAccount', 'confirmPassword')}></input></div>
+            <div><input type="text" name="country" placeholder={i18n.getTranslation('enrollAccount', 'country')}></input></div>
+            <div><input type="text" name="city" placeholder={i18n.getTranslation('enrollAccount', 'city')}></input></div>
           </div>
           <div className="form-group col-md-offset-4 col-md-4">
             <input className="btn btn-success" type="submit" value={i18n.getTranslation('enrollAccount', 'register')}></input>

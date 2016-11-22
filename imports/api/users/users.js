@@ -11,9 +11,10 @@ export const UserSchema = new SimpleSchema({
     label: "country",
     max: 2,
   },
-  zipCode: {
+  city: {
     type: String,
-    label: "zipCode",
-    max: 10,
+    label: "city",
+    min: 2,
+    max: 58,
   },
 });
