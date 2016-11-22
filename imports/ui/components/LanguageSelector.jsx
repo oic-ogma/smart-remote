@@ -41,9 +41,9 @@ export default class LanguageSelector extends React.Component {
   render() {
     return (
       <div>
-        <DropdownButton bsStyle="primary" title={this.generateTitle()} noCaret id='dropdown-basic'>
-          <MenuItem onClick={() => this.setLocaleLanguage("ja")}>ja</MenuItem>
-          <MenuItem onClick={() => this.setLocaleLanguage("en")}>en</MenuItem>
+        <DropdownButton bsStyle="primary" title={this.generateTitle()} noCaret id='language-selector'>
+          <MenuItem id="lang-ja" onClick={() => this.setLocaleLanguage("ja")}>ja</MenuItem>
+          <MenuItem id="lang-en" onClick={() => this.setLocaleLanguage("en")}>en</MenuItem>
         </DropdownButton>
       </div>
     );

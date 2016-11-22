@@ -1,4 +1,4 @@
 node_modules/
-run/
+run/settings.json
 **.DS_Store
 dev_bundle
