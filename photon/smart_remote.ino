@@ -17,18 +17,18 @@ int irReceive(String command)
 {
   unsigned long time;
   unsigned long mill;
-  static int statePrev = HIGH;
+  static int inputStatePrev = HIGH;
   static unsigned long microsPrev = 0;
   digitalWrite(D6, HIGH);
   time = millis() + 5000;
-  int state;
+  int inputState;
   int flag = 0;
   while(1)
   {
-      state = digitalRead(D2);
-      if( state != statePrev )
+      inputState = digitalRead(D2);
+      if( inputState != inputStatePrev )
       {
-       statePrev = state;
+       inputStatePrev = inputState;
        unsigned long micros = micros();
        if (flag > 0)
        {
