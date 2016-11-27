@@ -16,34 +16,34 @@ void loop() {
 int irReceive(String command)
 {
 	unsigned long time;
-	unsigned long mill;
-    static int s_iState_prev = HIGH;
-    static unsigned long s_ulMicros_prev = 0;
-    digitalWrite(D6, HIGH);
-    time = millis() + 5000;
-    int iState;
-    int flag = 0;
-    while(1)
-    {
-        iState = digitalRead(D2);
-        if( iState != s_iState_prev )
-        {
-	       s_iState_prev = iState;
-	       unsigned long ulMicros = micros();
-	       if (flag > 0)
-	       {
-	        irData = String(irData+(String)(ulMicros - s_ulMicros_prev));
-	        irData = String(irData+", ");
-	       }
-    	   s_ulMicros_prev = ulMicros;
-    	   flag = 1;
-        }
-        if(time < millis())
-        {
-            break;
-        }
-    }
-    Particle.variable("irData",irData);
-    digitalWrite(D6, LOW);
-    return 10;
+  unsigned long mill;
+  static int statePrev = HIGH;
+  static unsigned long microsPrev = 0;
+  digitalWrite(D6, HIGH);
+  time = millis() + 5000;
+  int state;
+  int flag = 0;
+  while(1)
+  {
+      state = digitalRead(D2);
+      if( state != statePrev )
+      {
+       statePrev = state;
+       unsigned long micros = micros();
+       if (flag > 0)
+       {
+        irData = String(irData+(String)(micros - microsPrev));
+        irData = String(irData+", ");
+       }
+  	   microsPrev = micros;
+  	   flag = 1;
+      }
+      if(time < millis())
+      {
+          break;
+      }
+  }
+  Particle.variable("irData",irData);
+  digitalWrite(D6, LOW);
+  return 10;
 }
