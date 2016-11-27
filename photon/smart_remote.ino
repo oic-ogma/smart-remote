@@ -15,7 +15,7 @@ void loop() {
 
 int irReceive(String command)
 {
-	unsigned long time;
+  unsigned long time;
   unsigned long mill;
   static int statePrev = HIGH;
   static unsigned long microsPrev = 0;
