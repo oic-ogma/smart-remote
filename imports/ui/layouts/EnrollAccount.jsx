@@ -17,7 +17,7 @@ export default class EnrollAccount extends React.Component {
 
   componentWillMount() {
     i18n.onChangeLocale(this.onLocale);
-    i18n.setLocale(FlowRouter.getParam("language"));
+    i18n.setLocale(this.props.params.language);
   }
 
   componentWillUnmount() {
@@ -26,7 +26,7 @@ export default class EnrollAccount extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    Accounts.resetPassword(FlowRouter.getParam("token"), event.target.password.value, (error) => {
+    Accounts.resetPassword(this.props.params.token, event.target.password.value, (error) => {
       if (error) {
         console.log("失敗");
       }
@@ -48,3 +48,7 @@ export default class EnrollAccount extends React.Component {
     );
   }
 }
+
+EnrollAccount.propTypes = {
+  params: React.PropTypes.object,
+};
