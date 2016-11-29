@@ -1,6 +1,9 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
-import LanguageSelector from '../components/LanguageSelector.jsx';
+import LanguageSelector from '../components/LanguageSelector';
+import Validation from 'react-validation';
+import '../../api/validator/form_validator';
+import {FormGroup, Col} from 'react-bootstrap';
 
 export default class EnrollAccount extends React.Component {
   constructor() {
@@ -41,18 +44,23 @@ export default class EnrollAccount extends React.Component {
   render() {
     return (
       <div>
-        <LanguageSelector/>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <div className="form-group col-md-offset-4 col-md-4">
-            <div><input  type="password" name="password" placeholder={i18n.getTranslation('enrollAccount', 'password')}></input></div>
-            <div><input type="password" name="confirmPassword" placeholder={i18n.getTranslation('enrollAccount', 'confirmPassword')}></input></div>
-            <div><input type="text" name="country" placeholder={i18n.getTranslation('enrollAccount', 'country')}></input></div>
-            <div><input type="text" name="city" placeholder={i18n.getTranslation('enrollAccount', 'city')}></input></div>
-          </div>
-          <div className="form-group col-md-offset-4 col-md-4">
-            <input className="btn btn-success" type="submit" value={i18n.getTranslation('enrollAccount', 'register')}></input>
-          </div>
-        </form>
+      <LanguageSelector/>
+      <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
+        <FormGroup role="form">
+        <h3>Registration</h3>
+          <Col mdOffset={4} md={4} xs={4}>
+            <Validation.components.Input id='input-password' type='password' value='' name='password' placeholder={i18n.getTranslation('enrollAccount', 'password')} validations={['required', 'password']}/>
+            <Validation.components.Input id='input-confirm-password' type='password' value='' name='confirmPassword' placeholder={i18n.getTranslation('enrollAccount', 'confirmPassword')} validations={['required', 'confirmPassword']}/>
+            <Validation.components.Select id='select-country' name='country' value='' validations={['required']}>
+              <option value="">{i18n.getTranslation('enrollAccount', 'country')}</option>
+              <option value="JP">日本</option>
+              <option value="US">United States of America</option>
+            </Validation.components.Select>
+            <Validation.components.Input id='input-city' name="city" value='' placeholder={i18n.getTranslation('enrollAccount', 'city')} validations={['required']}/>
+            <Validation.components.Button>Submit</Validation.components.Button>
+          </Col>
+        </FormGroup>
+      </Validation.components.Form>
       </div>
     );
   }
