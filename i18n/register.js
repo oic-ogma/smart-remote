@@ -1,13 +1,15 @@
 i18n.addTranslations('en', {
   register: {
     email: "Email",
-    register: "Register",
+    confirmEmail: "Confirm email",
+    register: "Send register email",
   },
 });
 
 i18n.addTranslations('ja', {
   register: {
     email: "メールアドレス",
-    register: "登録",
+    confirmEmail: "メールアドレスの確認",
+    register: "登録メール送信",
   },
 });
