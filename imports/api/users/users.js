@@ -1,11 +1,5 @@
 
 export const UserSchema = new SimpleSchema({
-  password: {
-    type: String,
-    label: "password",
-    max: 16,
-    min: 8,
-  },
   country: {
     type: String,
     label: "country",
@@ -14,7 +8,7 @@ export const UserSchema = new SimpleSchema({
   city: {
     type: String,
     label: "city",
-    min: 2,
+    min: 1,
     max: 58,
   },
 });
