@@ -1,0 +1,41 @@
+# This is the configuration file for continuous deployment of
+# your project in CircleCi.
+
+machine:
+  environment:
+    _JAVA_OPTIONS: "-Xms512m -Xmx1024m"
+    METEOR_CMD: ${HOME}/.meteor/meteor
+    CHIMP_PATH: ./node_modules/.bin/
+    CHIMP_CMD: ./node_modules/.bin/chimp
+    SPACEJAM_CMD: ./node_modules/.bin/spacejam
+
+  node:
+    version: 4.4.7
+
+dependencies:
+  cache_directories:
+    - ~/.meteor
+    - "~/.npm"
+    - "/opt/circleci/nodejs/v4.4.7/lib/node_modules"
+
+  pre:
+    - mkdir -p ~/.meteor
+    - if [ ! -e ${METEOR_CMD} ]; then curl https://install.meteor.com | /bin/sh 2>&1 | cat; fi
+    - ls -l /opt/circleci/nodejs/v4.4.7/lib/node_modules
+
+  override:
+    - pwd
+    - ${METEOR_CMD} npm install
+
+  post:
+    - date > ${CIRCLE_ARTIFACTS}/meteor.log
+    - ${METEOR_CMD} >> ${CIRCLE_ARTIFACTS}/meteor.log 2>&1 & :
+        background: true
+
+test:
+  override:
+    - ${METEOR_CMD} test --once --driver-package dispatch:mocha-phantomjs --port 3100
+  post:
+    - node --version; npm --version; java -version; ${METEOR_CMD} --version;
+    - sleep 3m
+    - ${CHIMP_CMD} end_to_end_tests/chimp-config.js --ddp=http://localhost:3000 --path ./end_to_end_tests
