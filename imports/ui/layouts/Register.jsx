@@ -4,7 +4,6 @@ import i18n from 'meteor/universe:i18n';
 import LanguageSelector from '../components/LanguageSelector';
 import Validation from 'react-validation';
 import '../../api/validator/form_validator';
-import {FormGroup, Col} from 'react-bootstrap';
 
 export default class Register extends React.Component {
   constructor() {
