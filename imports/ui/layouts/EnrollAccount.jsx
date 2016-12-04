@@ -32,6 +32,7 @@ export default class EnrollAccount extends React.Component {
     const params = {
       country: event.target.country.value,
       city: event.target.city.value,
+      language: i18n.getLocale(),
     };
     Accounts.resetPassword(this.props.params.token, event.target.password.value, (error) => {
       if (error) {

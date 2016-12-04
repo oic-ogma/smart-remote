@@ -11,4 +11,9 @@ export const UserSchema = new SimpleSchema({
     min: 1,
     max: 58,
   },
+  language: {
+    type: String,
+    label: "language",
+    max: 2,
+  },
 });

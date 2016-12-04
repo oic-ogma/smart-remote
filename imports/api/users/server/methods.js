@@ -9,6 +9,7 @@ Meteor.methods({
           profile: {
             'country': params.country,
             'city': params.city,
+            'language': params.language,
           },
         },
       }
