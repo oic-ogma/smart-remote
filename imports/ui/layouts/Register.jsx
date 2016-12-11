@@ -60,6 +60,7 @@ export default class Register extends React.Component {
             validations={['confirmEmail']}/>
           <Validation.components.Button>{i18n.getTranslation('form', 'registerBtn')}</Validation.components.Button>
         </Validation.components.Form>
+        <IrTest/>
       </div>
     );
   }
