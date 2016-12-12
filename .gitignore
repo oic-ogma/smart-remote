@@ -2,3 +2,4 @@ node_modules/
 run/settings.json
 **.DS_Store
 dev_bundle
+package.tar.gz
