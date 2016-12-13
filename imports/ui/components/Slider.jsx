@@ -48,7 +48,7 @@ export default class Slider extends React.Component {
           <a id="register" className="menu-item" href="/register">登録</a>
           <a id="add-button-panel" className="menu-item" href="/add-button-panel">ボタン追加</a>
           <a id="sign-in" className="menu-item" href="/sign-in">sign-in</a>
-          <a id="my-page-small" className="menu-item" href="/my-page-small">マイページ</a>
+          <a id="my-page-small" className="menu-item" href="/my-page-large">マイページ</a>
         </Menu>
       </div>
     );
