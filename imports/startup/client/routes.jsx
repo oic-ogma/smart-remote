@@ -6,6 +6,7 @@ import EnrollAccount from '../../ui/layouts/EnrollAccount.jsx';
 import SignIn from '../../ui/layouts/SignIn.jsx';
 import AddButtonPanel from '../../ui/layouts/AddButtonPanel.jsx';
 import MyPageLarge from '../../ui/layouts/MyPageLarge.jsx';
+import MyPageSmall from '../../ui/layouts/MyPageSmall.jsx';
 
 Meteor.startup( () => {
   render(
