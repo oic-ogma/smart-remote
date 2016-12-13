@@ -14,6 +14,7 @@ Meteor.startup( () => {
       <Route path="enroll-account/:token/:language" component={EnrollAccount}/>
       <Route path="sign-in" component={SignIn}/>
       <Route path="add-button-panel" component={AddButtonPanel}/>
+      <Route path="my-page-small" component={MyPageSmall}/>
       <Route path="my-page-large" component={MyPageLarge}/>
     </Router>,
     document.getElementById( 'react-root' )
