@@ -5,58 +5,83 @@ import { Col } from 'react-bootstrap';
 export default class MyPageSmall extends React.Component {
 
   render() {
+    let red = {
+      height: "24vh",
+      padding: "2.5px",
+    };
+
+    let blue = {
+      height: "24vh",
+      padding: "2.5px",
+    };
+
+    let yellow = {
+      height: "24vh",
+      padding: "2.5px",
+    };
+
+    let style = {
+      backgroundColor: "gray",
+      height: "100%",
+    };
+    let mainStyle = {
+      padding: "2.5px",
+    };
+
     return (
-        <div>
-          <Slider/>
-          <Col xs={3} md={3}>
-            1
+      <div>
+        <Slider/>
+        <div style={mainStyle}>
+          <Col xs={3} md={3} style={red}>
+            <div style={style}>1</div>
           </Col>
-          <Col xs={3} md={3}>
-            2
+          <Col xs={3} md={3} style={blue}>
+            <div style={style}>2</div>
           </Col>
-          <Col xs={3} md={3}>
-            3
+          <Col xs={3} md={3} style={yellow}>
+            <div style={style}>3</div>
           </Col>
-          <Col xs={3} md={3}>
-            4
+          <Col xs={3} md={3} style={red}>
+            <div style={style}>4</div>
           </Col>
-          <Col xs={3} md={3}>
-            5
+          <Col xs={3} md={3} style={blue}>
+            <div style={style}>5</div>
           </Col>
-          <Col xs={3} md={3}>
-            6
+          <Col xs={3} md={3} style={yellow}>
+            <div style={style}>6</div>
           </Col>
-          <Col xs={3} md={3}>
-            7
+          <Col xs={3} md={3} style={red}>
+            <div style={style}>7</div>
           </Col>
-          <Col xs={3} md={3}>
-            8
+          <Col xs={3} md={3} style={blue}>
+            <div style={style}>8</div>
           </Col>
-          <Col xs={3} md={3}>
-            9
+          <Col xs={3} md={3} style={yellow}>
+            <div style={style}>9</div>
           </Col>
-          <Col xs={3} md={3}>
-            10
+          <Col xs={3} md={3} style={red}>
+            <div style={style}>10</div>
           </Col>
-          <Col xs={3} md={3}>
-            11
+          <Col xs={3} md={3} style={blue}>
+            <div style={style}>11</div>
           </Col>
-          <Col xs={3} md={3}>
-            12
+          <Col xs={3} md={3} style={yellow}>
+            <div style={style}>12</div>
           </Col>
-          <Col xs={3} md={3}>
-            13
+          <Col xs={3} md={3} style={red}>
+            <div style={style}>13</div>
           </Col>
-          <Col xs={3} md={3}>
-            14
+          <Col xs={3} md={3} style={blue}>
+            <div style={style}>14</div>
           </Col>
-          <Col xs={3} md={3}>
-            15
+          <Col xs={3} md={3} style={yellow}>
+            <div style={style}>15</div>
           </Col>
-          <Col xs={3} md={3}>
-            16
+          <Col xs={3} md={3} style={red}>
+            <div style={style}>16</div>
           </Col>
         </div>
+      </div>
     );
   }
 }
