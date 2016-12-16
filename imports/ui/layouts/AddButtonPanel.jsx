@@ -18,14 +18,8 @@ export default class AddButtonPanel extends React.Component {
         <div>
           <Slider/>
           <ul>
-            <button type="submit">morimoto1</button>
-            <li>morimoto</li>
-            <li>morimoto</li>
-            <li>morimoto</li>
-            <li>morimoto</li>
-            <li>morimoto</li>
-            <li>morimoto</li>
-            <li>morimoto</li>
+            <li><a id="my-page-large" className="menu-item" href="/my-page-large">MORIMOTO</a></li>
+            <li><a id="my-page-small" className="menu-item" href="/my-page-small">morimoto</a></li>
           </ul>
         </div>
     );
