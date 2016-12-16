@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from '../components/Slider';
 import { Col } from 'react-bootstrap';
 
-export default class MyPageLarge extends React.Component {
+export default class MyPage extends React.Component {
 
   render() {
     let largeRed = {
@@ -58,9 +58,9 @@ export default class MyPageLarge extends React.Component {
     };
 
 
-    let aaa = "a";
-    if (aaa === "a") {
+    if (this.props.params.size === "large") {
       return (
+
         <div>
           <Slider/>
           <div style={largeMainpad}>
@@ -138,3 +138,7 @@ export default class MyPageLarge extends React.Component {
     }
   }
 }
+
+MyPage.propTypes = {
+  params: React.PropTypes.object,
+};
