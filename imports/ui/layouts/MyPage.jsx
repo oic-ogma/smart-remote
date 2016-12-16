@@ -1,6 +1,7 @@
 import React from 'react';
 import Slider from '../components/Slider';
 import { Col } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 export default class MyPageLarge extends React.Component {
 
@@ -26,7 +27,6 @@ export default class MyPageLarge extends React.Component {
     };
 
     let largeStyle = {
-      backgroundColor: "gray",
       height: "100%",
     };
 
@@ -50,14 +50,16 @@ export default class MyPageLarge extends React.Component {
     };
 
     let smallStyle = {
-      backgroundColor: "gray",
+      opacity: "0",
       height: "100%",
     };
     let smallMainStyle = {
       padding: "2.5px",
     };
-
-
+    let buttonStyle = {
+      width: "100%",
+      height: "100%",
+    };
     let aaa = "a";
     if (aaa === "a") {
       return (
@@ -65,7 +67,8 @@ export default class MyPageLarge extends React.Component {
           <Slider/>
           <div style={largeMainpad}>
             <Col xs={6} md={6} style={largeRed}>
-              <div style={largeStyle}><i className='glyphicon glyphicon-plus'> </i></div>
+              <div style={largeStyle}><Button bsSize="large" active style={buttonStyle}>Button</Button>
+</div>
             </Col>
             <Col xs={6} md={6} style={largeBlue}>
               <div style={largeStyle}>2</div>
