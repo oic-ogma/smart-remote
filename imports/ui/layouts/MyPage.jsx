@@ -59,13 +59,13 @@ export default class MyPageLarge extends React.Component {
 
 
     let aaa = "a";
-    if (aaa === "b") {
+    if (aaa === "a") {
       return (
         <div>
           <Slider/>
           <div style={largeMainpad}>
             <Col xs={6} md={6} style={largeRed}>
-              <div style={largeStyle}>1</div>
+              <div style={largeStyle}><i className='glyphicon glyphicon-plus'> </i></div>
             </Col>
             <Col xs={6} md={6} style={largeBlue}>
               <div style={largeStyle}>2</div>
