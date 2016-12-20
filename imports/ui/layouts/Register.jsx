@@ -4,7 +4,7 @@ import i18n from 'meteor/universe:i18n';
 import Header from '../components/Header';
 import Validation from 'react-validation';
 import '../../api/validator/form_validator';
-import { Grid, Col, Row } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
 
 export default class Register extends React.Component {
   constructor() {
