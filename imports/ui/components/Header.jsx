@@ -9,7 +9,13 @@ export default class Header extends React.Component {
       header: {
         display: "flex",
         alignItems: "center",
-        margin: "20px 0"
+        margin: "20px 0",
+        middle: {
+          marginLeft: "10px",
+        },
+        right: {
+          marginRight: "10px",
+        }
       },
       h1: {
         margin: 0,
@@ -23,13 +29,13 @@ export default class Header extends React.Component {
       <Grid>
         <Row style={style.header}>
           <Col xs={2} md={3} >
-            {/* TODO  */}
+            {/* TODO  メニュー*/}
           </Col>
-          <Col xs={9} md={6}>
+          <Col xs={9} md={6} style={style.header.middle}>
             <h1 style={style.h1}>Smart Controller</h1>
           </Col>
-          <Col xs={2} md={3}>
-            <LanguageSelector/>
+          <Col xs={2} md={3} style={style.header.right}>
+            <LanguageSelector style={style.font}/>
           </Col>
         </Row>
       </Grid>
