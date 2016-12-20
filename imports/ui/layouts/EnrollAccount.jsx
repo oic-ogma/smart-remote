@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import Validation from 'react-validation';
 import '../../api/validator/form_validator';
 import CountrySelector from '../components/CountrySelector';
-import { Grid, Col, Row } from 'react-bootstrap';
 
 export default class EnrollAccount extends React.Component {
   constructor() {
