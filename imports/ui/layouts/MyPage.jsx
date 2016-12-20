@@ -86,12 +86,7 @@ export default class MyPage extends React.Component {
           <Slider/>
           <div style={largeMainpad}>
             <Col xs={6} md={6} style={largeRed}>
-<<<<<<< HEAD
-              <div style={largeStyle}><Button bsSize="large" active style={buttonStyle}></Button>
-=======
-              <div style={largeStyle}><Button bsSize="large" active style={buttonStyle} onClick={() => this.button1()}>button</Button>
->>>>>>> 0e822a133987d7250b0d5bfbc940b538b2118118
-</div>
+              <div style={largeStyle}><Button bsSize="large" active style={buttonStyle} onClick={() => this.button1()}>button</Button></div>
             </Col>
             <Col xs={6} md={6} style={largeBlue}>
               <div style={largeStyle}>2</div>
