@@ -5,7 +5,7 @@ import Register from '../../ui/layouts/Register.jsx';
 import EnrollAccount from '../../ui/layouts/EnrollAccount.jsx';
 import SignIn from '../../ui/layouts/SignIn.jsx';
 import AddButtonPanel from '../../ui/layouts/AddButtonPanel.jsx';
-import MyPageSmall from '../../ui/layouts/MyPageSmall.jsx';
+import MyPage from '../../ui/layouts/MyPage.jsx';
 
 Meteor.startup( () => {
   render(
@@ -14,7 +14,9 @@ Meteor.startup( () => {
       <Route path="enroll-account/:token/:language" component={EnrollAccount}/>
       <Route path="sign-in" component={SignIn}/>
       <Route path="add-button-panel" component={AddButtonPanel}/>
-      <Route path="my-page-small" component={MyPageSmall}/>
+      <Route path="my-page" component={MyPage}/>
+      <Route path="my-page/:size" component={MyPage}/>
+      <Route path="my-page/:size/:data" component={MyPage}/>
     </Router>,
     document.getElementById( 'react-root' )
   );
