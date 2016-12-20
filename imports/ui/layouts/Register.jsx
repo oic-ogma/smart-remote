@@ -1,9 +1,10 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
-import LanguageSelector from '../components/LanguageSelector';
+import Header from '../components/Header';
 import Validation from 'react-validation';
 import '../../api/validator/form_validator';
+import { Grid } from 'react-bootstrap';
 
 export default class Register extends React.Component {
   constructor() {
@@ -42,24 +43,31 @@ export default class Register extends React.Component {
   render() {
     return (
       <div>
-        <LanguageSelector/>
-        <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
-          <Validation.components.Input
-            id="input-email"
-            type="email"
-            value=''
-            name="registerEmail"
-            placeholder={i18n.getTranslation('form', 'email')}
-            validations={['required', 'email']}/>
-          <Validation.components.Input
-            id="input-confirm-email"
-            type="email"
-            value=''
-            name="confirmEmail"
-            placeholder={i18n.getTranslation('form', 'confirmEmail')}
-            validations={['confirmEmail']}/>
-          <Validation.components.Button>{i18n.getTranslation('form', 'registerBtn')}</Validation.components.Button>
-        </Validation.components.Form>
+        <Header/>
+        <Grid className="center register-center">
+          <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
+            <Validation.components.Input
+              id="input-email"
+              type="email"
+              value=''
+              name="registerEmail"
+              placeholder={i18n.getTranslation('form', 'email')}
+              validations={['required', 'email']}
+              className="input-style"/>
+            <Validation.components.Input
+              id="input-confirm-email"
+              type="email"
+              value=''
+              name="confirmEmail"
+              placeholder={i18n.getTranslation('form', 'confirmEmail')}
+              validations={['confirmEmail']}
+              className="input-style"/>
+            <Validation.components.Button
+              className="button-style register-button">
+              {i18n.getTranslation('form', 'registerBtn')}
+            </Validation.components.Button>
+          </Validation.components.Form>
+        </Grid>
       </div>
     );
   }
