@@ -5,6 +5,22 @@ import { Button } from 'react-bootstrap';
 
 export default class MyPage extends React.Component {
 
+  button1() {
+    console.log("１が押されました");
+  }
+
+  button2() {
+    console.log("2が押されました");
+  }
+
+  button3() {
+    console.log("3が押されました");
+  }
+
+  button4() {
+    console.log("4が押されました");
+  }
+
   render() {
     let largeRed = {
       height: "45vh",
@@ -63,13 +79,18 @@ export default class MyPage extends React.Component {
       borderColor: "#ffffff",
       appearance: "none",
     };
+
     if (this.props.params.size === "large") {
       return (
         <div>
           <Slider/>
           <div style={largeMainpad}>
             <Col xs={6} md={6} style={largeRed}>
+<<<<<<< HEAD
               <div style={largeStyle}><Button bsSize="large" active style={buttonStyle}></Button>
+=======
+              <div style={largeStyle}><Button bsSize="large" active style={buttonStyle} onClick={() => this.button1()}>button</Button>
+>>>>>>> 0e822a133987d7250b0d5bfbc940b538b2118118
 </div>
             </Col>
             <Col xs={6} md={6} style={largeBlue}>
