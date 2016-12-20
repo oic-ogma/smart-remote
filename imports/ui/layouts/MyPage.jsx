@@ -80,6 +80,7 @@ export default class MyPage extends React.Component {
     if (this.props.params.size === "large") {
       return (
         <div>
+          { console.log(this.props.params.data) }
           <Slider/>
           <div style={largeMainpad}>
             <Col xs={6} md={6} style={largeRed}>
@@ -101,6 +102,7 @@ export default class MyPage extends React.Component {
     } else {
       return (
         <div>
+          { console.log(this.props.params.data) }
           <Slider/>
           <div style={smallMainStyle}>
             <Col xs={3} md={3} style={smallRed}>
