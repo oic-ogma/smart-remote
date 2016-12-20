@@ -41,7 +41,7 @@ export default class Top extends React.Component {
             href="sign-in"
             className="button-style"
             onClick={this.handleSubmit.bind(this)}>
-              {i18n.getTranslation('signIn', 'signUp')}
+              {i18n.getTranslation('top', 'signIn')}
           </button>
         </div>
       </div>
