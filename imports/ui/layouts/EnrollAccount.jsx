@@ -47,33 +47,33 @@ export default class EnrollAccount extends React.Component {
   render() {
     return (
       <div>
-      <Header/>
-      <div className="center enroll-center">
-      <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
-        <div className="position">
-        <Validation.components.Input
-          id='input-password'
-          className='input-style'
-          type='password'
-          value=''
-          name='password'
-          placeholder={i18n.getTranslation('form', 'password')}
-          validations={['required', 'password']}/>
+        <Header/>
+        <div className="center enroll-center">
+          <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
+            <div className="position">
+              <Validation.components.Input
+                id='input-password'
+                className='input-style'
+                type='password'
+                value=''
+                name='password'
+                placeholder={i18n.getTranslation('form', 'password')}
+                validations={['required', 'password']}/>
+            </div>
+            <div className="position">
+              <Validation.components.Input
+                id='input-confirm-password'
+                className='input-style'
+                type='password'
+                value=''
+                name='confirmPassword'
+                placeholder={i18n.getTranslation('form', 'confirmPassword')}
+                validations={['required', 'confirmPassword']}/>
+            </div>
+            <CountrySelector/>
+            <Validation.components.Button className="button-style enroll-button">{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
+          </Validation.components.Form>
         </div>
-        <div className="position">
-        <Validation.components.Input
-          id='input-confirm-password'
-          className='input-style'
-          type='password'
-          value=''
-          name='confirmPassword'
-          placeholder={i18n.getTranslation('form', 'confirmPassword')}
-          validations={['required', 'confirmPassword']}/>
-        </div>
-        <CountrySelector/>
-        <Validation.components.Button className="button-style enroll-button">{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
-      </Validation.components.Form>
-      </div>
       </div>
     );
   }

@@ -46,38 +46,26 @@ export default class Register extends React.Component {
         <Header/>
         <Grid className="center register-center">
           <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
-            <Row>
-              <Col>
-                <Validation.components.Input
-                  id="input-email"
-                  type="email"
-                  value=''
-                  name="registerEmail"
-                  placeholder={i18n.getTranslation('form', 'email')}
-                  validations={['required', 'email']}
-                  className="input-style"/>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Validation.components.Input
-                  id="input-confirm-email"
-                  type="email"
-                  value=''
-                  name="confirmEmail"
-                  placeholder={i18n.getTranslation('form', 'confirmEmail')}
-                  validations={['confirmEmail']}
-                  className="input-style"/>
-                </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Validation.components.Button
-                  className="button-style register-button">
-                  {i18n.getTranslation('form', 'registerBtn')}
-                </Validation.components.Button>
-              </Col>
-            </Row>
+            <Validation.components.Input
+              id="input-email"
+              type="email"
+              value=''
+              name="registerEmail"
+              placeholder={i18n.getTranslation('form', 'email')}
+              validations={['required', 'email']}
+              className="input-style"/>
+            <Validation.components.Input
+              id="input-confirm-email"
+              type="email"
+              value=''
+              name="confirmEmail"
+              placeholder={i18n.getTranslation('form', 'confirmEmail')}
+              validations={['confirmEmail']}
+              className="input-style"/>
+            <Validation.components.Button
+              className="button-style register-button">
+              {i18n.getTranslation('form', 'registerBtn')}
+            </Validation.components.Button>
           </Validation.components.Form>
         </Grid>
       </div>
