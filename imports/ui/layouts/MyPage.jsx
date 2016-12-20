@@ -66,7 +66,7 @@ export default class MyPage extends React.Component {
     };
 
     let smallStyle = {
-      opacity: "0",
+      opacity: "0.2",
       height: "100%",
     };
     let smallMainStyle = {
@@ -75,6 +75,9 @@ export default class MyPage extends React.Component {
     let buttonStyle = {
       width: "100%",
       height: "100%",
+      backgroundColor: "transparent",
+      borderColor: "#ffffff",
+      appearance: "none",
     };
 
     if (this.props.params.size === "large") {
@@ -84,8 +87,7 @@ export default class MyPage extends React.Component {
           <Slider/>
           <div style={largeMainpad}>
             <Col xs={6} md={6} style={largeRed}>
-              <div style={largeStyle}><Button bsSize="large" active style={buttonStyle} onClick={() => this.button1()}>button</Button>
-</div>
+              <div style={largeStyle}><Button bsSize="large" active style={buttonStyle} onClick={() => this.button1()}>button</Button></div>
             </Col>
             <Col xs={6} md={6} style={largeBlue}>
               <div style={largeStyle}>2</div>
