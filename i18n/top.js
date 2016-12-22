@@ -2,7 +2,7 @@ i18n.addTranslations('en', {
   top: {
     title1: "The all-in-one web",
     title2: "remote controller application.",
-    subTitle: "All infrared remote control with this one.",
+    subTitle: "All remote controls combined in one.",
     signIn: "Sign in"
   }
 });
