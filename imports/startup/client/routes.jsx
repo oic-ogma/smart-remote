@@ -15,7 +15,7 @@ Meteor.startup( () => {
       <Route path="sign-in" component={SignIn}/>
       <Route path="add-button-panel" component={AddButtonPanel}/>
       <Route path="my-page" component={MyPage}/>
-      <Route path="my-page/:size" component={MyPage}/>
+      <Route path="my-page/:id/:size/:irId" component={MyPage}/>
     </Router>,
     document.getElementById( 'react-root' )
   );

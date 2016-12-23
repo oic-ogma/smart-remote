@@ -1,14 +1,31 @@
 import React from 'react';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Slider from '../components/Slider';
+import { ButtonLibrary } from '../../api/ButtonLibrary/ButtonLibrary';
 
-export default class AddButtonPanel extends React.Component {
+export default class AddButtonPanel extends TrackerReact(React.Component) {
+  componentDidMount() {
+    Meteor.subscribe('ButtonLibrary');
+  }
+
+  irData() {
+    Meteor.subscribe('ButtonLibrary');
+    let data = ButtonLibrary.find({}).fetch();
+    return data;
+  }
+
   render() {
     return (
         <div>
           <Slider/>
           <ul>
-            <li><a className="menu-item" href='/my-page/large'>large</a></li>
-            <li><a className="menu-item" href="/my-page/small">small</a></li>
+            { this.irData().map((irDataSingle) => {
+              let urlId = irDataSingle.id;
+              let urlButtonType = irDataSingle.buttonType;
+              let urlIrId = irDataSingle.irID;
+
+              return <li><a href={'/my-page/' + urlId + '/' + urlButtonType + '/' + urlIrId}>{irDataSingle.buttonName}</a></li>;
+            } ) }
           </ul>
         </div>
     );

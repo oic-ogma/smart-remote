@@ -80,9 +80,10 @@ export default class MyPage extends React.Component {
       appearance: "none",
     };
 
-    if (this.props.params.size === "large") {
+    if (this.props.params.size === "graf-widget" || this.props.params.size === "widget" ) {
       return (
         <div>
+          { console.log(this.props.params.data) }
           <Slider/>
           <div style={largeMainStyle}>
             <Col xs={6} md={6} style={largeRed}>
@@ -103,6 +104,7 @@ export default class MyPage extends React.Component {
     } else {
       return (
         <div>
+          { console.log(this.props.params.data) }
           <Slider/>
           <div style={smallMainStyle}>
             <Col xs={3} md={3} style={smallRed}>
