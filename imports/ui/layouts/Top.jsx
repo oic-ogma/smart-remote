@@ -1,6 +1,7 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
 import Header from '../../ui/components/Header';
+import { Link } from 'react-router';
 export default class Top extends React.Component {
   constructor() {
     super(...arguments);
@@ -22,10 +23,6 @@ export default class Top extends React.Component {
     i18n.offChangeLocale(this.onLocale);
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    location.href = '/sign-in';
-  }
   render() {
     return (
       <div>
@@ -36,13 +33,7 @@ export default class Top extends React.Component {
           <h3>{i18n.getTranslation('top', 'subTitle')}</h3>
         </div>
         <div className="top-button">
-          <button
-            type="button"
-            href="sign-in"
-            className="button-style"
-            onClick={this.handleSubmit.bind(this)}>
-              {i18n.getTranslation('top', 'signIn')}
-          </button>
+          <Link to="sign-in" className="button-style">{i18n.getTranslation('signIn', 'signUp')}</Link>
         </div>
       </div>
     );

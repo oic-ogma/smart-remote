@@ -3,6 +3,7 @@ import {Meteor} from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
 import Header from '../components/Header';
 import { Grid, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 export default class SignIn extends React.Component {
   constructor() {
@@ -64,7 +65,7 @@ export default class SignIn extends React.Component {
             </Col>
           </Row>
           <Row>
-            <a href="reset-password" className="forgot-password">{i18n.getTranslation('signIn', 'forgotPassword')}</a>
+            <Link to="reset-password" className="forgot-password">{i18n.getTranslation('signIn', 'forgotPassword')}</Link>
           </Row>
           <Row>
             <button type="submit" className="button-style">{i18n.getTranslation('form', 'signIn')}</button>
@@ -72,7 +73,7 @@ export default class SignIn extends React.Component {
         </form>
         <div className="sign-in-box">
           <span className="sign-in-message">{i18n.getTranslation('signIn', 'needAccount')}</span>
-          <a href="register" className="sign-in-link sign-in-button">{i18n.getTranslation('signIn', 'signUp')}</a>
+          <Link to="register" className="sign-in-link sign-in-button">{i18n.getTranslation('signIn', 'signUp')}</Link>
         </div>
         </Grid>
       </div>
