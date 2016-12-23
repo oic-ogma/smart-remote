@@ -38,4 +38,4 @@ test:
   post:
     - node --version; npm --version; java -version; ${METEOR_CMD} --version;
     - sleep 3m
-    - ${CHIMP_CMD} end_to_end_tests/chimp-config.js --ddp=http://localhost:3000 --path ./end_to_end_tests
+    - ${CHIMP_CMD} tests/chimp-config.js --ddp=http://localhost:3000 --path ./tests --mocha
