@@ -1,4 +1,3 @@
-// export const Users = new Mongo.Collection("users");
 Meteor.publish("photonCredentials", function() {
   if (this.userId) {
     return Meteor.users.find({
