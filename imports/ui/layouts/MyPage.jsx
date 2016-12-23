@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from '../components/Slider';
 import { Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import PanelSlot from '../components/PanelSlot';
 
 export default class MyPage extends React.Component {
 
@@ -46,7 +47,7 @@ export default class MyPage extends React.Component {
       height: "100%",
     };
 
-    let largeMainpad = {
+    let largeMainStyle = {
       padding: "2.5px",
     };
 
@@ -66,7 +67,6 @@ export default class MyPage extends React.Component {
     };
 
     let smallStyle = {
-      opacity: "0.2",
       height: "100%",
     };
     let smallMainStyle = {
@@ -84,18 +84,18 @@ export default class MyPage extends React.Component {
       return (
         <div>
           <Slider/>
-          <div style={largeMainpad}>
+          <div style={largeMainStyle}>
             <Col xs={6} md={6} style={largeRed}>
-              <div style={largeStyle}><Button bsSize="large" active style={buttonStyle} onClick={() => this.button1()}>button</Button></div>
+              <div style={largeStyle}><Button bsSize="large" active style={buttonStyle} onClick={<PanelSlot />}></Button></div>
             </Col>
             <Col xs={6} md={6} style={largeBlue}>
-              <div style={largeStyle}>2</div>
+            <div style={largeStyle}><Button bsSize="large" active style={buttonStyle} onClick={() => this.button2()}></Button></div>
             </Col>
             <Col xs={6} md={6} style={largeYellow}>
-              <div style={largeStyle}>3</div>
+            <div style={largeStyle}><Button bsSize="large" active style={buttonStyle} onClick={() => this.button3()}></Button></div>
             </Col>
             <Col xs={6} md={6} style={largeGreen}>
-              <div style={largeStyle}>4</div>
+            <div style={largeStyle}><Button bsSize="large" active style={buttonStyle} onClick={() => this.button4()}></Button></div>
             </Col>
           </div>
         </div>
@@ -106,19 +106,19 @@ export default class MyPage extends React.Component {
           <Slider/>
           <div style={smallMainStyle}>
             <Col xs={3} md={3} style={smallRed}>
-              <div style={smallStyle}>1</div>
+              <div style={smallStyle}><Button bsSize="small" active style={buttonStyle} onClick={() => this.button1()}></Button></div>
             </Col>
             <Col xs={3} md={3} style={smallBlue}>
-              <div style={smallStyle}>2</div>
+              <div style={smallStyle}><Button bsSize="small" active style={buttonStyle} onClick={() => this.button2()}></Button></div>
             </Col>
             <Col xs={3} md={3} style={smallYellow}>
-              <div style={smallStyle}>3</div>
+              <div style={smallStyle}><Button bsSize="small" active style={buttonStyle} onClick={() => this.button3()}></Button></div>
             </Col>
             <Col xs={3} md={3} style={smallRed}>
-              <div style={smallStyle}>4</div>
+              <div style={smallStyle}><Button bsSize="small" active style={buttonStyle} onClick={() => this.button4()}></Button></div>
             </Col>
             <Col xs={3} md={3} style={smallBlue}>
-              <div style={smallStyle}>5</div>
+              <div style={smallStyle}><Button bsSize="msll" active style={buttonStyle} onClick={() => this.button5()}></Button></div>
             </Col>
             <Col xs={3} md={3} style={smallYellow}>
               <div style={smallStyle}>6</div>
