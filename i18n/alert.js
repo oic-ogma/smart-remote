@@ -1,7 +1,7 @@
 i18n.addTranslations('en', {
   alert: {
     success: {
-      register: "You have sent comfirm e-mail.",
+      register: "Confirmation email has been sent.",
       enroll: "User registration is complete.",
     },
     error: {

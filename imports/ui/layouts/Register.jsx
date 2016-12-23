@@ -42,7 +42,6 @@ export default class Register extends React.Component {
     if (emailVar === confirmEmailVar) {
       Meteor.call('sendEnrollmentEmail', i18n.getLocale(), emailVar, (error) => {
         if (error) {
-          console.log(error);
           Alert.error(i18n.getTranslation('alert', 'error.register'), {
             position: 'bottom',
             effect: 'genie',

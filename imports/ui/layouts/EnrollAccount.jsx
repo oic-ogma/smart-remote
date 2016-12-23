@@ -46,7 +46,6 @@ export default class EnrollAccount extends React.Component {
     };
     Accounts.resetPassword(this.props.params.token, event.target.password.value, (error) => {
       if (error) {
-        console.log(error);
         Alert.error(i18n.getTranslation('alert', 'error.enroll'), {
           position: 'bottom',
           effect: 'genie',
