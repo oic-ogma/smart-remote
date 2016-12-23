@@ -80,7 +80,7 @@ export default class MyPage extends React.Component {
       appearance: "none",
     };
 
-    if (this.props.params.size === "large") {
+    if (this.props.params.size === "graf-widget" || this.props.params.size === "widget" ) {
       return (
         <div>
           { console.log(this.props.params.data) }

@@ -1,14 +1,17 @@
 import React from 'react';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Slider from '../components/Slider';
-import { IRData } from '../../api/IRData/IRData';
+import { ButtonLibrary } from '../../api/ButtonLibrary/ButtonLibrary';
 
-export default class AddButtonPanel extends React.Component {
+export default class AddButtonPanel extends TrackerReact(React.Component) {
   componentDidMount() {
-    Meteor.subscribe('IRData');
+    Meteor.subscribe('ButtonLibrary');
   }
 
-  hoge() {
-    console.log(IRData.find().fetch());
+  irData() {
+    Meteor.subscribe('ButtonLibrary');
+    let data = ButtonLibrary.find({}).fetch();
+    return data;
   }
 
   render() {
@@ -16,11 +19,13 @@ export default class AddButtonPanel extends React.Component {
         <div>
           <Slider/>
           <ul>
-            <li><a className="menu-item" href='/my-page/large/1'>電気をつける</a></li>
-            <li><a className="menu-item" href='/my-page/small/2'>電気を消す</a></li>
-            <li><a className="menu-item" href='/my-page/small/2'>音量UP</a></li>
-            <li><a className="menu-item" href='/my-page/small/2'>音量DOWN</a></li>
-            <button onClick={ () => this.hoge() }>aaa</button>
+            { this.irData().map((irDataSingle) => {
+              let urlId = irDataSingle.id;
+              let urlButtonType = irDataSingle.buttonType;
+              let urlIrId = irDataSingle.irID;
+
+              return <li><a href={'/my-page/' + urlId + '/' + urlButtonType + '/' + urlIrId}>{irDataSingle.buttonName}</a></li>;
+            } ) }
           </ul>
         </div>
     );
