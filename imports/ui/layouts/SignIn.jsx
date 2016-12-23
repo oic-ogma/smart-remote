@@ -3,7 +3,8 @@ import {Meteor} from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
 import Header from '../components/Header';
 import { Grid, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
+import Alert from 'react-s-alert';
 
 export default class SignIn extends React.Component {
   constructor() {
@@ -32,10 +33,13 @@ export default class SignIn extends React.Component {
     let password = event.target.password.value;
     Meteor.loginWithPassword(email, password, (error) => {
       if (error) {
-        console.log("sign in failed");
+        Alert.error(i18n.getTranslation('alert', 'error.signIn'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
       } else {
-        console.log("success!");
-        // TODO 遷移先を記述
+        browserHistory.push('/my-page');
       }
     });
   }
@@ -76,6 +80,7 @@ export default class SignIn extends React.Component {
           <Link to="register" className="sign-in-link sign-in-button">{i18n.getTranslation('signIn', 'signUp')}</Link>
         </div>
         </Grid>
+        <Alert stack={{limit: 1}} />
       </div>
     );
   }
