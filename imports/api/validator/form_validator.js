@@ -8,7 +8,9 @@ let style = {
     color: "red",
     fontSize: "12px",
     marginTop: 3,
-  },
+    width: "250px",
+    position: "absolute"
+  }
 };
 
 Object.assign(Validation.rules, {

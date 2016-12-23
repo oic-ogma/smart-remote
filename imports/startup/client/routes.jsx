@@ -6,10 +6,12 @@ import EnrollAccount from '../../ui/layouts/EnrollAccount.jsx';
 import SignIn from '../../ui/layouts/SignIn.jsx';
 import ButtonRegister from '../../ui/layouts/ButtonRegister.jsx';
 import AddPhoton from '../../ui/layouts/AddPhoton.jsx';
+import Top from '../../ui/layouts/Top';
 
 Meteor.startup( () => {
   render(
     <Router history={ browserHistory }>
+      <Route path="/" component={Top}/>
       <Route path="register" component={Register}/>
       <Route path="enroll-account/:token/:language" component={EnrollAccount}/>
       <Route path="button-register" component={ButtonRegister}/>
