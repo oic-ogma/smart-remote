@@ -18,7 +18,7 @@ Object.assign(Validation.rules, {
     },
     hint: () => {
       return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'required')}</p>;
-    }
+    },
   },
 
   email: {
@@ -27,7 +27,7 @@ Object.assign(Validation.rules, {
     },
     hint: value => {
       return <p className='form-error is-visible' style={style.validationText}>{value} {i18n.getTranslation('validator', 'email')}</p>;
-    }
+    },
   },
 
   password: {
@@ -36,7 +36,7 @@ Object.assign(Validation.rules, {
     },
     hint: () => {
       return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'password')}</p>;
-    }
+    },
   },
 
   confirmPassword: {
@@ -54,7 +54,7 @@ Object.assign(Validation.rules, {
     },
     hint: () => {
       return <p className="form-error is-visible" style={style.validationText}>{i18n.getTranslation('validator', 'confirmPassword')}</p>;
-    }
+    },
   },
   confirmEmail: {
     rule: (value, components) => {
@@ -71,6 +71,22 @@ Object.assign(Validation.rules, {
     },
     hint: () => {
       return <p className="form-error is-visible" style={style.validationText}>{i18n.getTranslation('validator', 'confirmEmail')}</p>;
-    }
-  }
+    },
+  },
+  deviceId: {
+    rule: value => {
+      return validator.isLength(value, 24, 24);
+    },
+    hint: () => {
+      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'deviceId')}</p>;
+    },
+  },
+  accessToken: {
+    rule: value => {
+      return validator.isLength(value, 40, 40);
+    },
+    hint: () => {
+      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'accessToken')}</p>;
+    },
+  },
 });
