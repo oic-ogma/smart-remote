@@ -1,16 +1,14 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
 import { Button } from 'react-bootstrap';
-import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-export default class ReceiveIR extends TrackerReact(React.Component) {
+export default class ReceiveIR extends React.Component {
   constructor(props) {
     super(props);
-    Meteor.subscribe('photonCredentials');
   }
   receiveIR() {
     this.props.startReceiving();
-    Meteor.call('irReceive', Meteor.user().photonCredentials.deviceId, Meteor.user().photonCredentials.accessToken);
+    Meteor.call('irReceive');
     setTimeout(function() { this.props.finishReceiving(); }.bind(this), 8000);
   }
   render() {
@@ -27,7 +25,6 @@ export default class ReceiveIR extends TrackerReact(React.Component) {
         <div>
           {i18n.getTranslation('receiveIR', 'successMessage')}
           <Button onClick={() => this.receiveIR()} bsStyle="danger" block>{i18n.getTranslation('receiveIR', 'retry')}</Button>
-          <Button bsStyle="primary" block>{i18n.getTranslation('buttonRegister', 'register')}</Button>
         </div>
       );
     }

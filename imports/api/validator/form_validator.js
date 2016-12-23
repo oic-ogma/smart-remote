@@ -89,4 +89,12 @@ Object.assign(Validation.rules, {
       return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'accessToken')}</p>;
     },
   },
+  buttonTitle: {
+    rule: value => {
+      return validator.isLength(value, 1, 20);
+    },
+    hint: () => {
+      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'buttonTitle')}</p>;
+    },
+  },
 });
