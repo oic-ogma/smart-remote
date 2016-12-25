@@ -1,7 +1,8 @@
 import React from 'react';
 import {Meteor} from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
-import LanguageSelector from '../components/LanguageSelector';
+import Header from '../components/Header';
+import { Grid, Col, Row } from 'react-bootstrap';
 
 export default class SignIn extends React.Component {
   constructor() {
@@ -41,15 +42,39 @@ export default class SignIn extends React.Component {
   render() {
     return (
       <div>
-      <LanguageSelector/>
-      <form onSubmit = {this.handleSubmit.bind(this)}>
-        <input type="email" name="email" placeholder={i18n.getTranslation('form', 'email')} />
-        <input type="password" name="password" placeholder={i18n.getTranslation('form', 'password')} />
-        <a href="reset-password">{i18n.getTranslation('signIn', 'forgotPassword')}</a>
-        <button type="submit">{i18n.getTranslation('form', 'signIn')}</button>
-      </form>
-      <span>{i18n.getTranslation('signIn', 'needAccount')}</span>
-      <a href="register">{i18n.getTranslation('signIn', 'signUp')}</a>
+        <Header/>
+        <Grid className="center sign-in-center">
+        <form onSubmit = {this.handleSubmit.bind(this)}>
+          <Row>
+            <Col>
+              <input
+                type="email"
+                name="email"
+                placeholder={i18n.getTranslation('form', 'email')}
+                className="input-style"/>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <input
+                type="password"
+                name="password"
+                placeholder={i18n.getTranslation('form', 'password')}
+                className="input-style"/>
+            </Col>
+          </Row>
+          <Row>
+            <a href="reset-password" className="forgot-password">{i18n.getTranslation('signIn', 'forgotPassword')}</a>
+          </Row>
+          <Row>
+            <button type="submit" className="button-style">{i18n.getTranslation('form', 'signIn')}</button>
+          </Row>
+        </form>
+        <div className="sign-in-box">
+          <span className="sign-in-message">{i18n.getTranslation('signIn', 'needAccount')}</span>
+          <a href="register" className="sign-in-link sign-in-button">{i18n.getTranslation('signIn', 'signUp')}</a>
+        </div>
+        </Grid>
       </div>
     );
   }

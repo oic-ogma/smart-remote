@@ -29,8 +29,19 @@ export default class LanguageSelector extends React.Component {
   }
 
   generateTitle() {
+    let style = {
+      languageStyle: {
+        color: "#fff",
+      },
+      iconStyle: {
+        marginRight: "3px",
+      }
+    };
     return (
-      <i className='glyphicon glyphicon-globe'> { this.getLanguage() }</i>
+      <div style={style.languageStyle}>
+        <i className='glyphicon glyphicon-globe' style={style.iconStyle}/>
+        { this.getLanguage() }
+      </div>
     );
   }
 
@@ -39,9 +50,20 @@ export default class LanguageSelector extends React.Component {
   }
 
   render() {
+    let style = {
+      buttonStyle: {
+        backgroundColor: "rgba(0, 0, 0, 0)",
+        borderStyle: "none"
+      }
+    }
     return (
       <div>
-        <DropdownButton bsStyle="primary" title={this.generateTitle()} noCaret id='language-selector'>
+        <DropdownButton
+          title={this.generateTitle()}
+          noCaret
+          id='language-selector'
+          style={style.buttonStyle}
+          >
           <MenuItem id="lang-ja" onClick={() => this.setLocaleLanguage("ja")}>ja</MenuItem>
           <MenuItem id="lang-en" onClick={() => this.setLocaleLanguage("en")}>en</MenuItem>
         </DropdownButton>
