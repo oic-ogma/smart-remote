@@ -2,7 +2,7 @@ import i18n from 'meteor/universe:i18n';
 import { check } from 'meteor/check';
 import { validate } from 'isemail';
 import { Accounts } from 'meteor/accounts-base';
-
+import moment from "moment";
 
 const setServerLocale = (language) => {
   if (language !== 'ja') {
@@ -18,16 +18,23 @@ const setEmailTemplates = () => {
   Accounts.emailTemplates.subject = i18n.getTranslation('emailTemplates.enrollAccount', 'subject');
 };
 
-const sendForgotEmail = (userObject, address) => {
-  console.log(address + "にメールが送信された");
-  // send email
-  Accounts.sendResetPasswordEmail(userObject, address, (err) => {
-    if (err) {
-      console.log(error.reason);
+const canSendResetPasswordEmail = (userObject) => {
+  if (userObject) {
+    if (!!userObject.services.password.reset) {
+      const tokenDate = userObject.services.password.reset.when;
+      const currentTime = moment();
+      const timeDifference = currentTime.diff( tokenDate, 'minutes' );
+      if (timeDifference >= 5) {
+        return true;
+      } else {
+        throw new Meteor.Error('Email already sent');
+      }
     } else {
-      throw new Meteor.Error( "Email address does not exist." );
+      return true;
     }
-  });
+  } else {
+    throw new Meteor.Error('Email address not found');
+  }
 };
 
 Meteor.methods({
@@ -68,7 +75,10 @@ Meteor.methods({
 
   sendForgotPasswordEmail: (language, address) => {
     check(language, String);
-    if (validate(address)) {
+    check(address, String);
+    const userObject = Meteor.users.findOne({'emails.address': address});
+    const canSend = canSendResetPasswordEmail(userObject);
+    if (canSend) {
       setServerLocale(language);
       setEmailTemplates();
       SSR.compileTemplate('resetPassword', Assets.getText('emails/' + i18n.getLocale() + '/forgot_password.html'));
@@ -86,21 +96,15 @@ Meteor.methods({
         },
       };
 
-      const userObject = Meteor.users.findOne({'emails.address': address});
-      // this is 5minutes timer
-      // block that send Email in succession
-      try {
-        const tokenDate = userObject.services.password.reset.when;
-        const nowTime = moment();
-        const timeDifference = nowTime.diff( tokenDate, 'minutes' );
-        if (timeDifference >= 5) {
-          sendForgotEmail( userObject, address );
+      Accounts.sendResetPasswordEmail(userObject, address, (err) => {
+        if (err) {
+          throw new Meteor.Error(error.reason);
         } else {
-          console.log("not 5minutes");
+          console.log(address + "にパスワードリセットメールが送信された");
         }
-      } catch ( e ) {
-        sendForgotEmail( userObject, address );
-      }
+      });
+    } else {
+      throw canSend;
     }
   },
 });
