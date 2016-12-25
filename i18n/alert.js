@@ -7,7 +7,7 @@ i18n.addTranslations('en', {
     error: {
       register: "Already registered email address.",
       enroll: "Already registered.",
-      signIn: "Invalid username or password",
+      signIn: "Invalid email or password",
     },
   },
 });
@@ -21,7 +21,7 @@ i18n.addTranslations('ja', {
     error: {
       register: "既に登録されたメールアドレスです",
       enroll: "既に登録されています",
-      signIn: "ユーザー名かパスワードが間違っています",
+      signIn: "メールアドレスかパスワードが間違っています",
     },
   },
 });
