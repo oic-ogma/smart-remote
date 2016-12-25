@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import LanguageSelector from '../components/LanguageSelector.jsx';
-import i18n from 'meteor/universe:i18n';
+import Header from '../components/Header';
 import Validation from 'react-validation';
+import { Grid, Col } from 'react-bootstrap';
 import '../../api/validator/form_validator';
 
 export default class ForgotPassword extends React.Component {
@@ -39,7 +39,8 @@ export default class ForgotPassword extends React.Component {
   render() {
     return (
       <div>
-        <LanguageSelector />
+        <Header />
+        <Grid className="center forgot-password-center">
           <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
             <Validation.components.Input
               id="input-reset-email"
@@ -47,9 +48,12 @@ export default class ForgotPassword extends React.Component {
               value=''
               name="email"
               placeholder={i18n.getTranslation('forgotPassword', 'email')}
-              validations={['required', 'email']}/>
-            <Validation.components.Button>{i18n.getTranslation('forgotPassword', 'reset')}</Validation.components.Button>
-            </Validation.components.Form>
+              validations={['required', 'email']}
+              className="input-style"
+            />
+            <Validation.components.Button className="button-style forgot-password-button">{i18n.getTranslation('forgotPassword', 'reset')}</Validation.components.Button>
+          </Validation.components.Form>
+        </Grid>
       </div>
     );
   }
