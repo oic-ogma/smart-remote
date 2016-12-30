@@ -2,8 +2,9 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import Header from '../components/Header';
 import Validation from 'react-validation';
-import { Grid, Col } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
 import '../../api/validator/form_validator';
+import Alert from 'react-s-alert';
 
 export default class ForgotPassword extends React.Component {
   constructor() {
@@ -26,12 +27,33 @@ export default class ForgotPassword extends React.Component {
     i18n.offChangeLocale(this.onLocale);
   }
 
+  formReset() {
+    document.getElementById('input-reset-email').value = '';
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     let emailVar = event.target.email.value;
     Meteor.call('sendForgotPasswordEmail', i18n.getLocale(), emailVar, (error) => {
-      if (error) {
-        console.log(error);
+      if (!error) {
+        this.formReset();
+        Alert.success(i18n.getTranslation('forgotPassword', 'alerts.success'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
+      } else if (error.error === "Email already sent") {
+        Alert.error(i18n.getTranslation('forgotPassword', 'alerts.alreadySent'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
+      } else if (error.error === 'Email address not found') {
+        Alert.error(i18n.getTranslation('forgotPassword', 'alerts.invalidEmail'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
       }
     });
   }
@@ -54,6 +76,7 @@ export default class ForgotPassword extends React.Component {
             <Validation.components.Button className="button-style forgot-password-button">{i18n.getTranslation('forgotPassword', 'reset')}</Validation.components.Button>
           </Validation.components.Form>
         </Grid>
+        <Alert stack={{limit: 1}} />
       </div>
     );
   }
