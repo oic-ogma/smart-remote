@@ -2,7 +2,6 @@ i18n.addTranslations('en', {
   forgotPassword: {
     email: "Email",
     reset: "Reset",
-    newPassword: "New password",
     alerts: {
       success: "Password reset email has been sent.",
       alreadySent: "Email has already been sent.",
@@ -15,7 +14,6 @@ i18n.addTranslations('ja', {
   forgotPassword: {
     email: "メールアドレス",
     reset: "リセット",
-    newPassword: "新しいパスワード",
     alerts: {
       success: "パスワードリセットメールが送信されました。",
       alreadySent: "パスワードリセットメールがすでに送信されている。",
