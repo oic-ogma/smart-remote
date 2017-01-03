@@ -33,7 +33,7 @@ export default class Top extends React.Component {
           <h3>{i18n.getTranslation('top', 'subTitle')}</h3>
         </div>
         <div className="top-button">
-          <Link to="sign-in" className="button-style top-button-padding">{i18n.getTranslation('top', 'signIn')}</Link>
+          <Link to="sign-in" className="sign-in button-style top-button-padding">{i18n.getTranslation('top', 'signIn')}</Link>
         </div>
       </div>
     );
