@@ -4,6 +4,9 @@ import Header from '../components/Header';
 import Validation from 'react-validation';
 import '../../api/validator/form_validator';
 import CountrySelector from '../components/CountrySelector';
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/genie.css';
 
 export default class EnrollAccount extends React.Component {
   constructor() {
@@ -27,6 +30,13 @@ export default class EnrollAccount extends React.Component {
     i18n.offChangeLocale(this.onLocale);
   }
 
+  formReset() {
+    document.getElementById('input-password').value = '';
+    document.getElementById('input-confirm-password').value = '';
+    document.getElementById('country-dropdown').value = '';
+    document.getElementById('region-dropdown').value = '';
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const params = {
@@ -36,9 +46,19 @@ export default class EnrollAccount extends React.Component {
     };
     Accounts.resetPassword(this.props.params.token, event.target.password.value, (error) => {
       if (error) {
-        console.log(error);
+        Alert.error(i18n.getTranslation('alert', 'error.enroll'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
       } else {
         Meteor.call('addEnrollmentInfo', params);
+        Alert.success(i18n.getTranslation('alert', 'success.enroll'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
+        this.formReset();
       }
     });
   }
@@ -72,6 +92,7 @@ export default class EnrollAccount extends React.Component {
             <CountrySelector/>
             <Validation.components.Button className="button-style enroll-button">{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
           </Validation.components.Form>
+          <Alert stack={{limit: 1}} />
         </div>
       </div>
     );

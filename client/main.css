@@ -129,3 +129,7 @@ body {
 .top-button {
   text-align: center;
 }
+
+.top-button-padding {
+padding: 20px 90px
+}

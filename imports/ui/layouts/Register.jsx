@@ -5,6 +5,9 @@ import Header from '../components/Header';
 import Validation from 'react-validation';
 import '../../api/validator/form_validator';
 import { Grid } from 'react-bootstrap';
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/genie.css';
 
 export default class Register extends React.Component {
   constructor() {
@@ -27,6 +30,11 @@ export default class Register extends React.Component {
     i18n.offChangeLocale(this.onLocale);
   }
 
+  formReset() {
+    document.getElementById('input-email').value = '';
+    document.getElementById('input-confirm-email').value = '';
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     let emailVar = event.target.registerEmail.value;
@@ -34,7 +42,18 @@ export default class Register extends React.Component {
     if (emailVar === confirmEmailVar) {
       Meteor.call('sendEnrollmentEmail', i18n.getLocale(), emailVar, (error) => {
         if (error) {
-          console.log(error);
+          Alert.error(i18n.getTranslation('alert', 'error.register'), {
+            position: 'bottom',
+            effect: 'genie',
+            timeout: 3000,
+          });
+        } else {
+          Alert.success(i18n.getTranslation('alert', 'success.register'), {
+            position: 'bottom',
+            effect: 'genie',
+            timeout: 3000,
+          });
+          this.formReset();
         }
       });
     }
@@ -67,6 +86,7 @@ export default class Register extends React.Component {
               {i18n.getTranslation('form', 'registerBtn')}
             </Validation.components.Button>
           </Validation.components.Form>
+          <Alert stack={{limit: 1}} />
         </Grid>
       </div>
     );

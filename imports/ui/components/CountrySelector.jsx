@@ -35,6 +35,7 @@ export default class CountrySelector extends React.Component {
       <div style={style.selector}>
         <CountryDropdown
           value={country}
+          id="country-dropdown"
           name="country"
           valueType="short"
           onChange={(val) => this.selectCountry(val)} />
@@ -42,6 +43,7 @@ export default class CountrySelector extends React.Component {
       <div style={style.selector}>
         <RegionDropdown
           value={region}
+          id="region-dropdown"
           name="city"
           countryValueType="short"
           country={country}
