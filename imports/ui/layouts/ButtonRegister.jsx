@@ -1,6 +1,6 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
-import LanguageSelector from '../components/LanguageSelector';
+import Header from '../components/Header';
 import ReceiveIR from '../components/ReceiveIR';
 import { Col } from 'react-bootstrap';
 import Validation from 'react-validation';
@@ -52,7 +52,7 @@ export default class ButtonRegister extends React.Component {
     }
     return (
       <div>
-        <LanguageSelector/>
+        <Header/>
         <Col mdOffset={4} md={4}>
           <h2 className="text-center">{i18n.getTranslation('buttonRegister', 'title')}</h2>
         </Col>
