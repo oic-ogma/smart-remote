@@ -84,7 +84,7 @@ Meteor.methods({
       SSR.compileTemplate('resetPassword', Assets.getText('emails/' + i18n.getLocale() + '/forgot_password.html'));
       Accounts.emailTemplates.resetPassword = {
         subject() {
-          return i18n.getTranslation('emailTemplates.reset_password', 'subject');
+          return i18n.getTranslation('emailTemplates.resetPassword', 'subject');
         },
         html( user, url ) {
           let emailData = {};
