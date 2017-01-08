@@ -133,3 +133,16 @@ body {
 .top-button-padding {
 padding: 20px 90px
 }
+
+.button-register-center {
+  margin-top: 70px;
+}
+
+.receive-button {
+  text-align: center;
+  margin: 100px 0 30px 0;
+}
+
+.receive-button-padding {
+  padding: 20px 90px;
+}

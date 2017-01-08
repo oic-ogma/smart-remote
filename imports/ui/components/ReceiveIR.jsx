@@ -1,6 +1,6 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
-import { Button } from 'react-bootstrap';
+import Loading from 'react-loading';
 
 export default class ReceiveIR extends React.Component {
   constructor(props) {
@@ -14,18 +14,15 @@ export default class ReceiveIR extends React.Component {
   render() {
     if (this.props.buttonState === 'receive') {
       return (
-        <Button onClick={() => this.receiveIR()} bsStyle="primary" block>{i18n.getTranslation('receiveIR', 'receive')}</Button>
+        <button onClick={() => this.receiveIR()} className="button-style receive-button">{i18n.getTranslation('receiveIR', 'receive')}</button>
       );
     } else if (this.props.buttonState === 'receiving') {
       return (
-        <Button bsStyle="info" block>{i18n.getTranslation('receiveIR', 'loading')}</Button>
+        <button className="button-style receive-button receive-button-padding"><Loading type='bars' color='rgb(255, 255, 255)'/></button>
       );
     } else {
       return (
-        <div>
-          {i18n.getTranslation('receiveIR', 'successMessage')}
-          <Button onClick={() => this.receiveIR()} bsStyle="danger" block>{i18n.getTranslation('receiveIR', 'retry')}</Button>
-        </div>
+        <button onClick={() => this.receiveIR()} className="button-style receive-button">{i18n.getTranslation('receiveIR', 'retry')}</button>
       );
     }
   }
