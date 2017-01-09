@@ -2,6 +2,7 @@ import React from 'react';
 import i18n from 'meteor/universe:i18n';
 import Header from '../components/Header';
 import ReceiveIR from '../components/ReceiveIR';
+import IrTest from '../components/IrTest';
 import { Grid, Col, Row } from 'react-bootstrap';
 import Validation from 'react-validation';
 
@@ -25,10 +26,6 @@ export default class ButtonRegister extends React.Component {
 
   componentWillUnmount() {
     i18n.offChangeLocale(this.onLocale);
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
   }
 
   startReceiving() {
@@ -72,15 +69,22 @@ export default class ButtonRegister extends React.Component {
                 />
               </Col>
             </Row>
-            <Row>
-              <Col>
                 {
                   (this.state.receiveState === "received")
-                    ? <Validation.components.Button className="button-style">{i18n.getTranslation('buttonRegister', 'register')}</Validation.components.Button>
+                    ? <div>
+                        <Row>
+                          <Col>
+                            <IrTest />
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <Validation.components.Button className="button-style button-register-margin">{i18n.getTranslation('buttonRegister', 'register')}</Validation.components.Button>
+                          </Col>
+                        </Row>
+                      </div>
                     : null
                 }
-              </Col>
-            </Row>
           </Validation.components.Form>
         </Grid>
       </div>

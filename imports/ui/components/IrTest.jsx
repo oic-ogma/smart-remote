@@ -1,6 +1,5 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
-import { Button } from 'react-bootstrap';
 
 export default class IrTest extends React.Component {
   irTestSend() {
@@ -9,9 +8,9 @@ export default class IrTest extends React.Component {
 
   render() {
     return (
-      <Button bsStyle="success" bsSize="small" onClick={this.irTestSend} >
-        {i18n.getTranslation('irTest', 'testButton')}
-      </Button>
+          <button className="button-style button-register-margin"  onClick={this.irTestSend}>
+            {i18n.getTranslation('irTest', 'testButton')}
+          </button>
     );
   }
 }
