@@ -1,0 +1,154 @@
+/* common style */
+
+body {
+  background-color: #1C2936;
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+  font-weight: 100;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-style {
+  border-style: none;
+  border: 1px solid #18A3BC;
+  border-radius: 10px;
+  padding: 15px 40px;
+  width: 250px;
+  color: #fff;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.button-style:disabled {
+  border-color: #5C5C5C;
+}
+
+.input-style {
+  border-style: none;
+  border-bottom: 1px solid #fff;
+  outline: 0;
+  color: #fff;
+  font-size: 15px;
+  width: 250px;
+  padding: 5px;
+  margin-top: 36px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.positon {
+  position: relative;
+}
+
+/* Sign in Page */
+
+.sign-in-center {
+  margin-top: 90px;
+}
+
+.forgot-password {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 12px;
+  color: #18A3BC;
+  margin: 5px 0 30px 0;
+}
+
+.sign-in-box {
+  width: 250px;
+  margin: 24px 0 0 0;
+}
+
+.sign-in-box .sign-in-message {
+  color: #fff;
+  margin-right: 15px;
+}
+
+.sign-in-box .sign-in-link {
+  color: #18A3BC;
+}
+
+/* Register Page */
+
+.register-center {
+  margin-top: 105px;
+}
+
+.register-button {
+  margin: 200px 0 30px 0;
+}
+
+/* Enroll Account Page */
+
+.enroll-center {
+  padding-top: 65px;
+}
+
+.country-drop-down select {
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0);
+  border-style: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.enroll-button {
+  margin: 120px 0 30px 0;
+}
+
+/* Top */
+
+.top-box {
+  width: 300px;
+  height: 150px;
+  text-align: center;
+  margin: 118px auto 180px auto;
+}
+
+.top-box h1 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 1.5em;
+  letter-spacing: .06em;
+  margin: 0;
+}
+
+.top-box h3 {
+  color: #CCFFFB;
+  font-size: 12px;
+  font-weight: 100;
+  letter-spacing: .06em;
+  margin-top: 30px;
+}
+
+.top-button {
+  text-align: center;
+}
+
+.top-button-padding {
+padding: 20px 90px
+}
+
+/* Forgot password Page */
+.forgot-password-center {
+  margin-top: 90px;
+}
+
+.forgot-password-button {
+  margin: 300px 0 30px 0;
+}
+
+/* Reset password page */
+
+.reset-password-center {
+  padding-top: 65px;
+}
+
+.reset-password-button {
+  margin: 120px 0 30px 0;
+}

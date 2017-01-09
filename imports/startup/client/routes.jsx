@@ -4,15 +4,19 @@ import { render } from 'react-dom';
 import Register from '../../ui/layouts/Register.jsx';
 import EnrollAccount from '../../ui/layouts/EnrollAccount.jsx';
 import SignIn from '../../ui/layouts/SignIn.jsx';
-import IrTest from '../../ui/components/IrTest';
+import ForgotPassword from '../../ui/layouts/ForgotPassword.jsx';
+import ResetPassword from '../../ui/layouts/ResetPassword.jsx';
+import Top from '../../ui/layouts/Top';
 
 Meteor.startup( () => {
   render(
     <Router history={ browserHistory }>
+      <Route path="/" component={Top}/>
       <Route path="register" component={Register}/>
       <Route path="enroll-account/:token/:language" component={EnrollAccount}/>
       <Route path="sign-in" component={SignIn}/>
-      <Route path="ir-test" component={IrTest}/>
+      <Route path="forgot-password" component={ForgotPassword}/>
+      <Route path="reset-password/:token/:language" component={ResetPassword}/>
     </Router>,
     document.getElementById( 'react-root' )
   );

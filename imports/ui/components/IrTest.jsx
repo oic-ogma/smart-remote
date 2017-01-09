@@ -5,7 +5,6 @@ import { Button } from 'react-bootstrap';
 export default class IrTest extends React.Component {
   irTestSend() {
     Meteor.call("irTestSend", 'deviceId', 'accessToken');
-    alert(i18n.getTranslation('irTest', 'testSuccess'));
   }
 
   render() {
