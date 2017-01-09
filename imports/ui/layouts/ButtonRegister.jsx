@@ -5,6 +5,7 @@ import ReceiveIR from '../components/ReceiveIR';
 import IrTest from '../components/IrTest';
 import { Grid, Col, Row } from 'react-bootstrap';
 import Validation from 'react-validation';
+import Alert from 'react-s-alert';
 
 export default class ButtonRegister extends React.Component {
   constructor() {
@@ -38,8 +39,28 @@ export default class ButtonRegister extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const test = event.target.buttonTitle.value;
-    Meteor.call('getIrData', test);
+    const buttonTitle = event.target.buttonTitle.value;
+    Meteor.call('insertIrData', buttonTitle, (error) => {
+      if (error.error === 'Not unique id.') {
+        Alert.error(i18n.getTranslation('buttonRegister', 'alerts.notUnique'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
+      } else if (error.error === 'Could not connect to photon cloud.') {
+        Alert.error(i18n.getTranslation('buttonRegister', 'alerts.connectionError'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
+      } else {
+        Alert.success(i18n.getTranslation('buttonRegister', 'alerts.success'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
+      }
+    });
   }
 
   render() {
@@ -86,6 +107,7 @@ export default class ButtonRegister extends React.Component {
                     : null
                 }
           </Validation.components.Form>
+          <Alert stack={{limit: 1}}/>
         </Grid>
       </div>
     );

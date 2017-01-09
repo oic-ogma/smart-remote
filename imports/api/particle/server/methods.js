@@ -14,6 +14,13 @@ const getPhotonCredentials = () => {
   return userObject[0].photonCredentials;
 };
 
+const isUniqueButtonTitle = (buttonTitle) => {
+  return !ButtonLibrary.find({
+    userId: Meteor.userId(),
+    buttonTitle: buttonTitle,
+  }).count();
+};
+
 Meteor.methods({
   irReceive: () => {
     const photonCredentials = getPhotonCredentials();
@@ -47,21 +54,25 @@ Meteor.methods({
       }
      );
   },
-  getIrData: (buttonTitle) => {
-    const photonCredentials = getPhotonCredentials();
-    try {
-      const irReceive1 = HTTP.get('https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irData1?access_token=' + photonCredentials.accessToken);
-      const irReceive2 = HTTP.get('https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irData2?access_token=' + photonCredentials.accessToken);
-      ButtonLibrary.insert({
-        userId: Meteor.userId(),
-        buttonTitle: buttonTitle,
-        buttonType: 'button-panel',
-        data: [
-          irReceive1.data.result, irReceive2.data.result,
-        ],
-      });
-    } catch (error) {
-      throw new Meteor.Error(error);
+  insertIrData: (buttonTitle) => {
+    if (isUniqueButtonTitle(buttonTitle)) {
+      const photonCredentials = getPhotonCredentials();
+      try {
+        const irReceive1 = HTTP.get('https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irData1?access_token=' + photonCredentials.accessToken);
+        const irReceive2 = HTTP.get('https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irData2?access_token=' + photonCredentials.accessToken);
+        ButtonLibrary.insert({
+          userId: Meteor.userId(),
+          buttonTitle: buttonTitle,
+          buttonType: 'button-panel',
+          data: [
+            irReceive1.data.result, irReceive2.data.result,
+          ],
+        });
+      } catch (error) {
+        throw new Meteor.Error('Could not connect to photon cloud.');
+      }
+    } else {
+      throw new Meteor.Error('Not unique id.');
     }
   },
 });
