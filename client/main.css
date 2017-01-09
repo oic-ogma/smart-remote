@@ -133,3 +133,22 @@ body {
 .top-button-padding {
 padding: 20px 90px
 }
+
+/* Forgot password Page */
+.forgot-password-center {
+  margin-top: 90px;
+}
+
+.forgot-password-button {
+  margin: 300px 0 30px 0;
+}
+
+/* Reset password page */
+
+.reset-password-center {
+  padding-top: 65px;
+}
+
+.reset-password-button {
+  margin: 120px 0 30px 0;
+}

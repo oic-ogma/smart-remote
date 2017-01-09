@@ -69,7 +69,7 @@ export default class SignIn extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Link to="reset-password" className="forgot-password">{i18n.getTranslation('signIn', 'forgotPassword')}</Link>
+            <Link to="forgot-password" className="forgot-password">{i18n.getTranslation('signIn', 'forgotPassword')}</Link>
           </Row>
           <Row>
             <button type="submit" className="button-style">{i18n.getTranslation('form', 'signIn')}</button>
