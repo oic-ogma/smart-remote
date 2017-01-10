@@ -8,7 +8,7 @@ export default class IrTest extends React.Component {
 
   render() {
     return (
-          <button className="button-style button-register-margin"  onClick={this.irTestSend}>
+          <button type="button" className="button-style button-register-margin"  onClick={this.irTestSend}>
             {i18n.getTranslation('irTest', 'testButton')}
           </button>
     );
