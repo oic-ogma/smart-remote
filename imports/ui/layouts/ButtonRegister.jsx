@@ -37,28 +37,35 @@ export default class ButtonRegister extends React.Component {
     this.setState({receiveState: "received"});
   }
 
+  formReset() {
+    document.getElementById('input-button-title').value = '';
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const buttonTitle = event.target.buttonTitle.value;
     Meteor.call('insertIrData', buttonTitle, (error) => {
-      if (error.error === 'Not unique id.') {
-        Alert.error(i18n.getTranslation('buttonRegister', 'alerts.notUnique'), {
-          position: 'bottom',
-          effect: 'genie',
-          timeout: 3000,
-        });
-      } else if (error.error === 'Could not connect to photon cloud.') {
-        Alert.error(i18n.getTranslation('buttonRegister', 'alerts.connectionError'), {
-          position: 'bottom',
-          effect: 'genie',
-          timeout: 3000,
-        });
+      if (error) {
+        if (error.error === 'Not unique id.') {
+          Alert.error(i18n.getTranslation('buttonRegister', 'alerts.notUnique'), {
+            position: 'bottom',
+            effect: 'genie',
+            timeout: 3000,
+          });
+        } else if (error.error === 'Could not connect to photon cloud.') {
+          Alert.error(i18n.getTranslation('buttonRegister', 'alerts.connectionError'), {
+            position: 'bottom',
+            effect: 'genie',
+            timeout: 3000,
+          });
+        }
       } else {
         Alert.success(i18n.getTranslation('buttonRegister', 'alerts.success'), {
           position: 'bottom',
           effect: 'genie',
           timeout: 3000,
         });
+        this.formReset();
       }
     });
   }
