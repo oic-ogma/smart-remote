@@ -1,0 +1,43 @@
+import React from 'react';
+import { Col } from 'react-bootstrap';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import PanelGroup from '../components/PanelGroup';
+import {ButtonLayout} from '../../api/ButtonLayout/ButtonLayout';
+
+export default class MyPage extends TrackerReact(React.Component) {
+  constructor( props ) {
+    super(props);
+  }
+
+  componentDidMount() {
+    Meteor.subscribe('ButtonLayout');
+  }
+
+  buttonLayout() {
+    return ButtonLayout.find({}).fetch();
+  }
+
+  render() {
+    return (
+        <div>
+          { this.buttonLayout().map((buttonLayoutSingle) => {
+            return (
+             <Col md={6}>
+               <PanelGroup
+                 groupId={buttonLayoutSingle.groupId}
+                 editMode={this.props.params.editMode}
+                 buttonType={this.props.params.buttonType}
+                 groupType={buttonLayoutSingle.type}
+                 buttonArray={buttonLayoutSingle.buttons}
+               />
+             </Col>
+            );
+          } ) }
+        </div>
+    );
+  }
+}
+
+MyPage.propTypes = {
+  params: React.PropTypes.object,
+};
