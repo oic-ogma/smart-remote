@@ -16,4 +16,17 @@ Meteor.methods({
       }
      );
   },
+
+  getTemperature: (deviceId, accessToken) => {
+    HTTP.get(
+      'https://api.particle.io/v1/devices/' + deviceId + '/temperature?access_token=' + accessToken,
+      (error, result) => {
+        if (error) {
+          throw new Meteor.Error(error);
+        } else {
+          return result;
+        }
+      }
+     );
+  },
 });
