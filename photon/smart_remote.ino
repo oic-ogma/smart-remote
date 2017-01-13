@@ -8,16 +8,16 @@ String irData1 = "";
 String irData2 = "";
 String temperature = "";
 String pressure = "";
-String jinkan = "";
+String motion = "";
 char irSendData[50][1000];
-unsigned long jinkanTime;
+unsigned long motionTime;
 
 void setup() {
   // Initialize Photon onboard blue LED
   pinMode(D7, OUTPUT);
   // for particlu.function irReceive
   pinMode(D6, OUTPUT);
-  // for jinkan sensor
+  // for motion sensor
   pinMode(D4, INPUT);
   // irDataPin
   pinMode(D2, INPUT);
@@ -33,14 +33,13 @@ void setup() {
   Particle.variable("irData2",irData2);
   Particle.variable("temperature",temperature);
   Particle.variable("pressure",pressure);
-  Particle.variable("jinkan",jinkan);
+  Particle.variable("motion",motion);
 
-  jinkanTime = millis();
+  motionTime = millis();
 
   // Initialize Sensor BMP180
   // this delete will be usage fault!not delete!!
-  if (!sensor.begin())
-  {
+  if (!sensor.begin()) {
     Serial.println("No sensor found, please check wiring!");
     while (1) {}
   }
@@ -48,16 +47,16 @@ void setup() {
 
 
 void loop() {
-  // jinkan sensor
-  if(jinkanTime < millis()) {
-    if(analogRead(A0) > 2000) {
-      jinkan = "1";
-      Particle.variable("jinkan", jinkan);
-      jinkanTime = millis() + 30000;
+  // motion sensor
+  if (motionTime < millis()) {
+    if (analogRead(A0) > 2000) {
+      motion = "1";
+      Particle.variable("motion", motion);
+      motionTime = millis() + 30000;
     } else {
-      jinkan = "0";
-      Particle.variable("jinkan", jinkan);
-      jinkanTime = millis();
+      motion = "0";
+      Particle.variable("motion", motion);
+      motionTime = millis();
     }
   }
 
@@ -66,14 +65,11 @@ void loop() {
   delay(5000);
 }
 
-int irSend(String index)
-{
-  if (index.toInt() < 0 || 50 < index.toInt() )
-  {
+int irSend(String index) {
+  if (index.toInt() < 0 || 50 < index.toInt()) {
     return 1;
   }
-  else
-  {
+  else {
     String charsConvertString = String(irSendData[index.toInt()]);
     char stringConvertChars[1000];
     charsConvertString.toCharArray(stringConvertChars, charsConvertString.length());
@@ -81,12 +77,9 @@ int irSend(String index)
 
     int valueLength = 0;
     int arrayIndex = 0;
-    for (int i=0;i<charsConvertString.length();i++)
-    {
-      if (stringConvertChars[i] == 44)
-      {
-        switch (valueLength)
-        {
+    for (int i=0;i<charsConvertString.length();i++) {
+      if (stringConvertChars[i] == 44) {
+        switch (valueLength) {
         	case 5:
             irDataInt[arrayIndex] = (stringConvertChars[i - 5] - 48)*10000 + (stringConvertChars[i - 4] - 48)*1000 + (stringConvertChars[i - 3] - 48)*100 + (stringConvertChars[i - 2]- 48)*10 + (stringConvertChars[i - 1] - 48)*1;
             valueLength = 0;
@@ -116,37 +109,32 @@ int irSend(String index)
           	break;
         }
       }
-      else
-      {
+      else {
         valueLength++;
       }
     }
 
   int timeLength;
 	unsigned long timeStart;
-	int countHighLow = sizeof( irDataInt ) / sizeof( irDataInt[0] );
-	for (int indexHighLow = 0; indexHighLow < countHighLow; indexHighLow++ )
-	{
+	int countHighLow = sizeof(irDataInt) / sizeof(irDataInt[0]);
+	for (int indexHighLow = 0; indexHighLow < countHighLow; indexHighLow++ ) {
 		timeLength = irDataInt[indexHighLow]*100;
 		timeStart = micros();
-		do
-  	{
-  		digitalWrite( D3, 1 - (indexHighLow % 2) );
+		do {
+  		digitalWrite(D3, 1 - (indexHighLow % 2));
   		delayMicroseconds(8);
-			digitalWrite( D3, 0 );
+			digitalWrite(D3, 0);
 			delayMicroseconds(7);
 		}
-    while( timeLength > micros() - timeStart );
+    while(timeLength > micros() - timeStart);
   }
 	return 0;
   }
 }
 
-int irAddData(String irData)
-{
+int irAddData(String irData) {
   int index = irData.charAt(0)-58;
-  if (index < 0 || 50 < index )
-  {
+  if (index < 0 || 50 < index) {
     return 1;
   }
   char buff[1000];
@@ -154,12 +142,10 @@ int irAddData(String irData)
   irSendDataBuff = String(irSendData[index]);
 
   irData.remove(0,1);
-  if (irData.charAt(0) != 44 && irSendDataBuff.charAt(irSendDataBuff.length()-1) != 44 && irSendDataBuff != "")
-  {
+  if (irData.charAt(0) != 44 && irSendDataBuff.charAt(irSendDataBuff.length()-1) != 44 && irSendDataBuff != "") {
     irSendDataBuff += ",";
   }
-  if (irData.charAt(0) == 44 && irSendDataBuff.charAt(irSendDataBuff.length()-1) == 44)
-  {
+  if (irData.charAt(0) == 44 && irSendDataBuff.charAt(irSendDataBuff.length()-1) == 44) {
     irSendDataBuff += "0";
   }
   irSendDataBuff += irData;
@@ -167,13 +153,11 @@ int irAddData(String irData)
   return 0;
 }
 
-int irSend(String index)
-{
-  if (index.toInt() < 0 || 50 < index.toInt() )
-  {
+int irSend(String index) {
+  if (index.toInt() < 0 || 50 < index.toInt()) {
     return 1;
-  }else
-  {
+  }
+  else {
     String charsConvertString = String(irSendData[index.toInt()]);
     Particle.publish("irData",charsConvertString);
     char stringConvertChars[1000];
@@ -182,12 +166,9 @@ int irSend(String index)
 
     int valueLength = 0;
     int arrayIndex = 0;
-    for (int i=0;i<charsConvertString.length();i++)
-    {
-      if (stringConvertChars[i] == 44)
-      {
-        switch (valueLength)
-        {
+    for (int i=0;i<charsConvertString.length();i++) {
+      if (stringConvertChars[i] == 44) {
+        switch (valueLength) {
           case 5:
         	  irDataInt[arrayIndex] = (stringConvertChars[i - 5] - 48)*10000 + (stringConvertChars[i - 4] - 48)*1000 + (stringConvertChars[i - 3] - 48)*100 + (stringConvertChars[i - 2]- 48)*10 + (stringConvertChars[i - 1] - 48)*1;
         	  valueLength = 0;
@@ -216,36 +197,33 @@ int irSend(String index)
           default:
           	break;
         }
-      } else
-        {
-          valueLength++;
-        }
+      }
+      else {
+        valueLength++;
+      }
     }
 
     int timeLength;
     unsigned long timeStart;
 
-    int countHighLow = sizeof( irDataInt ) / sizeof( irDataInt[0] );
-    for( int indexHighLow = 0; indexHighLow < countHighLow; indexHighLow++ )
-    {
+    int countHighLow = sizeof(irDataInt) / sizeof(irDataInt[0]);
+    for (int indexHighLow = 0; indexHighLow < countHighLow; indexHighLow++ ) {
     	timeLength = irDataInt[indexHighLow]*100;
     	timeStart = micros();
-    	do
-    	{
-    		digitalWrite( D3, 1 - (indexHighLow % 2) );
+    	do {
+    		digitalWrite(D3, 1 - (indexHighLow % 2));
     		delayMicroseconds(8);
 
-    		digitalWrite( D3, 0 );
+    		digitalWrite(D3, 0);
     		delayMicroseconds(7);
-    	} while ( timeLength > micros() - timeStart );
+    	} while (timeLength > micros() - timeStart);
     }
     Particle.publish("Send","send");
     return 0;
   }
 }
 
-int irTestSend(String command)
-{
+int irTestSend(String command) {
   String charsConvertString = irData1 + irData2;
   Particle.publish("irData",charsConvertString);
   char stringConvertChars[1000];
@@ -254,12 +232,9 @@ int irTestSend(String command)
 
   int valueLength = 0;
   int arrayIndex = 0;
-  for (int i=0;i<charsConvertString.length();i++)
-  {
-    if (stringConvertChars[i] == 44)
-    {
-      switch (valueLength)
-      {
+  for (int i=0;i<charsConvertString.length();i++) {
+    if (stringConvertChars[i] == 44) {
+      switch (valueLength) {
       	case 5:
           irDataInt[arrayIndex] = (stringConvertChars[i - 5] - 48)*10000 + (stringConvertChars[i - 4] - 48)*1000 + (stringConvertChars[i - 3] - 48)*100 + (stringConvertChars[i - 2]- 48)*10 + (stringConvertChars[i - 1] - 48)*1;
           valueLength = 0;
@@ -288,8 +263,8 @@ int irTestSend(String command)
       	default:
       		break;
       }
-    } else
-    {
+    }
+    else {
       valueLength++;
     }
   }
@@ -297,23 +272,21 @@ int irTestSend(String command)
   int timeLength;
 	unsigned long timeStart;
 
-	int countHighLow = sizeof( irDataInt ) / sizeof( irDataInt[0] );
-	for( int indexHighLow = 0; indexHighLow < countHighLow; indexHighLow++ )
-	{
+	int countHighLow = sizeof(irDataInt) / sizeof(irDataInt[0]);
+	for( int indexHighLow = 0; indexHighLow < countHighLow; indexHighLow++ ) {
 		timeLength = irDataInt[indexHighLow]*100;
 		timeStart = micros();
-		do
-		{
-			digitalWrite( D3, 1 - (indexHighLow % 2) );
+		do {
+			digitalWrite(D3, 1 - (indexHighLow % 2));
 			delayMicroseconds(8);
-			digitalWrite( D3, 0 );
+			digitalWrite(D3, 0);
 			delayMicroseconds(7);
-		} while( timeLength > micros() - timeStart );
+		} while(timeLength > micros() - timeStart);
 	}
 	return 0;
 }
-int irReceive(String command)
-{
+
+int irReceive(String command) {
   irData1 = "";
   irData2 = "";
 	unsigned long time;
@@ -326,21 +299,17 @@ int irReceive(String command)
   int state;
   int flag = 0;
   int count = 0;
-  while(1)
-  {
+  while(1) {
     state = digitalRead(D2);
-    if( state != state_prev )
-    {
+    if( state != state_prev ) {
       state_prev = state;
 	    unsigned long microsTime = micros();
-	    if (flag > 0)
-	    {
-	      if (count<200)
-	      {
+	    if (flag > 0) {
+	      if (count<200) {
           irData1 = String(irData1+(String)((microsTime - microsTime_prev)/100));
           irData1 = String(irData1+",");
-	      } else
-        {
+	      }
+        else {
           irData2 = String(irData2+(String)((microsTime - microsTime_prev)/100));
 	        irData2 = String(irData2+",");
 	      }
@@ -349,8 +318,7 @@ int irReceive(String command)
     	microsTime_prev = microsTime;
     	flag = 1;
     }
-    if (time < millis())
-    {
+    if (time < millis()) {
       break;
     }
   }
@@ -360,7 +328,7 @@ int irReceive(String command)
   return 0;
 }
 
-void PublishSensorInfo(){
+void PublishSensorInfo() {
   temperature = String((int)sensor.readTemperature() - 10);
   pressure = String(sensor.readPressure()/100.0);
   Particle.variable("temperature", temperature);
