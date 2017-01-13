@@ -1,9 +1,22 @@
 /* common style */
+html {
+  height: 100%;
+}
 
 body {
   background-color: #1C2936;
   font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
   font-weight: 100;
+  height: 100%;
+  position: relative;
+}
+
+#react-root {
+  height: 100%;
+}
+
+#react-root > div {
+  height: 100%;
 }
 
 .center {
@@ -79,7 +92,8 @@ body {
 }
 
 .register-button {
-  margin: 200px 0 30px 0;
+  position: absolute;
+  bottom: 90px;
 }
 
 /* Enroll Account Page */
@@ -97,7 +111,8 @@ body {
 }
 
 .enroll-button {
-  margin: 120px 0 30px 0;
+  position: absolute;
+  bottom: 90px;
 }
 
 /* Top */
@@ -128,4 +143,8 @@ body {
 
 .top-button {
   text-align: center;
+  position: absolute;;
+  bottom: 90px;
+  left: 0;
+  right: 0;
 }
