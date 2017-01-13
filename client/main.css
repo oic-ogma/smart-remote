@@ -172,3 +172,13 @@ padding: 20px 90px
 .reset-password-button {
   margin: 120px 0 30px 0;
 }
+
+/*Add photon page*/
+
+.form-control-top {
+  margin: 100px 0 20px 0;
+}
+
+.add-photon-button {
+  margin-top: 40px;
+}
