@@ -3,21 +3,19 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 
 export default class PanelSlot extends TrackerReact(React.Component) {
-  // getButtonId() {
-  //   return ButtonLayout.find(
+  // getButtonName() {
+  //   return ButtonLibrary.find(
   //     {
   //       buttons: {
-  //         $elemMatch: { buttonId: { $exists: true } }
+  //         $elemMatch: { _id: { this.props.buttonObject } }
   //       }
   //     }
   //   ).count();
   // }
   render() {
-    // console.log( "object" );
-    // console.log( this.props.buttonObject);
     return (
       <div>
-        { this.props.registerId }
+        { this.props.buttonObject }
       </div>
     );
   }
@@ -26,6 +24,6 @@ export default class PanelSlot extends TrackerReact(React.Component) {
 PanelSlot.propTypes = {
   id: React.PropTypes.number,
   groupType: React.PropTypes.string,
-  registerId: React.PropTypes.string,
+  buttonObject: React.PropTypes.string,
   editMode: React.PropTypes.string,
 };

@@ -26,23 +26,22 @@ export default class PanelGroup extends TrackerReact(React.Component) {
         </div>
       );
     } else {
-      console.log( "buttonArray = [0]" + this.props.buttonArray[0] );
       return (
         <div>
           <Col mdOffset={1} md={5}>
-            <PanelSlot id={0}  editMode={this.props.editMode} buttonType={this.props.buttonType} registerId={this.props.buttonArray[0]}/>
+            <PanelSlot id={0}  editMode={this.props.editMode} buttonType={this.props.buttonType} buttonObject={this.props.buttonArray[0]}/>
           </Col>
 
           <Col md={5}>
-            <PanelSlot id={1} editMode={this.props.editMode} buttonType={this.props.buttonType} registerId={this.props.buttonArray[1]}/>
+            <PanelSlot id={1} editMode={this.props.editMode} buttonType={this.props.buttonType} buttonObject={this.props.buttonArray[1]}/>
           </Col>
 
           <Col mdOffset={1} md={5}>
-            <PanelSlot id={2} editMode={this.props.editMode} buttonType={this.props.buttonType} registerId={this.props.buttonArray[2]}/>
+            <PanelSlot id={2} editMode={this.props.editMode} buttonType={this.props.buttonType} buttonObject={this.props.buttonArray[2]}/>
           </Col>
 
           <Col md={5}>
-            <PanelSlot id={3} editMode={this.props.editMode} buttonType={this.props.buttonType} registerId={this.props.buttonArray[3]}/>
+            <PanelSlot id={3} editMode={this.props.editMode} buttonType={this.props.buttonType} buttonObject={this.props.buttonArray[3]}/>
           </Col>
         </div>
       );
