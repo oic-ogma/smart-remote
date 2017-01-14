@@ -2,6 +2,7 @@ import React from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Slider from '../components/Slider';
 import { ButtonLibrary } from '../../api/ButtonLibrary/ButtonLibrary';
+import { Link } from 'react-router';
 
 export default class AddButtonPanel extends TrackerReact(React.Component) {
   componentDidMount() {
@@ -21,7 +22,7 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
             { this.irData().map((irDataSingle) => {
               let urlButtonId = irDataSingle._id;
 
-              return <li><a href={'/my-page/true/panel/' + urlButtonId}>{irDataSingle.buttonName}</a></li>;
+              return <li><Link to={'/my-page/true/panel/' + urlButtonId}>{irDataSingle.buttonName}</Link></li>;
             } ) }
           </ul>
         </div>
