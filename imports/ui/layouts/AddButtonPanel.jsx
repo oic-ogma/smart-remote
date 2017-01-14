@@ -9,9 +9,7 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
   }
 
   irData() {
-    Meteor.subscribe('ButtonLibrary');
-    let data = ButtonLibrary.find({}).fetch();
-    return data;
+    return ButtonLibrary.find({}).fetch();
   }
 
   render() {
@@ -21,11 +19,9 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
           <ul>
             { this.irData().id }
             { this.irData().map((irDataSingle) => {
-              let urlId = irDataSingle.id;
-              let urlButtonType = irDataSingle.buttonType;
-              let urlIrId = irDataSingle.irID;
+              let urlButtonId = irDataSingle._id;
 
-              return <li><a href={'/my-page/' + urlId + '/' + urlButtonType + '/' + urlIrId}>{irDataSingle.buttonName}</a></li>;
+              return <li><a href={'/my-page/true/panel/' + urlButtonId}>{irDataSingle.buttonName}</a></li>;
             } ) }
           </ul>
         </div>

@@ -8,6 +8,7 @@ import ForgotPassword from '../../ui/layouts/ForgotPassword.jsx';
 import ResetPassword from '../../ui/layouts/ResetPassword.jsx';
 import Top from '../../ui/layouts/Top';
 import MyPage from '../../ui/layouts/MyPage';
+import AddButtonPanel from '../../ui/layouts/AddButtonPanel';
 
 Meteor.startup( () => {
   render(
@@ -19,7 +20,8 @@ Meteor.startup( () => {
       <Route path="forgot-password" component={ForgotPassword}/>
       <Route path="reset-password/:token/:language" component={ResetPassword}/>
       <Route path="my-page" component={MyPage}/>
-      <Route path="my-page/:editMode/:buttonType" component={MyPage}/>
+      <Route path="my-page/:editMode/:buttonType/:buttonId" component={MyPage}/>
+      <Route path="add-button-panel" component={AddButtonPanel}/>
     </Router>,
     document.getElementById( 'react-root' )
   );
