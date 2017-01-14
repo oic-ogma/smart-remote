@@ -5,10 +5,6 @@ Meteor.publish("ButtonLibrary", function() {
     return ButtonLibrary.find({
       userId: this.userId
     }
-
-        // fields: {
-        //   '_id': 1
-        // }
       );
   } else {
     this.ready();
