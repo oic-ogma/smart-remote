@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import PanelGroup from '../components/PanelGroup';
 import {ButtonLayout} from '../../api/ButtonLayout/ButtonLayout';
+import Slider from '../components/Slider';
 
 export default class MyPage extends TrackerReact(React.Component) {
   constructor( props ) {
@@ -11,6 +12,7 @@ export default class MyPage extends TrackerReact(React.Component) {
 
   componentDidMount() {
     Meteor.subscribe('ButtonLayout');
+    Meteor.subscribe( 'ButtonLibrary' );
   }
 
   buttonLayout() {
@@ -20,6 +22,7 @@ export default class MyPage extends TrackerReact(React.Component) {
   render() {
     return (
         <div>
+        <Slider/>
           { this.buttonLayout().map((buttonLayoutSingle) => {
             return (
              <Col md={6}>
