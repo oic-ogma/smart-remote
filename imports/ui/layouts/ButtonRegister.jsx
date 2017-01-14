@@ -16,6 +16,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
     this.state = {
       locale: i18n.getLocale(),
       receiveState: 'receive',
+      processing: false,
     };
     this.onLocale = this.onLocale.bind(this);
   }
@@ -45,6 +46,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
   }
 
   handleSubmit(event) {
+    this.setState({processing: true});
     event.preventDefault();
     const buttonTitle = event.target.buttonTitle.value;
     Meteor.call('insertIrData', buttonTitle, (error) => {
@@ -71,6 +73,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
         this.formReset();
         this.setState({receiveState: "receive"});
       }
+      this.setState({processing: false});
     });
   }
 
@@ -82,6 +85,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
         </Col>
       );
     } else if (Meteor.user()) {
+      let disabled = this.state.processing ? 'disabled' : '';
       return (
         <div>
           <Header/>
@@ -111,14 +115,12 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
                   {
                     (this.state.receiveState === "received")
                       ? <div>
+                          <Row><Col><IrTest /></Col></Row>
                           <Row>
                             <Col>
-                              <IrTest />
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <Validation.components.Button className="button-style button-register-margin">{i18n.getTranslation('buttonRegister', 'register')}</Validation.components.Button>
+                              <Validation.components.Button className="button-style button-register-margin" disabled={disabled}>
+                                {i18n.getTranslation('buttonRegister', 'register')}
+                              </Validation.components.Button>
                             </Col>
                           </Row>
                         </div>

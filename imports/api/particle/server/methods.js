@@ -1,5 +1,5 @@
 import { HTTP } from 'meteor/http';
-import { ButtonLibrary } from '../../../api/button_library/button_library';
+import { ButtonLibrary, ButtonLibrarySchema } from '../../../api/button_library/button_library';
 
 const getPhotonCredentials = () => {
   const userObject = Meteor.users.find({
@@ -60,14 +60,15 @@ Meteor.methods({
       try {
         const irReceive1 = HTTP.get('https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irData1?access_token=' + photonCredentials.accessToken);
         const irReceive2 = HTTP.get('https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irData2?access_token=' + photonCredentials.accessToken);
-        ButtonLibrary.insert({
+        const buttonObject = {
           userId: Meteor.userId(),
           buttonTitle: buttonTitle,
-          buttonType: 'button-panel',
-          data: [
-            irReceive1.data.result, irReceive2.data.result,
-          ],
-        });
+          irData: [ irReceive1.data.result, irReceive2.data.result ],
+        };
+
+        ButtonLibrarySchema.validate(buttonObject);
+
+        ButtonLibrary.insert(buttonObject);
       } catch (error) {
         throw new Meteor.Error('Could not connect to photon cloud.');
       }
