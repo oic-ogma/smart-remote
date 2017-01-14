@@ -1,7 +1,7 @@
 import React from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import {ButtonLibrary} from '../../api/ButtonLibrary/ButtonLibrary';
-import {Mongo} from 'meteor/mongo';
+import { ButtonLibrary } from '../../api/ButtonLibrary/ButtonLibrary';
+import { Mongo } from 'meteor/mongo';
 import { Glyphicon } from 'react-bootstrap';
 
 export default class PanelSlot extends TrackerReact(React.Component) {
@@ -16,13 +16,13 @@ export default class PanelSlot extends TrackerReact(React.Component) {
   render() {
     if ( this.buttonLibrary() ) {
       return (
-      <div>
+      <button className = 'button-style'>
         { this.buttonLibrary().buttonName }
-      </div>
+      </button>
 
       );
     } else if ( this.props.editMode === 'true' ) {
-      return (<div><Glyphicon glyph='plus'/></div>);
+      return (<button className = 'button-style'><Glyphicon glyph='plus'/></button>);
     } else {
       return null;
     }
