@@ -6,8 +6,11 @@ import IrTest from '../components/IrTest';
 import { Grid, Col, Row } from 'react-bootstrap';
 import Validation from 'react-validation';
 import Alert from 'react-s-alert';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import Loading from 'react-loading';
+import { browserHistory } from 'react-router';
 
-export default class ButtonRegister extends React.Component {
+export default class ButtonRegister extends TrackerReact(React.Component) {
   constructor() {
     super(...arguments);
     this.state = {
@@ -72,52 +75,63 @@ export default class ButtonRegister extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <Header/>
-        <Grid className="center button-register-center">
-          <Validation.components.Form onSubmit={this.handleSubmit.bind(this)} >
-            <Row>
-              <Col>
-                <Validation.components.Input
-                  id='input-button-title'
-                  className='input-style'
-                  type='text'
-                  name='buttonTitle'
-                  value=''
-                  placeholder={i18n.getTranslation('buttonRegister', 'buttonTitle')}
-                  validations={['required', 'buttonTitle']}/>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <ReceiveIR
-                  buttonState={this.state.receiveState}
-                  startReceiving={() => this.startReceiving()}
-                  finishReceiving={() => this.finishReceiving()}
-                />
-              </Col>
-            </Row>
-                {
-                  (this.state.receiveState === "received")
-                    ? <div>
-                        <Row>
-                          <Col>
-                            <IrTest />
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col>
-                            <Validation.components.Button className="button-style button-register-margin">{i18n.getTranslation('buttonRegister', 'register')}</Validation.components.Button>
-                          </Col>
-                        </Row>
-                      </div>
-                    : null
-                }
-          </Validation.components.Form>
-          <Alert stack={{limit: 1}}/>
-        </Grid>
-      </div>
-    );
+    if (Meteor.loggingIn()) {
+      return (
+        <Col xsOffset={4} xs={4} mdOffset={4} md={4}>
+          <Loading type='bars' color='rgb(255, 255, 255)' />
+        </Col>
+      );
+    } else if (Meteor.user()) {
+      return (
+        <div>
+          <Header/>
+          <Grid className="center button-register-center">
+            <Validation.components.Form onSubmit={this.handleSubmit.bind(this)} >
+              <Row>
+                <Col>
+                  <Validation.components.Input
+                    id='input-button-title'
+                    className='input-style'
+                    type='text'
+                    name='buttonTitle'
+                    value=''
+                    placeholder={i18n.getTranslation('buttonRegister', 'buttonTitle')}
+                    validations={['required', 'buttonTitle']}/>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <ReceiveIR
+                    buttonState={this.state.receiveState}
+                    startReceiving={() => this.startReceiving()}
+                    finishReceiving={() => this.finishReceiving()}
+                  />
+                </Col>
+              </Row>
+                  {
+                    (this.state.receiveState === "received")
+                      ? <div>
+                          <Row>
+                            <Col>
+                              <IrTest />
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <Validation.components.Button className="button-style button-register-margin">{i18n.getTranslation('buttonRegister', 'register')}</Validation.components.Button>
+                            </Col>
+                          </Row>
+                        </div>
+                      : null
+                  }
+            </Validation.components.Form>
+            <Alert stack={{limit: 1}}/>
+          </Grid>
+        </div>
+      );
+    } else {
+      browserHistory.push('/sign-in');
+      return null;
+    }
   }
 }
