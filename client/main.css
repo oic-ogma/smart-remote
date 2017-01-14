@@ -42,7 +42,12 @@ body {
 }
 
 .input-style {
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   border-style: none;
+  border-radius: 0;
   border-bottom: 1px solid #fff;
   outline: 0;
   color: #fff;
@@ -50,7 +55,7 @@ body {
   width: 250px;
   padding: 5px;
   margin-top: 36px;
-  background-color: rgba(0, 0, 0, 0);
+  background: none;
 }
 
 .positon {
