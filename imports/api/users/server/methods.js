@@ -1,4 +1,4 @@
-import { Profile, PhotonCredentials } from '../users.js';
+import { Profile, PhotonCredentials } from '../users';
 Meteor.methods({
   addEnrollmentInfo: (params) => {
     Profile.validate(params);

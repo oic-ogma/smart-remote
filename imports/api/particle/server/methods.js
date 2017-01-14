@@ -1,5 +1,5 @@
 import { HTTP } from 'meteor/http';
-import { ButtonLibrary } from '../../../api/button_library/button_library.js';
+import { ButtonLibrary } from '../../../api/button_library/button_library';
 
 const getPhotonCredentials = () => {
   const userObject = Meteor.users.find({
