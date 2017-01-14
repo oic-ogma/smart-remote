@@ -66,6 +66,7 @@ export default class ButtonRegister extends React.Component {
           timeout: 3000,
         });
         this.formReset();
+        this.setState({receiveState: "receive"});
       }
     });
   }
