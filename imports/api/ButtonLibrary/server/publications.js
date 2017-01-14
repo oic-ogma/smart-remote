@@ -3,7 +3,7 @@ import { ButtonLibrary } from '../ButtonLibrary';
 Meteor.publish("ButtonLibrary", function() {
   if (this.userId) {
     return ButtonLibrary.find({
-      userId: this.userId
+      userId: this.userId,
     }
       );
   } else {
