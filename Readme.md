@@ -7,11 +7,11 @@
 ### シュミレーター
 `meteor run ios`
 ### 実機
-`meteor run android-device`
+`meteor run ios-device`
 
 ## android
 `meteor add-platform android`
 ### シュミレーター
 `meteor run android`
 ### 実機
-`meteor run ios-device`
+`meteor run android-device`
