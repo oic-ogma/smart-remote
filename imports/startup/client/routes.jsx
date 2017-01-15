@@ -9,6 +9,7 @@ import AddPhoton from '../../ui/layouts/AddPhoton';
 import ForgotPassword from '../../ui/layouts/ForgotPassword';
 import ResetPassword from '../../ui/layouts/ResetPassword';
 import Top from '../../ui/layouts/Top';
+import Error404Page from '../../ui/layouts/Error404Page';
 
 Meteor.startup( () => {
   render(
@@ -21,6 +22,7 @@ Meteor.startup( () => {
       <Route path="add-photon" component={AddPhoton}/>
       <Route path="forgot-password" component={ForgotPassword}/>
       <Route path="reset-password/:token/:language" component={ResetPassword}/>
+      <Route path="*" component={Error404Page}/>
     </Router>,
     document.getElementById( 'react-root' )
   );
