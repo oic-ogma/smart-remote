@@ -273,7 +273,7 @@ int irTestSend(String command) {
 	unsigned long timeStart;
 
 	int countHighLow = sizeof(irDataInt) / sizeof(irDataInt[0]);
-	for( int indexHighLow = 0; indexHighLow < countHighLow; indexHighLow++ ) {
+	for  ( int indexHighLow = 0; indexHighLow < countHighLow; indexHighLow++ ) {
 		timeLength = irDataInt[indexHighLow]*100;
 		timeStart = micros();
 		do {
@@ -301,7 +301,7 @@ int irReceive(String command) {
   int count = 0;
   while(1) {
     state = digitalRead(D2);
-    if( state != state_prev ) {
+    if (state != state_prev ) {
       state_prev = state;
 	    unsigned long microsTime = micros();
 	    if (flag > 0) {
