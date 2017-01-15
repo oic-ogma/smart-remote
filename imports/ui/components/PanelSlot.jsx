@@ -1,6 +1,6 @@
 import React from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import { ButtonLibrary } from '../../api/ButtonLibrary/ButtonLibrary';
+import { ButtonLibrary } from '../../api/button_library/button_library';
 import { Mongo } from 'meteor/mongo';
 import { Glyphicon } from 'react-bootstrap';
 import { browserHistory } from 'react-router';

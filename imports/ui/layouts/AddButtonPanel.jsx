@@ -1,12 +1,12 @@
 import React from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Slider from '../components/Slider';
-import { ButtonLibrary } from '../../api/ButtonLibrary/ButtonLibrary';
+import { ButtonLibrary } from '../../api/button_library/button_library';
 import { Link } from 'react-router';
 
 export default class AddButtonPanel extends TrackerReact(React.Component) {
   componentDidMount() {
-    Meteor.subscribe('ButtonLibrary');
+    Meteor.subscribe('buttonLibrary');
   }
 
   irData() {

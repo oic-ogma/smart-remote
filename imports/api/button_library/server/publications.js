@@ -1,6 +1,6 @@
-import { ButtonLibrary } from '../ButtonLibrary';
+import { ButtonLibrary } from '../button_library';
 
-Meteor.publish("ButtonLibrary", function() {
+Meteor.publish("buttonLibrary", function() {
   if (this.userId) {
     return ButtonLibrary.find({
       userId: this.userId,

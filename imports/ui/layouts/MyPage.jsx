@@ -2,7 +2,7 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import PanelGroup from '../components/PanelGroup';
-import {ButtonLayout} from '../../api/ButtonLayout/ButtonLayout';
+import {ButtonLayout} from '../../api/button_layout/button_layout';
 import Slider from '../components/Slider';
 import Alert from 'react-s-alert';
 import Loading from 'react-loading';
@@ -14,8 +14,8 @@ export default class MyPage extends TrackerReact(React.Component) {
   }
 
   componentDidMount() {
-    Meteor.subscribe('ButtonLayout');
-    Meteor.subscribe( 'ButtonLibrary' );
+    Meteor.subscribe('buttonLayout');
+    Meteor.subscribe( 'buttonLibrary' );
   }
 
   buttonLayout() {

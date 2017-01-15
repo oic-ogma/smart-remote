@@ -1,4 +1,4 @@
-import {ButtonLayout} from '../ButtonLayout';
+import {ButtonLayout} from '../button_layout';
 import {SmartRemoteRegistry} from '../../smart_remote_registry/smart_remote_registry';
 
 const getEmptyIndex = () => {
