@@ -85,7 +85,6 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
         </Col>
       );
     } else if (Meteor.user()) {
-      let disabled = this.state.processing ? 'disabled' : '';
       return (
         <div>
           <Header/>
@@ -118,9 +117,15 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
                           <Row><Col><IrTest /></Col></Row>
                           <Row>
                             <Col>
-                              <Validation.components.Button className="button-style button-register-margin" disabled={disabled}>
-                                {i18n.getTranslation('buttonRegister', 'register')}
-                              </Validation.components.Button>
+                              {
+                                this.state.processing
+                                ? <Validation.components.Button className="button-style button-register-margin" disabled>
+                                    {i18n.getTranslation('buttonRegister', 'register')}
+                                  </Validation.components.Button>
+                                : <Validation.components.Button className="button-style button-register-margin">
+                                    {i18n.getTranslation('buttonRegister', 'register')}
+                                  </Validation.components.Button>
+                             }
                             </Col>
                           </Row>
                         </div>
