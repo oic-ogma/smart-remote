@@ -7,6 +7,7 @@ import SignIn from '../../ui/layouts/SignIn.jsx';
 import ForgotPassword from '../../ui/layouts/ForgotPassword.jsx';
 import ResetPassword from '../../ui/layouts/ResetPassword.jsx';
 import Top from '../../ui/layouts/Top';
+import Error404Page from '../../ui/layouts/Error404Page';
 
 Meteor.startup( () => {
   render(
@@ -17,6 +18,7 @@ Meteor.startup( () => {
       <Route path="sign-in" component={SignIn}/>
       <Route path="forgot-password" component={ForgotPassword}/>
       <Route path="reset-password/:token/:language" component={ResetPassword}/>
+      <Route path="*" component={Error404Page}/>
     </Router>,
     document.getElementById( 'react-root' )
   );
