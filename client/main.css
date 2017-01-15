@@ -158,7 +158,27 @@ body {
 padding: 20px 90px
 }
 
+/* Button register Page */
+
+.button-register-center {
+  margin-top: 70px;
+}
+
+.button-register-margin {
+  margin-top: 10px;
+}
+
+.receive-button {
+  text-align: center;
+  margin: 100px 0 0 0;
+}
+
+.receive-button-padding {
+  padding: 20px 90px;
+}
+
 /* Forgot password Page */
+
 .forgot-password-center {
   margin-top: 90px;
 }
@@ -175,4 +195,14 @@ padding: 20px 90px
 
 .reset-password-button {
   margin: 120px 0 30px 0;
+}
+
+/*Add photon page*/
+
+.form-control-top {
+  margin: 100px 0 20px 0;
+}
+
+.add-photon-button {
+  margin-top: 40px;
 }
