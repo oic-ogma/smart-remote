@@ -10,6 +10,10 @@ export default class Slider extends React.Component {
     this.refs.left.show();
   }
 
+  logout() {
+    Meteor.logout();
+  }
+
   render() {
     let styles = {
       bmBurgerButton: {
@@ -43,15 +47,15 @@ export default class Slider extends React.Component {
       },
       bmOverlay: {
         background: 'rgba(0, 0, 0, 0.3)',
-      }
+      },
     };
 
     return (
       <div>
         <Menu ref="left" alignment="left" styles={ styles }>
-          <RadiumLink id="button-register" className="menu-item" to="/button-register">{i18n.getTranslation('slider', 'addButton')}</RadiumLink>
-          <RadiumLink id="add-button-panel" className="menu-item" to="/add-button-panel">{i18n.getTranslation('slider', 'registerButton')}</RadiumLink>
-          <RadiumLink id="Logout" className="menu-item" to="/logout">{i18n.getTranslation('slider', 'signOut')}</RadiumLink>
+          <RadiumLink id="button-register"  className="slider-font" style={{ textDecoration: 'none'}} to="/button-register">{i18n.getTranslation('slider', 'addButton')}</RadiumLink>
+          <RadiumLink id="add-button-panel" className="slider-font" style={{ textDecoration: 'none'}} to="/add-button-panel">{i18n.getTranslation('slider', 'registerButton')}</RadiumLink>
+          <button className="slider-font" onClick={() => this.logout()}>{i18n.getTranslation('slider', 'signOut')}</button>
         </Menu>
       </div>
     );
