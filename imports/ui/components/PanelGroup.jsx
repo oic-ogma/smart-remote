@@ -20,15 +20,19 @@ export default class PanelGroup extends TrackerReact(React.Component) {
         </div>
       );
     } else if ( this.props.groupType === 'button-widget' ) {
+      const buttonStyle = {
+        height: '15vh',
+        width: '85%',
+      };
       return (
         <div>
-          hoge
+          <Col><button style={buttonStyle} className = 'button-style'>widget</button></Col>
         </div>
       );
     } else {
       return (
         <div>
-          <Col mdOffset={1} md={5}>
+          <Col smOffset={1} mdOffset={1} sm={5} md={5}>
             <PanelSlot
               groupId={this.props.groupId}
               id={0}
@@ -38,7 +42,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
               buttonId={ this.props.buttonId } />
           </Col>
 
-          <Col md={5}>
+          <Col sm={5} md={5}>
             <PanelSlot
               groupId={this.props.groupId}
               id={1}
@@ -48,7 +52,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
               buttonId={ this.props.buttonId } />
           </Col>
 
-          <Col mdOffset={1} md={5}>
+          <Col smOffset={1} mdOffset={1} sm={5} md={5}>
             <PanelSlot
             groupId={this.props.groupId}
             id={2}
@@ -58,7 +62,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
             buttonId={ this.props.buttonId } />
           </Col>
 
-          <Col md={5}>
+          <Col sm={5} md={5}>
             <PanelSlot
             groupId={this.props.groupId}
             id={3}
@@ -79,5 +83,5 @@ PanelGroup.propTypes = {
   groupType: React.PropTypes.string,
   buttonArray: React.PropTypes.array,
   editMode: React.PropTypes.string,
-  buttonId: React.PropTypes.object,
+  buttonId: React.PropTypes.string,
 };

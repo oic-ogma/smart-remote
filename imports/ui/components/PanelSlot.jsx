@@ -4,18 +4,32 @@ import { ButtonLibrary } from '../../api/ButtonLibrary/ButtonLibrary';
 import { Mongo } from 'meteor/mongo';
 import { Glyphicon } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
+import Alert from 'react-s-alert';
 
 export default class PanelSlot extends TrackerReact(React.Component) {
   buttonLibrary() {
-    if ( this.props.buttonObject !== "null" ) {
-      return ButtonLibrary.findOne({_id: new Mongo.ObjectID(this.props.buttonObject)});
+    if ( !!this.props.buttonObject ) {
+      return ButtonLibrary.findOne({_id: new Mongo.ObjectID(this.props.buttonObject.buttonId)});
     } else {
       return null;
     }
   }
 
   addButtonPanel() {
-    Meteor.call( "addButton", this.props.id, this.props.groupId, this.props.buttonId );
+    const params = {
+      panelId: this.props.id,
+      groupId: this.props.groupId,
+      buttonId: this.props.buttonId,
+    };
+    Meteor.call( "addButton", params, ( error ) => {
+      if ( error ) {
+        Alert.error(i18n.getTranslation('myPage', 'alert.outOfMemory'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
+      }
+    } );
     browserHistory.push('/my-page');
   }
 
@@ -28,18 +42,22 @@ export default class PanelSlot extends TrackerReact(React.Component) {
 
       );
     } else if ( this.props.editMode === 'true' ) {
-      return (<button className = 'button-style' onClick={() => this.addButtonPanel() }><Glyphicon glyph='plus'/></button>);
+      return (
+        <div>
+          <button className = 'button-style' onClick={() => this.addButtonPanel() }><Glyphicon glyph='plus'/></button>
+          <Alert stack={{limit: 1}} />
+        </div>
+      );
     } else {
       return null;
     }
   }
 }
 
-
 PanelSlot.propTypes = {
   id: React.PropTypes.number,
   groupType: React.PropTypes.string,
-  buttonObject: React.PropTypes.string,
+  buttonObject: React.PropTypes.object,
   editMode: React.PropTypes.string,
   groupId: React.PropTypes.number,
   buttonId: React.PropTypes.string,
