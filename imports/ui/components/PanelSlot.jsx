@@ -3,6 +3,7 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { ButtonLibrary } from '../../api/ButtonLibrary/ButtonLibrary';
 import { Mongo } from 'meteor/mongo';
 import { Glyphicon } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 
 export default class PanelSlot extends TrackerReact(React.Component) {
   buttonLibrary() {
@@ -11,6 +12,11 @@ export default class PanelSlot extends TrackerReact(React.Component) {
     } else {
       return null;
     }
+  }
+
+  addButtonPanel() {
+    Meteor.call( "addButton", this.props.id, this.props.groupId, this.props.buttonId );
+    browserHistory.push('/my-page');
   }
 
   render() {
@@ -22,7 +28,7 @@ export default class PanelSlot extends TrackerReact(React.Component) {
 
       );
     } else if ( this.props.editMode === 'true' ) {
-      return (<button className = 'button-style'><Glyphicon glyph='plus'/></button>);
+      return (<button className = 'button-style' onClick={() => this.addButtonPanel() }><Glyphicon glyph='plus'/></button>);
     } else {
       return null;
     }
@@ -35,4 +41,6 @@ PanelSlot.propTypes = {
   groupType: React.PropTypes.string,
   buttonObject: React.PropTypes.string,
   editMode: React.PropTypes.string,
+  groupId: React.PropTypes.number,
+  buttonId: React.PropTypes.string,
 };

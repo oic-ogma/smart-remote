@@ -32,6 +32,7 @@ export default class MyPage extends TrackerReact(React.Component) {
                  buttonType={this.props.params.buttonType}
                  groupType={buttonLayoutSingle.type}
                  buttonArray={buttonLayoutSingle.buttons}
+                 buttonId={this.props.params.buttonId}
                />
              </Col>
             );

@@ -29,19 +29,43 @@ export default class PanelGroup extends TrackerReact(React.Component) {
       return (
         <div>
           <Col mdOffset={1} md={5}>
-            <PanelSlot id={0}  editMode={this.props.editMode} buttonType={this.props.buttonType} buttonObject={this.props.buttonArray[0]}/>
+            <PanelSlot
+              groupId={this.props.groupId}
+              id={0}
+              editMode={this.props.editMode}
+              buttonType={this.props.buttonType}
+              buttonObject={this.props.buttonArray[0]}
+              buttonId={ this.props.buttonId } />
           </Col>
 
           <Col md={5}>
-            <PanelSlot id={1} editMode={this.props.editMode} buttonType={this.props.buttonType} buttonObject={this.props.buttonArray[1]}/>
+            <PanelSlot
+              groupId={this.props.groupId}
+              id={1}
+              editMode={this.props.editMode}
+              buttonType={this.props.buttonType}
+              buttonObject={this.props.buttonArray[1]}
+              buttonId={ this.props.buttonId } />
           </Col>
 
           <Col mdOffset={1} md={5}>
-            <PanelSlot id={2} editMode={this.props.editMode} buttonType={this.props.buttonType} buttonObject={this.props.buttonArray[2]}/>
+            <PanelSlot
+            groupId={this.props.groupId}
+            id={2}
+            editMode={this.props.editMode}
+            buttonType={this.props.buttonType}
+            buttonObject={this.props.buttonArray[2]}
+            buttonId={ this.props.buttonId } />
           </Col>
 
           <Col md={5}>
-            <PanelSlot id={3} editMode={this.props.editMode} buttonType={this.props.buttonType} buttonObject={this.props.buttonArray[3]}/>
+            <PanelSlot
+            groupId={this.props.groupId}
+            id={3}
+            editMode={this.props.editMode}
+            buttonType={this.props.buttonType}
+            buttonObject={this.props.buttonArray[3]}
+            buttonId={ this.props.buttonId } />
           </Col>
         </div>
       );
@@ -55,4 +79,5 @@ PanelGroup.propTypes = {
   groupType: React.PropTypes.string,
   buttonArray: React.PropTypes.array,
   editMode: React.PropTypes.string,
+  buttonId: React.PropTypes.object,
 };
