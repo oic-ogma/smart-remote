@@ -11,6 +11,7 @@ import ResetPassword from '../../ui/layouts/ResetPassword';
 import Top from '../../ui/layouts/Top';
 import MyPage from '../../ui/layouts/MyPage';
 import AddButtonPanel from '../../ui/layouts/AddButtonPanel';
+import Error404Page from '../../ui/layouts/Error404Page';
 
 Meteor.startup( () => {
   render(
@@ -26,6 +27,7 @@ Meteor.startup( () => {
       <Route path="my-page" component={MyPage}/>
       <Route path="my-page/:editMode/:buttonType/:buttonId" component={MyPage}/>
       <Route path="add-button-panel" component={AddButtonPanel}/>
+      <Route path="*" component={Error404Page}/>
     </Router>,
     document.getElementById( 'react-root' )
   );

@@ -53,8 +53,8 @@ export default class Slider extends React.Component {
     return (
       <div>
         <Menu ref="left" alignment="left" styles={ styles }>
-          <RadiumLink id="button-register"  className="slider-font" style={{ textDecoration: 'none'}} to="/button-register">{i18n.getTranslation('slider', 'addButton')}</RadiumLink>
-          <RadiumLink id="add-button-panel" className="slider-font" style={{ textDecoration: 'none'}} to="/add-button-panel">{i18n.getTranslation('slider', 'registerButton')}</RadiumLink>
+          <RadiumLink id="button-register"  className="slider-font" style={{ textDecoration: 'none'}} to="/button-register">{i18n.getTranslation('slider', 'registerButton')}</RadiumLink>
+          <RadiumLink id="add-button-panel" className="slider-font" style={{ textDecoration: 'none'}} to="/add-button-panel">{i18n.getTranslation('slider', 'addButton')}</RadiumLink>
           <button className="slider-font" onClick={() => this.logout()}>{i18n.getTranslation('slider', 'signOut')}</button>
         </Menu>
       </div>

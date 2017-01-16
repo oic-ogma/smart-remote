@@ -155,7 +155,7 @@ body {
 }
 
 .top-button-padding {
-padding: 20px 90px
+padding: 20px 90px;
 }
 
 /* Button register Page */
@@ -204,6 +204,25 @@ padding: 20px 90px
   border: 0px;
   font-size: 1.15em;
 }
+/* Error 404 page*/
+.error-404-page{
+  margin-top: 60px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+}
+
+.error-img{
+  display: block;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  width: 300px;
+  height: 150px;
+}
+
+/*Add photon page*/
 
 
 /*Add photon page*/
