@@ -9,6 +9,9 @@ i18n.addTranslations('en', {
     enrollBtn: "Register",
     country: 'Country',
     city: 'City',
+    photonInfo: 'Photon device info',
+    deviceId: 'Device ID',
+    accessToken: 'Access token',
   },
 });
 
@@ -23,5 +26,8 @@ i18n.addTranslations('ja', {
     enrollBtn: "登録",
     country: '国',
     city: '都市',
+    photonInfo: 'Photon情報',
+    deviceId: 'デバイスID',
+    accessToken: 'アクセストークン',
   },
 });

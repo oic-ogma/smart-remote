@@ -3,7 +3,10 @@ i18n.addTranslations('en', {
     siteName: "Smart remote",
     from: "Smart remote support <support@smart-remote.tech>",
     enrollAccount: {
-      subject: "[Smart remote] Verify Your Email Address",
+      subject: "[Smart remote] Verify your email address",
+    },
+    resetPassword: {
+      subject: "[Smart remote] Reset your password",
     },
   },
 });
@@ -14,6 +17,9 @@ i18n.addTranslations('ja', {
     from: "スマートリモートサポート <support@smart-remote.tech>",
     enrollAccount: {
       subject: "[スマートリモート] メールアドレスの確認",
+    },
+    resetPassword: {
+      subject: "[Smart remote] パスワードのリセット",
     },
   },
 });
