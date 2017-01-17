@@ -12,7 +12,7 @@ import Loading from 'react-loading';
 import { browserHistory } from 'react-router';
 
 
-export default class AddPhoton extends TrackerReact(React.Component) {
+export default class AddSmartRemote extends TrackerReact(React.Component) {
   constructor(props) {
     super(props);
   }
