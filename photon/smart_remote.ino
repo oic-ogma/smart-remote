@@ -273,7 +273,7 @@ int irTestSend(String command) {
 	unsigned long timeStart;
 
 	int countHighLow = sizeof(irDataInt) / sizeof(irDataInt[0]);
-	for  ( int indexHighLow = 0; indexHighLow < countHighLow; indexHighLow++ ) {
+	for ( int indexHighLow = 0; indexHighLow < countHighLow; indexHighLow++ ) {
 		timeLength = irDataInt[indexHighLow]*100;
 		timeStart = micros();
 		do {
