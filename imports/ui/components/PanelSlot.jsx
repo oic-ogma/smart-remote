@@ -1,7 +1,6 @@
 import React from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { ButtonLibrary } from '../../api/button_library/button_library';
-import { Mongo } from 'meteor/mongo';
 import { Glyphicon } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import Alert from 'react-s-alert';
@@ -9,7 +8,7 @@ import Alert from 'react-s-alert';
 export default class PanelSlot extends TrackerReact(React.Component) {
   buttonLibrary() {
     if ( !!this.props.buttonObject ) {
-      return ButtonLibrary.findOne({_id: new Mongo.ObjectID(this.props.buttonObject.buttonId)});
+      return ButtonLibrary.findOne({_id: this.props.buttonObject.buttonId});
     } else {
       return null;
     }
@@ -37,7 +36,7 @@ export default class PanelSlot extends TrackerReact(React.Component) {
     if ( this.buttonLibrary() ) {
       return (
       <button className = 'button-style'>
-        { this.buttonLibrary().buttonName }
+        { this.buttonLibrary().buttonTitle }
       </button>
 
       );
