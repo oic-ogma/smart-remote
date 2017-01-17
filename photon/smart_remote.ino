@@ -223,7 +223,9 @@ int irSend(String index) {
   }
 }
 
-int irTestSend(String command) {
+int irTestSend(String command)
+{
+  digitalWrite(D6, HIGH);
   String charsConvertString = irData1 + irData2;
   Particle.publish("irData",charsConvertString);
   char stringConvertChars[1000];
@@ -283,6 +285,7 @@ int irTestSend(String command) {
 			delayMicroseconds(7);
 		} while(timeLength > micros() - timeStart);
 	}
+  digitalWrite(D6, LOW);
 	return 0;
 }
 
