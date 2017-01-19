@@ -9,6 +9,7 @@ import Alert from 'react-s-alert';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Loading from 'react-loading';
 import { browserHistory } from 'react-router';
+import Slider from '../components/Slider';
 
 export default class ButtonRegister extends TrackerReact(React.Component) {
   constructor() {
@@ -88,6 +89,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
       return (
         <div>
           <Header/>
+          <Slider/>
           <Grid className="center button-register-center">
             <Validation.components.Form onSubmit={this.handleSubmit.bind(this)} >
               <Row>
