@@ -39,7 +39,7 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
     document.getElementById('input-password').value = '';
     document.getElementById('input-confirm-password').value = '';
     document.getElementById('country-dropdown').value = '';
-    document.getElementById('region-dropdown').value = '';
+    document.getElementById('city-dropdown').value = '';
   }
 
   handleSubmit(event) {
@@ -105,6 +105,16 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
                   validations={['required', 'confirmPassword']}/>
               </div>
               <CountrySelector/>
+              <div className="position">
+                <Validation.components.Input
+                  id='input-city'
+                  className='input-style'
+                  type='text'
+                  value=''
+                  name='city'
+                  placeholder={i18n.getTranslation('form', 'city')}
+                  validations={['required', 'city']}/>
+              </div>
               <Validation.components.Button className="button-style enroll-button">{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
             </Validation.components.Form>
             <BackButton link="register"/>

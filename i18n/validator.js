@@ -8,6 +8,7 @@ i18n.addTranslations('en', {
     deviceId: "The Device ID needs to be 24 in length.",
     accessToken: "The Access Token needs to be 40 in length.",
     buttonTitle: "Button Title needs to be 1 to 20 in length.",
+    city: "The name of city needs to be 1 to 60 in length.",
   },
 });
 
@@ -21,5 +22,6 @@ i18n.addTranslations('ja', {
     deviceId: "デバイスIDは24文字必要です",
     accessToken: "アクセストークンは40文字必要です",
     buttonTitle: "ボタンタイトルは1から20文字必要です",
+    city: "都市名は60文字まで入力できます。",
   },
 });
