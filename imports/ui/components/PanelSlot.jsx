@@ -6,6 +6,10 @@ import { browserHistory } from 'react-router';
 import Alert from 'react-s-alert';
 
 export default class PanelSlot extends TrackerReact(React.Component) {
+  constructor(props) {
+    super(props);
+  }
+
   buttonLibrary() {
     if ( !!this.props.buttonObject ) {
       return ButtonLibrary.findOne({_id: this.props.buttonObject.buttonId});
@@ -20,6 +24,7 @@ export default class PanelSlot extends TrackerReact(React.Component) {
       groupId: this.props.groupId,
       buttonId: this.props.buttonId,
     };
+
     Meteor.call( "addButton", params, ( error ) => {
       if ( error ) {
         Alert.error(i18n.getTranslation('myPage', 'alert.outOfMemory'), {
@@ -32,13 +37,16 @@ export default class PanelSlot extends TrackerReact(React.Component) {
     browserHistory.push('/my-page');
   }
 
+  sendIr( buttonObject ) {
+    Meteor.call( "sendIr", buttonObject );
+  }
+
   render() {
     if ( this.buttonLibrary() ) {
       return (
-      <button className = 'button-style'>
+      <button className = 'button-style' onClick={() => this.sendIr(this.props.buttonObject)  }>
         { this.buttonLibrary().buttonTitle }
       </button>
-
       );
     } else if ( this.props.editMode === 'true' ) {
       return (
