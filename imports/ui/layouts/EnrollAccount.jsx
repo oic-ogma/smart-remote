@@ -7,6 +7,7 @@ import CountrySelector from '../components/CountrySelector';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/genie.css';
+import BackButton from '../components/BackButton';
 
 export default class EnrollAccount extends React.Component {
   constructor() {
@@ -92,6 +93,7 @@ export default class EnrollAccount extends React.Component {
             <CountrySelector/>
             <Validation.components.Button className="button-style enroll-button">{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
           </Validation.components.Form>
+          <BackButton link="register"/>
           <Alert stack={{limit: 1}} />
         </div>
       </div>

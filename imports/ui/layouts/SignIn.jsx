@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import { Grid, Col, Row } from 'react-bootstrap';
 import { Link, browserHistory } from 'react-router';
 import Alert from 'react-s-alert';
+import BackButton from '../components/BackButton';
 
 export default class SignIn extends React.Component {
   constructor() {
@@ -53,7 +54,6 @@ export default class SignIn extends React.Component {
           <Row>
             <Col>
               <input
-                type="email"
                 name="email"
                 placeholder={i18n.getTranslation('form', 'email')}
                 className="input-style"/>
@@ -80,6 +80,7 @@ export default class SignIn extends React.Component {
           <Link to="register" className="sign-in-link sign-in-button">{i18n.getTranslation('signIn', 'signUp')}</Link>
         </div>
         </Grid>
+        <BackButton link="/"/>
         <Alert stack={{limit: 1}} />
       </div>
     );

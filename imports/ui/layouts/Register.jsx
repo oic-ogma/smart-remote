@@ -8,6 +8,7 @@ import { Grid } from 'react-bootstrap';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/genie.css';
+import BackButton from '../components/BackButton';
 
 export default class Register extends React.Component {
   constructor() {
@@ -86,6 +87,7 @@ export default class Register extends React.Component {
               {i18n.getTranslation('form', 'registerBtn')}
             </Validation.components.Button>
           </Validation.components.Form>
+          <BackButton link="sign-in"/>
           <Alert stack={{limit: 1}} />
         </Grid>
       </div>

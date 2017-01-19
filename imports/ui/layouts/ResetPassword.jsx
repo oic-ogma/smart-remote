@@ -5,6 +5,7 @@ import Validation from 'react-validation';
 import { Grid } from 'react-bootstrap';
 import '../../api/validator/form_validator';
 import Alert from 'react-s-alert';
+import BackButton from '../components/BackButton';
 
 export default class ResetPassword extends React.Component {
   constructor() {
@@ -80,6 +81,7 @@ export default class ResetPassword extends React.Component {
           </Validation.components.Form>
           <Alert stack={{limit: 1}} />
         </Grid>
+        <BackButton link="sign-in"/>
       </div>
     );
   }
