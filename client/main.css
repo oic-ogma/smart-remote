@@ -51,7 +51,7 @@ body {
   border-bottom: 1px solid #fff;
   outline: 0;
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
   width: 250px;
   padding: 5px;
   margin-top: 36px;
@@ -155,10 +155,30 @@ body {
 }
 
 .top-button-padding {
-padding: 20px 90px
+padding: 20px 90px;
+}
+
+/* Button register Page */
+
+.button-register-center {
+  margin-top: 70px;
+}
+
+.button-register-margin {
+  margin-top: 10px;
+}
+
+.receive-button {
+  text-align: center;
+  margin: 100px 0 0 0;
+}
+
+.receive-button-padding {
+  padding: 20px 90px;
 }
 
 /* Forgot password Page */
+
 .forgot-password-center {
   margin-top: 90px;
 }
@@ -175,4 +195,32 @@ padding: 20px 90px
 
 .reset-password-button {
   margin: 120px 0 30px 0;
+}
+
+/* Error 404 page*/
+.error-404-page{
+  margin-top: 60px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+}
+
+.error-img{
+  display: block;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  width: 300px;
+  height: 150px;
+}
+
+/*Add photon page*/
+
+.form-control-top {
+  margin: 100px 0 20px 0;
+}
+
+.add-photon-button {
+  margin-top: 40px;
 }

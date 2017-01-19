@@ -8,8 +8,12 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/genie.css';
 import BackButton from '../components/BackButton';
+import { Col } from 'react-bootstrap';
+import Loading from 'react-loading';
+import { browserHistory } from 'react-router';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-export default class EnrollAccount extends React.Component {
+export default class EnrollAccount extends TrackerReact(React.Component) {
   constructor() {
     super(...arguments);
     this.state = {
@@ -65,39 +69,50 @@ export default class EnrollAccount extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <Header/>
-        <div className="center enroll-center">
-          <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
-            <div className="position">
-              <Validation.components.Input
-                id='input-password'
-                className='input-style'
-                type='password'
-                value=''
-                name='password'
-                placeholder={i18n.getTranslation('form', 'password')}
-                validations={['required', 'password']}/>
-            </div>
-            <div className="position">
-              <Validation.components.Input
-                id='input-confirm-password'
-                className='input-style'
-                type='password'
-                value=''
-                name='confirmPassword'
-                placeholder={i18n.getTranslation('form', 'confirmPassword')}
-                validations={['required', 'confirmPassword']}/>
-            </div>
-            <CountrySelector/>
-            <Validation.components.Button className="button-style enroll-button">{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
-          </Validation.components.Form>
-          <BackButton link="register"/>
-          <Alert stack={{limit: 1}} />
+    if (Meteor.loggingIn()) {
+      return (
+        <Col xsOffset={4} xs={4} mdOffset={4} md={4}>
+          <Loading type='bars' color='rgb(255, 255, 255)' />
+        </Col>
+      );
+    } else if (Meteor.user()) {
+      browserHistory.push('/my-page');
+      return null;
+    } else {
+      return (
+        <div>
+          <Header/>
+          <div className="center enroll-center">
+            <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
+              <div className="position">
+                <Validation.components.Input
+                  id='input-password'
+                  className='input-style'
+                  type='password'
+                  value=''
+                  name='password'
+                  placeholder={i18n.getTranslation('form', 'password')}
+                  validations={['required', 'password']}/>
+              </div>
+              <div className="position">
+                <Validation.components.Input
+                  id='input-confirm-password'
+                  className='input-style'
+                  type='password'
+                  value=''
+                  name='confirmPassword'
+                  placeholder={i18n.getTranslation('form', 'confirmPassword')}
+                  validations={['required', 'confirmPassword']}/>
+              </div>
+              <CountrySelector/>
+              <Validation.components.Button className="button-style enroll-button">{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
+            </Validation.components.Form>
+            <BackButton link="register"/>
+            <Alert stack={{limit: 1}} />
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
