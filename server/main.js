@@ -1,5 +1,10 @@
 import '/imports/startup/server';
 import '/imports/api/emails/server/methods';
-import '/imports/api/particle/server/methods';
 import '/imports/api/users/server/methods';
-import '/imports/api/button_library/button_library';
+import '/imports/api/particle/server/methods';
+import '/imports/api/button_layout/server/publications';
+import '/imports/api/button_layout/server/methods';
+import '/imports/api/emails/server/methods';
+import '/imports/api/particle/server/methods';
+import '/imports/api/button_library/server/publications';
+import '/imports/api/smart_remote_registry/server/methods';

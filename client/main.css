@@ -197,6 +197,13 @@ padding: 20px 90px;
   margin: 120px 0 30px 0;
 }
 
+/*slider*/
+.slider-font {
+  color: #fff;
+  background-color: #373a47;
+  border: 0px;
+  font-size: 1.15em;
+}
 /* Error 404 page*/
 .error-404-page{
   margin-top: 60px;
@@ -216,7 +223,6 @@ padding: 20px 90px;
 }
 
 /*Add photon page*/
-
 .form-control-top {
   margin: 100px 0 20px 0;
 }
@@ -224,3 +230,4 @@ padding: 20px 90px;
 .add-photon-button {
   margin-top: 40px;
 }
+
