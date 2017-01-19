@@ -55,17 +55,12 @@ Meteor.methods({
      );
   },
 
-  getTemperature: (deviceId, accessToken) => {
-    HTTP.get(
-      'https://api.particle.io/v1/devices/' + deviceId + '/temperature?access_token=' + accessToken,
-      (error, result) => {
-        if (error) {
-          throw new Meteor.Error(error);
-        } else {
-          return result;
-        }
-      }
+  getTemperature: () => {
+    const photonCredentials = getPhotonCredentials();
+    const response = HTTP.get(
+      'https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/temperature?access_token=' + photonCredentials.accessToken
     );
+    return (response.data.result);
   },
 
   insertIrData: (buttonTitle) => {
