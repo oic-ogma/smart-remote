@@ -20,11 +20,11 @@ export default class Slider extends React.Component {
         position: 'relative',
         width: '20px',
         height: '20px',
-        left: '0px',
-        top: '0px',
+        left: '25px',
+        top: '-39px',
       },
       bmBurgerBars: {
-        background: '#373a47',
+        background: '#fff',
       },
       bmCrossButton: {
         height: '24px',
