@@ -10,7 +10,7 @@ import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/genie.css';
 import Loading from 'react-loading';
 import { browserHistory } from 'react-router';
-
+import Slider from '../components/Slider';
 
 export default class AddSmartRemote extends TrackerReact(React.Component) {
   constructor(props) {
@@ -48,6 +48,7 @@ export default class AddSmartRemote extends TrackerReact(React.Component) {
       return (
         <div>
           <Header/>
+          <Slider/>
           <Grid className="center button-register-center">
             <Validation.components.Form onSubmit={this.handleSubmit.bind(this)} >
               <Row>

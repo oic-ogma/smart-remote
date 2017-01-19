@@ -4,6 +4,7 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import PanelGroup from '../components/PanelGroup';
 import {ButtonLayout} from '../../api/button_layout/button_layout';
 import Slider from '../components/Slider';
+import Header from '../components/Header';
 import Alert from 'react-s-alert';
 import Loading from 'react-loading';
 import { browserHistory } from 'react-router';
@@ -34,6 +35,7 @@ export default class MyPage extends TrackerReact(React.Component) {
       i18n.setLocale(Meteor.user().profile.language);
       return (
         <div>
+        <Header/>
           <Slider/>
           { this.buttonLayout().map((buttonLayoutSingle) => {
             return (
