@@ -25,9 +25,6 @@ export default class PanelSlot extends TrackerReact(React.Component) {
       buttonId: this.props.buttonId,
     };
 
-    console.log( "groupId = " + params.groupId );
-    console.log( "panelId = " + params.panelId );
-
     Meteor.call( "addButton", params, ( error ) => {
       if ( error ) {
         Alert.error(i18n.getTranslation('myPage', 'alert.outOfMemory'), {

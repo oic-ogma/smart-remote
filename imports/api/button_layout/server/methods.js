@@ -27,7 +27,6 @@ const saveIr = ( irData, registryId ) =>{
 Meteor.methods({
   addButton: ( params ) => {
     const registry = getEmptyIndex();
-    console.log( "registry = " + registry );
     if ( !!registry ) {
       ButtonLayout.update(
         { userId: Meteor.userId(), groupId: params.groupId },
@@ -41,7 +40,6 @@ Meteor.methods({
       SmartRemoteRegistry.update({ _id: registry._id }, {$set: { used: true }});
 
       const buttonObject = ButtonLibrary.findOne({ _id: params.buttonId });
-      console.log( registry.photonIndex );
       saveIr( buttonObject.irData, registry.photonIndex );
     } else {
       throw new Meteor.Error('Out of memory.');
