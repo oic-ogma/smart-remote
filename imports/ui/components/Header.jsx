@@ -32,7 +32,7 @@ export default class Header extends React.Component {
             {/* TODO  メニュー*/}
           </Col>
           <Col xs={9} md={6} style={style.header.middle}>
-            <h1 style={style.h1}>Smart Controller</h1>
+            <h1 style={style.h1}>Smart Remote</h1>
           </Col>
           <Col xs={2} md={3} style={style.header.right}>
             <LanguageSelector style={style.font}/>
