@@ -88,8 +88,8 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
     } else if (Meteor.user()) {
       return (
         <div>
-        <Slider/>
           <Header/>
+          <Slider/>
           <Grid className="center button-register-center">
             <Validation.components.Form onSubmit={this.handleSubmit.bind(this)} >
               <Row>
