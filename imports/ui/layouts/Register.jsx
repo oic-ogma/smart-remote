@@ -4,12 +4,16 @@ import i18n from 'meteor/universe:i18n';
 import Header from '../components/Header';
 import Validation from 'react-validation';
 import '../../api/validator/form_validator';
-import { Grid } from 'react-bootstrap';
+import { Grid, Col } from 'react-bootstrap';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/genie.css';
+import BackButton from '../components/BackButton';
+import Loading from 'react-loading';
+import { browserHistory } from 'react-router';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-export default class Register extends React.Component {
+export default class Register extends TrackerReact(React.Component) {
   constructor() {
     super(...arguments);
     this.state = {
@@ -60,35 +64,47 @@ export default class Register extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <Header/>
-        <Grid className="center register-center">
-          <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
-            <Validation.components.Input
-              id="input-email"
-              type="email"
-              value=''
-              name="registerEmail"
-              placeholder={i18n.getTranslation('form', 'email')}
-              validations={['required', 'email']}
-              className="input-style"/>
-            <Validation.components.Input
-              id="input-confirm-email"
-              type="email"
-              value=''
-              name="confirmEmail"
-              placeholder={i18n.getTranslation('form', 'confirmEmail')}
-              validations={['confirmEmail']}
-              className="input-style"/>
-            <Validation.components.Button
-              className="button-style register-button">
-              {i18n.getTranslation('form', 'registerBtn')}
-            </Validation.components.Button>
-          </Validation.components.Form>
-          <Alert stack={{limit: 1}} />
-        </Grid>
-      </div>
-    );
+    if (Meteor.loggingIn()) {
+      return (
+        <Col xsOffset={4} xs={4} mdOffset={4} md={4}>
+          <Loading type='bars' color='rgb(255, 255, 255)' />
+        </Col>
+      );
+    } else if (Meteor.user()) {
+      browserHistory.push('/my-page');
+      return null;
+    } else {
+      return (
+        <div>
+          <Header/>
+          <Grid className="center register-center">
+            <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
+              <Validation.components.Input
+                id="input-email"
+                type="email"
+                value=''
+                name="registerEmail"
+                placeholder={i18n.getTranslation('form', 'email')}
+                validations={['required', 'email']}
+                className="input-style"/>
+              <Validation.components.Input
+                id="input-confirm-email"
+                type="email"
+                value=''
+                name="confirmEmail"
+                placeholder={i18n.getTranslation('form', 'confirmEmail')}
+                validations={['confirmEmail']}
+                className="input-style"/>
+              <Validation.components.Button
+                className="button-style register-button">
+                {i18n.getTranslation('form', 'registerBtn')}
+              </Validation.components.Button>
+            </Validation.components.Form>
+            <BackButton link="sign-in"/>
+            <Alert stack={{limit: 1}} />
+          </Grid>
+        </div>
+      );
+    }
   }
 }
