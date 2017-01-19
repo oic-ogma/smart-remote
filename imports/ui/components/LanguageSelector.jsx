@@ -1,8 +1,9 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
-export default class LanguageSelector extends React.Component {
+export default class LanguageSelector extends TrackerReact(React.Component) {
   setLocaleLanguage(language) {
     if ( language === "ja" ) {
       i18n.setLocale( "ja" );
@@ -55,19 +56,24 @@ export default class LanguageSelector extends React.Component {
         backgroundColor: "rgba(0, 0, 0, 0)",
         borderStyle: "none"
       }
+    };
+
+    if (!Meteor.user()) {
+      return (
+        <div>
+          <DropdownButton
+            title={this.generateTitle()}
+            noCaret
+            id='language-selector'
+            style={style.buttonStyle}
+            >
+            <MenuItem id="lang-ja" onClick={() => this.setLocaleLanguage("ja")}>ja</MenuItem>
+            <MenuItem id="lang-en" onClick={() => this.setLocaleLanguage("en")}>en</MenuItem>
+          </DropdownButton>
+        </div>
+      );
+    } else {
+      return false;
     }
-    return (
-      <div>
-        <DropdownButton
-          title={this.generateTitle()}
-          noCaret
-          id='language-selector'
-          style={style.buttonStyle}
-          >
-          <MenuItem id="lang-ja" onClick={() => this.setLocaleLanguage("ja")}>ja</MenuItem>
-          <MenuItem id="lang-en" onClick={() => this.setLocaleLanguage("en")}>en</MenuItem>
-        </DropdownButton>
-      </div>
-    );
   }
 }

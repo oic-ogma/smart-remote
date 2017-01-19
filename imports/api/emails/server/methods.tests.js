@@ -1,4 +1,4 @@
-import './methods.js';
+import './methods';
 import { chai } from 'meteor/practicalmeteor:chai';
 import i18n from 'meteor/universe:i18n';
 import { resetDatabase } from 'meteor/xolvio:cleaner';
