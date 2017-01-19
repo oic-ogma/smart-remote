@@ -4,7 +4,7 @@ import {ButtonLibrary} from '../../button_library/button_library';
 import {setIrStart, setIr, setIrEnd} from '../../particle/server/methods';
 
 const getEmptyIndex = () => {
-  return SmartRemoteRegistry.findOne({ used: false });
+  return SmartRemoteRegistry.findOne({ userId: Meteor.userId(), used: false });
 };
 
 const saveIr = ( irData, registryId ) =>{
@@ -25,15 +25,11 @@ const saveIr = ( irData, registryId ) =>{
 };
 
 Meteor.methods({
-  getEmptyIndex: () => {
-    return SmartRemoteRegistry.findOne({ used: false });
-  },
-
   addButton: ( params ) => {
     const registry = getEmptyIndex();
     if ( !!registry ) {
       ButtonLayout.update(
-        { groupId: params.groupId },
+        { userId: Meteor.userId(), groupId: params.groupId },
         {$set: {
           [ 'buttons.' + params.panelId ]: {
             buttonId: params.buttonId,
