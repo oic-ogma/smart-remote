@@ -2,9 +2,8 @@ import {SmartRemoteRegistry} from '../../smart_remote_registry/smart_remote_regi
 import {ButtonLayout} from '../../button_layout/button_layout';
 
 Meteor.methods({
-  addDataFarstLogin: () => {
+  addDataFirstLogin: () => {
     const registryCount = SmartRemoteRegistry.find({ userId: Meteor.userId()}).count();
-    console.log( registryCount );
     if ( registryCount === 0 ) {
       let groupId = 0;
       for ( let i = 0; i < 50; i++ ) {
