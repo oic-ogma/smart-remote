@@ -5,6 +5,7 @@ import Validation from 'react-validation';
 import { Grid, Col } from 'react-bootstrap';
 import '../../api/validator/form_validator';
 import Alert from 'react-s-alert';
+import BackButton from '../components/BackButton';
 import Loading from 'react-loading';
 import { browserHistory } from 'react-router';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
@@ -93,6 +94,7 @@ export default class ResetPassword extends TrackerReact(React.Component) {
             </Validation.components.Form>
             <Alert stack={{limit: 1}} />
           </Grid>
+          <BackButton link="sign-in"/>
         </div>
       );
     }

@@ -5,10 +5,10 @@ import Validation from 'react-validation';
 import { Grid, Col } from 'react-bootstrap';
 import '../../api/validator/form_validator';
 import Alert from 'react-s-alert';
+import BackButton from '../components/BackButton';
 import Loading from 'react-loading';
 import { browserHistory } from 'react-router';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-
 
 export default class ForgotPassword extends TrackerReact(React.Component) {
   constructor() {
@@ -90,6 +90,7 @@ export default class ForgotPassword extends TrackerReact(React.Component) {
               <Validation.components.Button className="button-style forgot-password-button">{i18n.getTranslation('forgotPassword', 'reset')}</Validation.components.Button>
             </Validation.components.Form>
           </Grid>
+          <BackButton link="sign-in"/>
           <Alert stack={{limit: 1}} />
         </div>
       );

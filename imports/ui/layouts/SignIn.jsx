@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import { Grid, Col, Row } from 'react-bootstrap';
 import { Link, browserHistory } from 'react-router';
 import Alert from 'react-s-alert';
+import BackButton from '../components/BackButton';
 import Loading from 'react-loading';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
@@ -92,6 +93,7 @@ export default class SignIn extends TrackerReact(React.Component) {
             <Link to="register" className="sign-in-link sign-in-button">{i18n.getTranslation('signIn', 'signUp')}</Link>
           </div>
           </Grid>
+          <BackButton link="/"/>
           <Alert stack={{limit: 1}} />
         </div>
       );
