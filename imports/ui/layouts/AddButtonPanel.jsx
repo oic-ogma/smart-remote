@@ -22,7 +22,7 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
             { this.irData().map((irDataSingle) => {
               let urlButtonId = irDataSingle._id;
 
-              return <li><Link to={'/my-page/true/panel/' + urlButtonId}>{irDataSingle.buttonName}</Link></li>;
+              return <li><Link to={'/my-page/true/panel/' + urlButtonId}>{irDataSingle.buttonTitle}</Link></li>;
             } ) }
           </ul>
         </div>
