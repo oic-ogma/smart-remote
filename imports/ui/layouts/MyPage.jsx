@@ -16,6 +16,7 @@ export default class MyPage extends TrackerReact(React.Component) {
   componentDidMount() {
     Meteor.subscribe('buttonLayout');
     Meteor.subscribe( 'buttonLibrary' );
+    Meteor.call( "addDataFirstLogin" );
   }
 
   buttonLayout() {
