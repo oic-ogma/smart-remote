@@ -28,7 +28,7 @@ export const setIrStart = ( spritData0 ) => {
         access_token: photonCredentials.accessToken,
         args: spritData0,
       },
-    }
+    },
   );
 };
 
