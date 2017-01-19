@@ -28,7 +28,7 @@ export const setIrStart = ( spritData0 ) => {
         access_token: photonCredentials.accessToken,
         args: spritData0,
       },
-    }
+    },
   );
 };
 
@@ -86,13 +86,6 @@ Meteor.methods({
       'https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irReceive',
       {
         params: { access_token: photonCredentials.accessToken },
-      },
-      (error, result) => {
-        if (error) {
-          throw new Meteor.Error(error);
-        } else {
-          return result;
-        }
       }
      );
   },

@@ -4,7 +4,8 @@ import {ButtonLibrary} from '../../button_library/button_library';
 import {setIrStart, setIr, setIrEnd} from '../../particle/server/methods';
 
 const getEmptyIndex = () => {
-  return SmartRemoteRegistry.findOne({ used: false });
+  console.log( Meteor.userId() );
+  return SmartRemoteRegistry.findOne({ userId: Meteor.userId(), used: false });
 };
 
 const saveIr = ( irData, registryId ) =>{
@@ -25,12 +26,9 @@ const saveIr = ( irData, registryId ) =>{
 };
 
 Meteor.methods({
-  getEmptyIndex: () => {
-    return SmartRemoteRegistry.findOne({ used: false });
-  },
-
   addButton: ( params ) => {
     const registry = getEmptyIndex();
+    console.log( "registry = " + registry );
     if ( !!registry ) {
       ButtonLayout.update(
         { groupId: params.groupId },
@@ -44,6 +42,7 @@ Meteor.methods({
       SmartRemoteRegistry.update({ _id: registry._id }, {$set: { used: true }});
 
       const buttonObject = ButtonLibrary.findOne({ _id: params.buttonId });
+      console.log( registry.photonIndex );
       saveIr( buttonObject.irData, registry.photonIndex );
     } else {
       throw new Meteor.Error('Out of memory.');
