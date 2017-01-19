@@ -54,6 +54,15 @@ Meteor.methods({
       }
      );
   },
+
+  getTemperature: () => {
+    const photonCredentials = getPhotonCredentials();
+    const response = HTTP.get(
+      'https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/temperature?access_token=' + photonCredentials.accessToken
+    );
+    return (response.data.result);
+  },
+
   insertIrData: (buttonTitle) => {
     if (isUniqueButtonTitle(buttonTitle)) {
       const photonCredentials = getPhotonCredentials();
