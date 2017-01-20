@@ -1,23 +1,10 @@
 import React from 'react';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { countryList } from '../lib/country_list';
+import { getLanguage } from '../../startup/client/language';
 
 export default class CountrySelector extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { country: '', region: '' };
-  }
-
-  selectCountry(val) {
-    this.setState({ country: val });
-  }
-
-  selectRegion(val) {
-    this.setState({ region: val });
-  }
-
   render() {
-    const { country, region } = this.state;
     let style = {
       selector: {
         color: "#fff",
@@ -27,28 +14,28 @@ export default class CountrySelector extends React.Component {
         backgroundColor: "rgba(0, 0, 0, 0)",
         padding: "5px",
         marginTop: "36px",
-        width: "250px"
-      }
+        width: "250px",
+      },
+      option: {
+        color: "#000",
+      },
     };
+    let options = [];
+    let countryListCurrentLang = countryList[getLanguage()];
+    for (let countryCode in countryListCurrentLang) {
+      if (countryListCurrentLang.hasOwnProperty(countryCode)) {
+        options.push(
+          <option style={style.option} key={countryCode} value={countryCode}>
+            {countryListCurrentLang[countryCode]}
+          </option>
+        );
+      }
+    }
     return (
       <div className="country-drop-down">
-      <div style={style.selector}>
-        <CountryDropdown
-          value={country}
-          id="country-dropdown"
-          name="country"
-          valueType="short"
-          onChange={(val) => this.selectCountry(val)} />
-      </div>
-      <div style={style.selector}>
-        <RegionDropdown
-          value={region}
-          id="region-dropdown"
-          name="city"
-          countryValueType="short"
-          country={country}
-          onChange={(val) => this.selectRegion(val)} />
-      </div>
+        <select name="country" style={style.selector}>
+          {options}
+        </select>
       </div>
     );
   }

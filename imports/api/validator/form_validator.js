@@ -9,8 +9,8 @@ let style = {
     fontSize: "12px",
     marginTop: 3,
     width: "250px",
-    position: "absolute"
-  }
+    position: "absolute",
+  },
 };
 
 Object.assign(Validation.rules, {
@@ -97,6 +97,14 @@ Object.assign(Validation.rules, {
     },
     hint: () => {
       return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'buttonTitle')}</p>;
+    },
+  },
+  city: {
+    rule: value => {
+      return validator.isLength(value, 1, 60);
+    },
+    hint: () => {
+      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'region')}</p>;
     },
   },
 });
