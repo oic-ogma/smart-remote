@@ -17,7 +17,7 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
   render() {
     return (
         <div>
-        <Header/>
+          <Header/>
           <Slider/>
           <ul>
             { this.irData().id }
