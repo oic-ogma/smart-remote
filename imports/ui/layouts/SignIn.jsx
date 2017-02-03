@@ -6,7 +6,6 @@ import { Grid, Col, Row } from 'react-bootstrap';
 import { Link, browserHistory } from 'react-router';
 import Alert from 'react-s-alert';
 import BackButton from '../components/BackButton';
-import Loading from 'react-loading';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class SignIn extends TrackerReact(React.Component) {
@@ -48,13 +47,7 @@ export default class SignIn extends TrackerReact(React.Component) {
   }
 
   render() {
-    if (Meteor.loggingIn()) {
-      return (
-        <Col xsOffset={4} xs={4} mdOffset={4} md={4}>
-          <Loading type='bars' color='rgb(255, 255, 255)' />
-        </Col>
-      );
-    } else if (Meteor.user()) {
+    if (Meteor.user()) {
       browserHistory.push('/my-page');
       return null;
     } else {
