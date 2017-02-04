@@ -36,7 +36,7 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
       },
       iconStyle: {
         marginRight: "3px",
-      }
+      },
     };
     return (
       <div style={style.languageStyle}>
@@ -54,8 +54,8 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
     let style = {
       buttonStyle: {
         backgroundColor: "rgba(0, 0, 0, 0)",
-        borderStyle: "none"
-      }
+        borderStyle: "none",
+      },
     };
 
     if (!Meteor.user()) {

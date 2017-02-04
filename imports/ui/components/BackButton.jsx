@@ -7,7 +7,7 @@ export default class BackButton extends React.Component {
       position: "absolute",
       bottom: "20px",
       left: "20px",
-      color: "#fff"
+      color: "#fff",
     };
     return (
       <Link to={this.props.link} style={ style }>
@@ -17,5 +17,5 @@ export default class BackButton extends React.Component {
   }
 }
 BackButton.propTypes = {
-  link: React.PropTypes.string.isRequired
+  link: React.PropTypes.string.isRequired,
 };

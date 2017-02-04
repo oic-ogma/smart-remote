@@ -7,6 +7,6 @@ Meteor.publish("buttonLibrary", function() {
     }
       );
   } else {
-    this.ready();
+    return this.ready();
   }
 });

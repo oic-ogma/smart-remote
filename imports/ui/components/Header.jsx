@@ -15,14 +15,14 @@ export default class Header extends React.Component {
         },
         right: {
           marginRight: "10px",
-        }
+        },
       },
       h1: {
         margin: 0,
         fontSize: "18px",
         color: "#fff",
-        textAlign: "center"
-      }
+        textAlign: "center",
+      },
     };
 
     return (

@@ -3,8 +3,8 @@ i18n.addTranslations('en', {
     title1: "The all-in-one web",
     title2: "remote controller application.",
     subTitle: "All remote controls combined in one.",
-    signIn: "Sign in"
-  }
+    signIn: "Sign in",
+  },
 });
 
 i18n.addTranslations('ja', {
@@ -12,6 +12,6 @@ i18n.addTranslations('ja', {
     title1: "オールインワンのWeb",
     title2: "リモコンアプリケーション",
     subTitle: "全ての赤外線リモコンをこれ一つで",
-    signIn: "サインイン"
-  }
+    signIn: "サインイン",
+  },
 });

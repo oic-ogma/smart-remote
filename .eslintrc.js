@@ -178,5 +178,6 @@ module.exports = {
     "space-before-function-paren": [2, "never"], // http://eslint.org/docs/rules/space-before-function-paren
     "space-infix-ops": 2,            // http://eslint.org/docs/rules/space-infix-ops
     "spaced-comment": 2,            // http://eslint.org/docs/rules/spaced-comment (previously known as spaced-line-comment)
+    "react/display-name": 0,
   }
 };
