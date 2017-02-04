@@ -10,7 +10,7 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
     Meteor.subscribe('buttonLibrary');
   }
 
-  irData() {
+  buttonLibrary() {
     return ButtonLibrary.find({}).fetch();
   }
 
@@ -20,11 +20,12 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
         <Header/>
           <Slider/>
           <ul>
-            { this.irData().id }
-            { this.irData().map((irDataSingle) => {
-              let urlButtonId = irDataSingle._id;
-
-              return <li><Link to={'/my-page/true/panel/' + urlButtonId}>{irDataSingle.buttonTitle}</Link></li>;
+            { this.buttonLibrary().map((buttonLibrarySingle) => {
+              return <li key={buttonLibrarySingle._id}>
+                        <Link to={'/my-page/true/panel/' + buttonLibrarySingle._id}>
+                          {buttonLibrarySingle.buttonTitle}
+                        </Link>
+                     </li>;
             } ) }
           </ul>
         </div>

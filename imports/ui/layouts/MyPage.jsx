@@ -39,15 +39,15 @@ export default class MyPage extends TrackerReact(React.Component) {
           <Slider/>
           { this.buttonLayout().map((buttonLayoutSingle) => {
             return (
-              <Col sm={6} md={6}>
-              <PanelGroup
-                groupId={buttonLayoutSingle.groupId}
-                editMode={this.props.params.editMode}
-                buttonType={this.props.params.buttonType}
-                groupType={buttonLayoutSingle.type}
-                buttonArray={buttonLayoutSingle.buttons}
-                buttonId={this.props.params.buttonId}
-              />
+              <Col sm={6} md={6} key={buttonLayoutSingle._id}>
+                <PanelGroup
+                  groupId={buttonLayoutSingle.groupId}
+                  editMode={this.props.params.editMode}
+                  buttonType={this.props.params.buttonType}
+                  groupType={buttonLayoutSingle.type}
+                  buttonArray={buttonLayoutSingle.buttons}
+                  buttonId={this.props.params.buttonId}
+                />
               </Col>
             );
           })}
