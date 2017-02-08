@@ -48,7 +48,7 @@ export default class PanelSlot extends TrackerReact(React.Component) {
         { this.buttonLibrary().buttonTitle }
       </button>
       );
-    } else if ( this.props.editMode === 'true' ) {
+    } else if ( this.props.mode === 'true' ) {
       return (
         <div>
           <button className = 'button-style' onClick={() => this.addButtonPanel() }><Glyphicon glyph='plus'/></button>
@@ -65,7 +65,7 @@ PanelSlot.propTypes = {
   id: React.PropTypes.number,
   groupType: React.PropTypes.string,
   buttonObject: React.PropTypes.object,
-  editMode: React.PropTypes.string,
+  mode: React.PropTypes.string,
   groupId: React.PropTypes.number,
   buttonId: React.PropTypes.string,
 };

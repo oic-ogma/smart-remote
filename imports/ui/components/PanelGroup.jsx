@@ -10,7 +10,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
 
   render() {
     if (
-      this.props.editMode === 'true'
+      this.props.mode === 'add'
       && (this.props.buttonType === 'widget' || this.props.buttonType === 'graph-widget')
       && this.props.groupType === null
     ) {
@@ -36,7 +36,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
             <PanelSlot
               groupId={this.props.groupId}
               id={0}
-              editMode={this.props.editMode}
+              mode={this.props.mode}
               buttonType={this.props.buttonType}
               buttonObject={this.props.buttonArray[0]}
               buttonId={ this.props.buttonId } />
@@ -46,7 +46,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
             <PanelSlot
               groupId={this.props.groupId}
               id={1}
-              editMode={this.props.editMode}
+              mode={this.props.mode}
               buttonType={this.props.buttonType}
               buttonObject={this.props.buttonArray[1]}
               buttonId={ this.props.buttonId } />
@@ -56,7 +56,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
             <PanelSlot
             groupId={this.props.groupId}
             id={2}
-            editMode={this.props.editMode}
+            mode={this.props.mode}
             buttonType={this.props.buttonType}
             buttonObject={this.props.buttonArray[2]}
             buttonId={ this.props.buttonId } />
@@ -66,7 +66,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
             <PanelSlot
             groupId={this.props.groupId}
             id={3}
-            editMode={this.props.editMode}
+            mode={this.props.mode}
             buttonType={this.props.buttonType}
             buttonObject={this.props.buttonArray[3]}
             buttonId={ this.props.buttonId } />
@@ -82,6 +82,6 @@ PanelGroup.propTypes = {
   groupId: React.PropTypes.number,
   groupType: React.PropTypes.string,
   buttonArray: React.PropTypes.array,
-  editMode: React.PropTypes.string,
+  mode: React.PropTypes.string,
   buttonId: React.PropTypes.string,
 };
