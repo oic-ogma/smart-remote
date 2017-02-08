@@ -50,6 +50,8 @@ export default class PanelSlot extends TrackerReact(React.Component) {
       child: {
         width: "96%",
         height: "100%",
+        padding: "3px",
+        wordBreak: "break-all",
         backgroundColor: "#D04255",
         borderStyle: "none"
       },
