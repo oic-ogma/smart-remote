@@ -42,21 +42,52 @@ export default class PanelSlot extends TrackerReact(React.Component) {
   }
 
   render() {
+    let panelStyle = {
+      parent: {
+        width: "100%",
+        height: "100%"
+      },
+      child: {
+        width: "96%",
+        height: "100%",
+        padding: "3px",
+        wordBreak: "break-all",
+        backgroundColor: "#D04255",
+        borderStyle: "none"
+      },
+      childEdit: {
+        width: "96%",
+        height: "100%",
+        backgroundColor: "rgba(0,0,0,0)",
+        borderStyle: "none"
+      },
+      childNull: {
+        width: "96%",
+        height: "100%",
+        borderStyle: "none"
+      }
+    };
     if ( this.buttonLibrary() ) {
       return (
-      <button className = 'button-style' onClick={() => this.sendIr(this.props.buttonObject)  }>
-        { this.buttonLibrary().buttonTitle }
-      </button>
+      <div style={panelStyle.parent}>
+        <button style={panelStyle.child} onClick={() => this.sendIr(this.props.buttonObject)  }>
+          { this.buttonLibrary().buttonTitle }
+        </button>
+      </div>
       );
     } else if ( this.props.editMode === 'true' ) {
       return (
-        <div>
-          <button className = 'button-style' onClick={() => this.addButtonPanel() }><Glyphicon glyph='plus'/></button>
+        <div style={panelStyle.parent}>
+          <button style={panelStyle.childEdit} onClick={() => this.addButtonPanel() }><Glyphicon glyph='plus'/></button>
           <Alert stack={{limit: 1}} />
         </div>
       );
     } else {
-      return null;
+      return (
+        <div style={panelStyle.parent}>
+          <div style={panelStyle.childNull}></div>
+        </div>
+      );
     }
   }
 }
