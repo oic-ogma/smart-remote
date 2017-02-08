@@ -19,7 +19,7 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
         <div>
         <Header/>
           <Slider/>
-          <ul>
+          <ul className="add-button-panel-lists">
             { this.irData().id }
             { this.irData().map((irDataSingle) => {
               let urlButtonId = irDataSingle._id;
