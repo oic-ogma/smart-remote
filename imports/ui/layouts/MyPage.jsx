@@ -6,18 +6,35 @@ import {ButtonLayout} from '../../api/button_layout/button_layout';
 import Slider from '../components/Slider';
 import Header from '../components/Header';
 import Alert from 'react-s-alert';
-import Loading from 'react-loading';
 import { browserHistory } from 'react-router';
+import i18n from 'meteor/universe:i18n';
 
 export default class MyPage extends TrackerReact(React.Component) {
-  constructor( props ) {
+  constructor(props) {
     super(props);
+    this.state = {
+      isAuthenticated: Meteor.userId() !== null,
+      subscription: {
+        buttonLayout: Meteor.subscribe('buttonLayout'),
+        buttonLibrary: Meteor.subscribe('buttonLibrary'),
+      },
+    };
+  }
+
+
+  componentWillMount() {
+    if (!this.state.isAuthenticated) {
+      browserHistory.push('/sign-in');
+    }
   }
 
   componentDidMount() {
-    Meteor.subscribe('buttonLayout');
-    Meteor.subscribe( 'buttonLibrary' );
     Meteor.call( "addDataFirstLogin" );
+  }
+
+  componentWillUnmount() {
+    this.state.subscription.buttonLayout.stop();
+    this.state.subscription.buttonLibrary.stop();
   }
 
   buttonLayout() {
@@ -25,13 +42,7 @@ export default class MyPage extends TrackerReact(React.Component) {
   }
 
   render() {
-    if (Meteor.loggingIn()) {
-      return (
-        <Col xsOffset={4} xs={4} mdOffset={4} md={4}>
-          <Loading type='bars' color='rgb(255, 255, 255)' />
-        </Col>
-      );
-    } else if (Meteor.user()) {
+    if (Meteor.user()) {
       i18n.setLocale(Meteor.user().profile.language);
       return (
         <div>
@@ -51,12 +62,10 @@ export default class MyPage extends TrackerReact(React.Component) {
               </Col>
             );
           })}
-
           <Alert stack={{limit: 1}} />
         </div>
       );
     } else {
-      browserHistory.push('/sign-in');
       return null;
     }
   }

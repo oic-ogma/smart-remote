@@ -8,13 +8,21 @@ import {Grid, Col, Row } from 'react-bootstrap';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/genie.css';
-import Loading from 'react-loading';
 import { browserHistory } from 'react-router';
 import Slider from '../components/Slider';
 
 export default class AddSmartRemote extends TrackerReact(React.Component) {
   constructor(props) {
     super(props);
+    this.state = {
+      isAuthenticated: Meteor.userId() !== null,
+    };
+  }
+
+  componentWillMount() {
+    if (!this.state.isAuthenticated) {
+      browserHistory.push('/sign-in');
+    }
   }
 
   handleSubmit(event) {
@@ -37,14 +45,7 @@ export default class AddSmartRemote extends TrackerReact(React.Component) {
   }
 
   render() {
-    if (Meteor.loggingIn()) {
-      return (
-        <Col xsOffset={4} xs={4} mdOffset={4} md={4}>
-          <Loading type='bars' color='rgb(255, 255, 255)' />
-        </Col>
-      );
-    } else if (Meteor.user()) {
-      i18n.setLocale(Meteor.user().profile.language);
+    if (Meteor.user()) {
       return (
         <div>
           <Header/>
@@ -82,8 +83,8 @@ export default class AddSmartRemote extends TrackerReact(React.Component) {
         </div>
       );
     } else {
-      browserHistory.push('/sign-in');
       return null;
     }
+
   }
 }

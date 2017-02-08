@@ -6,8 +6,24 @@ import { Link } from 'react-router';
 import Header from '../components/Header';
 
 export default class AddButtonPanel extends TrackerReact(React.Component) {
-  componentDidMount() {
-    Meteor.subscribe('buttonLibrary');
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAuthenticated: Meteor.userId() !== null,
+      subscription: {
+        buttonLibrary: Meteor.subscribe( 'buttonLibrary' ),
+      },
+    };
+  }
+
+  componentWillMount() {
+    if (!this.state.isAuthenticated) {
+      browserHistory.push('/sign-in');
+    }
+  }
+
+  componentWillUnmount() {
+    this.state.subscription.buttonLibrary.stop();
   }
 
   buttonLibrary() {
@@ -15,21 +31,27 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
   }
 
   render() {
-    return (
+    if (Meteor.user()) {
+      return (
         <div>
         <Header/>
           <Slider/>
           <ul>
             { this.buttonLibrary().map((buttonLibrarySingle) => {
-              return <li key={buttonLibrarySingle._id}>
-                        <Link to={'/my-page/true/panel/' + buttonLibrarySingle._id}>
-                          {buttonLibrarySingle.buttonTitle}
-                        </Link>
-                     </li>;
-            } ) }
+              return (
+                <li key={buttonLibrarySingle._id}>
+                  <Link to={'/my-page/true/panel/' + buttonLibrarySingle._id}>
+                    {buttonLibrarySingle.buttonTitle}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
-    );
+      );
+    } else {
+      return null;
+    }
   }
 }
 
