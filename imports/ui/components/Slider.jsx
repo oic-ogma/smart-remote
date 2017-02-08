@@ -2,7 +2,6 @@ import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router';
 import Radium from 'radium';
-import GwTemperature from './GwTemperature';
 import { browserHistory } from 'react-router';
 
 const RadiumLink = Radium(Link);
@@ -65,7 +64,6 @@ export default class Slider extends React.Component {
     return (
       <div>
         <Menu ref="left" alignment="left" styles={ styles }>
-          <GwTemperature/>
           <RadiumLink id="button-register"  className="slider-font" style={{ textDecoration: 'none'}} to="/button-register">{i18n.getTranslation('slider', 'registerButton')}</RadiumLink>
           <RadiumLink id="add-button-panel" className="slider-font" style={{ textDecoration: 'none'}} to="/add-button-panel">{i18n.getTranslation('slider', 'addButton')}</RadiumLink>
           <RadiumLink id="add-smart-retemo" className="slider-font" style={{ textDecoration: 'none'}} to="/add-smart-remote">{i18n.getTranslation('slider', 'addSmartRemote')}</RadiumLink>
