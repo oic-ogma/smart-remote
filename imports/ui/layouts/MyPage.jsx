@@ -37,9 +37,9 @@ export default class MyPage extends TrackerReact(React.Component) {
         <div>
         <Header/>
           <Slider/>
+          <div className="mypage">
           { this.buttonLayout().map((buttonLayoutSingle) => {
             return (
-              <Col sm={6} md={6}>
               <PanelGroup
                 groupId={buttonLayoutSingle.groupId}
                 editMode={this.props.params.editMode}
@@ -48,9 +48,9 @@ export default class MyPage extends TrackerReact(React.Component) {
                 buttonArray={buttonLayoutSingle.buttons}
                 buttonId={this.props.params.buttonId}
               />
-              </Col>
             );
           })}
+          </div>
 
           <Alert stack={{limit: 1}} />
         </div>
