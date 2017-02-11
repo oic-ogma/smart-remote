@@ -13,7 +13,7 @@ export default class Error404Page extends React.Component {
   }
 
   onLocale(locale) {
-    this.setState({locale});
+    this.setState({ locale });
   }
 
   componentWillMount() {
@@ -30,10 +30,10 @@ export default class Error404Page extends React.Component {
         <Grid className='center error-404-page'>
           <Row>
             <Col>
-                <span>{i18n.getTranslation('error404Page', 'topMessage')}</span>
-                <img src='img/404-dog.jpg' className='error-img' />
-                <span>{i18n.getTranslation('error404Page', 'bottomMessage')}</span>
-                <Link to='/' className='sign-in-link sign-in-button'>{i18n.getTranslation('error404Page', 'topPage')}</Link>
+              <span>{ i18n.getTranslation('error404Page', 'topMessage') }</span>
+              <img src='img/404-dog.jpg' className='error-img' />
+              <span>{ i18n.getTranslation('error404Page', 'bottomMessage') }</span>
+              <Link to='/' className='sign-in-link sign-in-button'>{ i18n.getTranslation('error404Page', 'topPage') }</Link>
             </Col>
           </Row>
         </Grid>

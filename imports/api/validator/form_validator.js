@@ -19,7 +19,7 @@ Object.assign(Validation.rules, {
       return value.toString().trim();
     },
     hint: () => {
-      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'required')}</p>;
+      return <p className='form-error is-visible' style={ style.validationText }>{ i18n.getTranslation('validator', 'required') }</p>;
     },
   },
 
@@ -28,7 +28,7 @@ Object.assign(Validation.rules, {
       return validator.isEmail(value);
     },
     hint: value => {
-      return <p className='form-error is-visible' style={style.validationText}>{value} {i18n.getTranslation('validator', 'email')}</p>;
+      return <p className='form-error is-visible' style={ style.validationText }>{ value } { i18n.getTranslation('validator', 'email') }</p>;
     },
   },
 
@@ -37,7 +37,7 @@ Object.assign(Validation.rules, {
       return validator.isLength(value, 8, 16);
     },
     hint: () => {
-      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'password')}</p>;
+      return <p className='form-error is-visible' style={ style.validationText }>{ i18n.getTranslation('validator', 'password') }</p>;
     },
   },
 
@@ -55,7 +55,7 @@ Object.assign(Validation.rules, {
       return password.value === confirmPassword.value;
     },
     hint: () => {
-      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'confirmPassword')}</p>;
+      return <p className='form-error is-visible' style={ style.validationText }>{ i18n.getTranslation('validator', 'confirmPassword') }</p>;
     },
   },
   confirmEmail: {
@@ -72,7 +72,7 @@ Object.assign(Validation.rules, {
       return email.value === confirmEmail.value;
     },
     hint: () => {
-      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'confirmEmail')}</p>;
+      return <p className='form-error is-visible' style={ style.validationText }>{ i18n.getTranslation('validator', 'confirmEmail') }</p>;
     },
   },
   deviceId: {
@@ -80,7 +80,7 @@ Object.assign(Validation.rules, {
       return validator.isLength(value, 24, 24);
     },
     hint: () => {
-      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'deviceId')}</p>;
+      return <p className='form-error is-visible' style={ style.validationText }>{ i18n.getTranslation('validator', 'deviceId') }</p>;
     },
   },
   accessToken: {
@@ -88,7 +88,7 @@ Object.assign(Validation.rules, {
       return validator.isLength(value, 40, 40);
     },
     hint: () => {
-      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'accessToken')}</p>;
+      return <p className='form-error is-visible' style={ style.validationText }>{ i18n.getTranslation('validator', 'accessToken') }</p>;
     },
   },
   buttonTitle: {
@@ -96,7 +96,7 @@ Object.assign(Validation.rules, {
       return validator.isLength(value, 1, 20);
     },
     hint: () => {
-      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'buttonTitle')}</p>;
+      return <p className='form-error is-visible' style={ style.validationText }>{ i18n.getTranslation('validator', 'buttonTitle') }</p>;
     },
   },
   city: {
@@ -104,7 +104,7 @@ Object.assign(Validation.rules, {
       return validator.isLength(value, 1, 60);
     },
     hint: () => {
-      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'region')}</p>;
+      return <p className='form-error is-visible' style={ style.validationText }>{ i18n.getTranslation('validator', 'region') }</p>;
     },
   },
 });

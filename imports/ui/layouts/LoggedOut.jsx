@@ -18,7 +18,7 @@ export default class LoggedOut extends TrackerReact(React.Component) {
   }
 
   onLocale(locale) {
-    this.setState({locale});
+    this.setState({ locale });
   }
 
   componentWillMount() {
@@ -38,7 +38,7 @@ export default class LoggedOut extends TrackerReact(React.Component) {
       <div>
         <Header/>
         {childrenWithProps}
-        <Alert stack={{limit: 1}} />
+        <Alert stack={ { limit: 1 } } />
       </div>
     );
   }

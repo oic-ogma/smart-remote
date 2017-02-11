@@ -50,7 +50,7 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
     return (
       <div>
         <div className='center enroll-center'>
-          <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
+          <Validation.components.Form onSubmit={ this.handleSubmit.bind(this) }>
             <div className='position'>
               <Validation.components.Input
                 id='input-password'
@@ -58,8 +58,8 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
                 type='password'
                 value=''
                 name='password'
-                placeholder={i18n.getTranslation('form', 'password')}
-                validations={['required', 'password']}/>
+                placeholder={ i18n.getTranslation('form', 'password') }
+                validations={ ['required', 'password'] }/>
             </div>
             <div className='position'>
               <Validation.components.Input
@@ -68,8 +68,8 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
                 type='password'
                 value=''
                 name='confirmPassword'
-                placeholder={i18n.getTranslation('form', 'confirmPassword')}
-                validations={['required', 'confirmPassword']}/>
+                placeholder={ i18n.getTranslation('form', 'confirmPassword') }
+                validations={ ['required', 'confirmPassword'] }/>
             </div>
             <CountrySelector/>
             <div className='position'>
@@ -79,8 +79,8 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
                 type='text'
                 value=''
                 name='city'
-                placeholder={i18n.getTranslation('form', 'city')}
-                validations={['required', 'city']}/>
+                placeholder={ i18n.getTranslation('form', 'city') }
+                validations={ ['required', 'city'] }/>
             </div>
             <Validation.components.Button className='button-style enroll-button'>{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
           </Validation.components.Form>

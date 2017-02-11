@@ -42,22 +42,22 @@ export default class Register extends TrackerReact(React.Component) {
     return (
       <div>
         <Grid className='center register-center'>
-          <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
+          <Validation.components.Form onSubmit={ this.handleSubmit.bind(this) }>
             <Validation.components.Input
               id='input-email'
               type='email'
               value=''
               name='registerEmail'
-              placeholder={i18n.getTranslation('form', 'email')}
-              validations={['required', 'email']}
+              placeholder={ i18n.getTranslation('form', 'email') }
+              validations={ ['required', 'email'] }
               className='input-style'/>
             <Validation.components.Input
               id='input-confirm-email'
               type='email'
               value=''
               name='confirmEmail'
-              placeholder={i18n.getTranslation('form', 'confirmEmail')}
-              validations={['confirmEmail']}
+              placeholder={ i18n.getTranslation('form', 'confirmEmail') }
+              validations={ ['confirmEmail'] }
               className='input-style'/>
             <Validation.components.Button
               className='button-style register-button'>

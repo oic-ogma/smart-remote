@@ -76,7 +76,7 @@ Meteor.methods({
   sendForgotPasswordEmail: (language, address) => {
     check(language, String);
     check(address, String);
-    const userObject = Meteor.users.findOne({'emails.address': address});
+    const userObject = Meteor.users.findOne({ 'emails.address': address });
     const canSend = canSendResetPasswordEmail(userObject);
     if (canSend) {
       setServerLocale(language);

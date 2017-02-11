@@ -14,8 +14,8 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
         <ul className='add-button-panel-lists'>
           { this.buttonLibrary().map((buttonLibrarySingle) => {
             return (
-              <li key={buttonLibrarySingle._id}>
-                <Link to={'/my-page/add/panel/' + buttonLibrarySingle._id}>
+              <li key={ buttonLibrarySingle._id }>
+                <Link to={ '/my-page/add/panel/' + buttonLibrarySingle._id }>
                   {buttonLibrarySingle.buttonTitle}
                 </Link>
               </li>

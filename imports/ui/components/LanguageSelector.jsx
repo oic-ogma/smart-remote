@@ -39,8 +39,8 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
       },
     };
     return (
-      <div style={style.languageStyle}>
-        <i className='glyphicon glyphicon-globe' style={style.iconStyle}/>
+      <div style={ style.languageStyle }>
+        <i className='glyphicon glyphicon-globe' style={ style.iconStyle }/>
         { this.getLanguage() }
       </div>
     );
@@ -62,13 +62,13 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
       return (
         <div>
           <DropdownButton
-            title={this.generateTitle()}
+            title={ this.generateTitle() }
             noCaret
             id='language-selector'
-            style={style.buttonStyle}
+            style={ style.buttonStyle }
             >
-            <MenuItem id='lang-ja' onClick={() => this.setLocaleLanguage('ja')}>ja</MenuItem>
-            <MenuItem id='lang-en' onClick={() => this.setLocaleLanguage('en')}>en</MenuItem>
+            <MenuItem id='lang-ja' onClick={ () => this.setLocaleLanguage('ja') }>ja</MenuItem>
+            <MenuItem id='lang-en' onClick={ () => this.setLocaleLanguage('en') }>en</MenuItem>
           </DropdownButton>
         </div>
       );

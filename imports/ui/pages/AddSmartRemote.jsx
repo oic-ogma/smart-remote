@@ -3,7 +3,7 @@ import i18n from 'meteor/universe:i18n';
 import Validation from 'react-validation';
 import '../../api/validator/form_validator';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import {Grid, Col, Row } from 'react-bootstrap';
+import { Grid, Col, Row } from 'react-bootstrap';
 import Alert from 'react-s-alert';
 
 export default class AddSmartRemote extends TrackerReact(React.Component) {
@@ -30,7 +30,7 @@ export default class AddSmartRemote extends TrackerReact(React.Component) {
     return (
       <div>
         <Grid className='center button-register-center'>
-          <Validation.components.Form onSubmit={this.handleSubmit.bind(this)} >
+          <Validation.components.Form onSubmit={ this.handleSubmit.bind(this) } >
             <Row>
               <Col>
                 <Validation.components.Input
@@ -39,16 +39,16 @@ export default class AddSmartRemote extends TrackerReact(React.Component) {
                   type='text'
                   name='deviceId'
                   value=''
-                  placeholder={i18n.getTranslation('addPhoton', 'deviceId')}
-                  validations={['required', 'deviceId']}/>
+                  placeholder={ i18n.getTranslation('addPhoton', 'deviceId') }
+                  validations={ ['required', 'deviceId'] }/>
                 <Validation.components.Input
                   id='input-access-token'
                   className='input-style'
                   type='text'
                   name='accessToken'
                   value=''
-                  placeholder={i18n.getTranslation('addPhoton', 'accessToken')}
-                  validations={['required', 'accessToken']}/>
+                  placeholder={ i18n.getTranslation('addPhoton', 'accessToken') }
+                  validations={ ['required', 'accessToken'] }/>
               </Col>
             </Row>
             <Row>

@@ -6,7 +6,7 @@ import faker from 'faker';
 import { Accounts } from 'meteor/accounts-base';
 
 const findUserByEmail = (address) => {
-  return Meteor.users.findOne({'emails.0.address': address});
+  return Meteor.users.findOne({ 'emails.0.address': address });
 };
 
 describe('メール', function() {

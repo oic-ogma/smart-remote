@@ -41,12 +41,12 @@ export default class LoggedIn extends TrackerReact(React.Component) {
           <Header/>
           <Slider/>
           {this.props.children}
-          <Alert stack={{limit: 1}} />
+          <Alert stack={ { limit: 1 } } />
         </div>
       );
     } else {
       return (
-        <Col xsOffset={4} xs={4} mdOffset={4} md={4}>
+        <Col xsOffset={ 4 } xs={ 4 } mdOffset={ 4 } md={ 4 }>
           <Loading type='bars' color='rgb(255, 255, 255)' />
         </Col>
       );

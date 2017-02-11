@@ -60,18 +60,18 @@ export default class Slider extends React.Component {
     return (
       <div>
         <Menu styles={ styles } onStateChange={ this.isMenuOpen } isOpen={ false }>
-          <RadiumLink id='button-register'  className='slider-font' style={{ textDecoration: 'none'}} to='/my-page/button-register'>
+          <RadiumLink id='button-register'  className='slider-font' style={ { textDecoration: 'none' } } to='/my-page/button-register'>
             {i18n.getTranslation('slider', 'registerButton')}
           </RadiumLink>
 
-          <RadiumLink id='add-button-panel' className='slider-font' style={{ textDecoration: 'none'}} to='/my-page/add-button-panel'>
+          <RadiumLink id='add-button-panel' className='slider-font' style={ { textDecoration: 'none' } } to='/my-page/add-button-panel'>
             {i18n.getTranslation('slider', 'addButton')}
           </RadiumLink>
 
-          <RadiumLink id='add-smart-retemo' className='slider-font' style={{ textDecoration: 'none'}} to='/my-page/add-smart-remote'>
+          <RadiumLink id='add-smart-retemo' className='slider-font' style={ { textDecoration: 'none' } } to='/my-page/add-smart-remote'>
             {i18n.getTranslation('slider', 'addSmartRemote')}
           </RadiumLink>
-          <button className='slider-font' onClick={this.logout}>{i18n.getTranslation('slider', 'signOut')}</button>
+          <button className='slider-font' onClick={ this.logout }>{i18n.getTranslation('slider', 'signOut')}</button>
         </Menu>
       </div>
     );

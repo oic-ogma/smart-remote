@@ -43,17 +43,17 @@ export default class ForgotPassword extends TrackerReact(React.Component) {
     return (
       <div>
         <Grid className='center forgot-password-center'>
-          <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
+          <Validation.components.Form onSubmit={ this.handleSubmit.bind(this) }>
             <Validation.components.Input
               id='input-reset-email'
               type='email'
               value=''
               name='email'
-              placeholder={i18n.getTranslation('forgotPassword', 'email')}
-              validations={['required', 'email']}
+              placeholder={ i18n.getTranslation('forgotPassword', 'email') }
+              validations={ ['required', 'email'] }
               className='input-style'
             />
-            <Validation.components.Button className='button-style forgot-password-button'>{i18n.getTranslation('forgotPassword', 'reset')}</Validation.components.Button>
+            <Validation.components.Button className='button-style forgot-password-button'>{ i18n.getTranslation('forgotPassword', 'reset') }</Validation.components.Button>
           </Validation.components.Form>
         </Grid>
         <BackButton link='sign-in'/>

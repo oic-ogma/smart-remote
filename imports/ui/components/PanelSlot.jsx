@@ -12,7 +12,7 @@ export default class PanelSlot extends TrackerReact(React.Component) {
 
   buttonLibrary() {
     if ( !!this.props.buttonObject ) {
-      return ButtonLibrary.findOne({_id: this.props.buttonObject.buttonId});
+      return ButtonLibrary.findOne({ _id: this.props.buttonObject.buttonId });
     } else {
       return null;
     }
@@ -44,14 +44,14 @@ export default class PanelSlot extends TrackerReact(React.Component) {
   render() {
     if ( this.buttonLibrary() ) {
       return (
-      <button className = 'button-style' onClick={() => this.sendIr(this.props.buttonObject)  }>
-        { this.buttonLibrary().buttonTitle }
-      </button>
+        <button className='button-style' onClick={ () => this.sendIr(this.props.buttonObject) }>
+          { this.buttonLibrary().buttonTitle }
+        </button>
       );
     } else if ( this.props.mode === 'add' ) {
       return (
         <div>
-          <button className = 'button-style' onClick={() => this.addButtonPanel() }><Glyphicon glyph='plus'/></button>
+          <button className='button-style' onClick={ () => this.addButtonPanel() }><Glyphicon glyph='plus'/></button>
         </div>
       );
     } else {

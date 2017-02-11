@@ -4,15 +4,15 @@ import { Glyphicon } from 'react-bootstrap';
 export default class GwTemperature extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { temperatureResponse: ''};
+    this.state = { temperatureResponse: '' };
   }
 
   getTemperature() {
     Meteor.call('getTemperature', ( error, result ) => {
       if (error) {
-        this.setState({temperatureResponse: '--'});
+        this.setState({ temperatureResponse: '--' });
       } else {
-        this.setState({temperatureResponse: result});
+        this.setState({ temperatureResponse: result });
       }
     });
   }
@@ -31,8 +31,8 @@ export default class GwTemperature extends React.Component {
     };
     if (this.state.temperatureResponse) {
       return (
-        <div style={style}>
-          <Glyphicon glyph = 'cloud'/>
+        <div style={ style }>
+          <Glyphicon glyph='cloud'/>
           { this.state.temperatureResponse + '℃' }
         </div>
       );
