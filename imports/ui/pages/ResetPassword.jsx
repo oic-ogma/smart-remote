@@ -6,6 +6,7 @@ import '../../api/validator/form_validator';
 import Alert from 'react-s-alert';
 import BackButton from '../components/BackButton';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import { browserHistory } from 'react-router';
 
 export default class ResetPassword extends TrackerReact(React.Component) {
   formReset() {
@@ -23,6 +24,7 @@ export default class ResetPassword extends TrackerReact(React.Component) {
           effect: 'genie',
           timeout: 3000,
         });
+        browserHistory.push('/my-page');
       } else if (error.reason === 'Token expired') {
         Alert.error(i18n.getTranslation('resetPassword', 'alerts.tokenExpired'), {
           position: 'bottom',
