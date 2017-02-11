@@ -19,33 +19,33 @@ const getPhotonCredentials = () => {
   return userObject[0].photonCredentials;
 };
 
-export const setIrStart = (spritData0) => {
+const irTransmissionInit = (irPartition) => {
   const photonCredentials = getPhotonCredentials();
   HTTP.post(
     'https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irInsertS',
     {
       params: {
         access_token: photonCredentials.accessToken,
-        args: spritData0,
+        args: irPartition,
       },
     },
   );
 };
 
-export const setIr = (spritData) => {
+const transmitIr = (irPartition) => {
   const photonCredentials = getPhotonCredentials();
   HTTP.post(
     'https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irInsert',
     {
       params: {
         access_token: photonCredentials.accessToken,
-        args: spritData,
+        args: irPartition,
       },
     }
   );
 };
 
-export const setIrEnd = (registryIndex) => {
+const irTransmissionFinalize = (registryIndex) => {
   const photonCredentials = getPhotonCredentials();
   HTTP.post(
     'https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irInsertE',
@@ -56,6 +56,20 @@ export const setIrEnd = (registryIndex) => {
       },
     }
   );
+};
+
+export const saveIr = (irData, registryId) =>{
+  const maxIrLength = 60;
+  const maxIrLengthRegex = new RegExp('.{1,' + maxIrLength + '}', 'g');
+  const irPartitions = irData.match(maxIrLengthRegex);
+
+  irTransmissionInit(irPartitions[0]);
+
+  for (let i = 1; i < irPartitions.length; i++) {
+    transmitIr(irPartitions[i]);
+  }
+
+  irTransmissionFinalize(registryId);
 };
 
 const isUniqueButtonTitle = (buttonTitle) => {
@@ -124,7 +138,7 @@ Meteor.methods({
         const buttonObject = {
           userId: Meteor.userId(),
           buttonTitle: buttonTitle,
-          irData: [ irReceive1.data.result, irReceive2.data.result ],
+          irData: irReceive1.data.result + irReceive2.data.result,
         };
 
         ButtonLibrarySchema.validate(buttonObject);

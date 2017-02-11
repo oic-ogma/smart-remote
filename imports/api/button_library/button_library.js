@@ -15,12 +15,8 @@ export const ButtonLibrarySchema = new SimpleSchema({
     max: 12,
   },
   irData: {
-    type: [String],
-    label: '赤外線情報が保存される配列',
-  },
-  'irData.$': {
     type: String,
     label: '赤外線情報',
-    max: 622,
+    max: 1000,
   },
 });
