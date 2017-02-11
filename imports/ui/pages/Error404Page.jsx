@@ -1,6 +1,5 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
-import Header from '../components/Header';
 import { Grid, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
@@ -28,7 +27,6 @@ export default class Error404Page extends React.Component {
   render() {
     return (
       <div>
-        <Header/>
         <Grid className="center error-404-page">
           <Row>
             <Col>

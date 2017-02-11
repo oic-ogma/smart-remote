@@ -1,41 +1,14 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
-import Header from '../components/Header';
 import Validation from 'react-validation';
 import '../../api/validator/form_validator';
 import CountrySelector from '../components/CountrySelector';
 import Alert from 'react-s-alert';
-import 'react-s-alert/dist/s-alert-default.css';
-import 'react-s-alert/dist/s-alert-css-effects/genie.css';
 import BackButton from '../components/BackButton';
-import { browserHistory } from 'react-router';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import { browserHistory } from 'react-router';
 
 export default class EnrollAccount extends TrackerReact(React.Component) {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      isAuthenticated: Meteor.userId() !== null,
-      locale: i18n.getLocale(),
-    };
-    this.onLocale = this.onLocale.bind(this);
-  }
-
-  onLocale(locale) {
-    this.setState({locale});
-  }
-
-  componentWillMount() {
-    if (this.state.isAuthenticated) {
-      browserHistory.push('/my-page');
-    }
-    i18n.onChangeLocale(this.onLocale);
-    i18n.setLocale(this.props.params.language);
-  }
-
-  componentWillUnmount() {
-    i18n.offChangeLocale(this.onLocale);
-  }
 
   formReset() {
     document.getElementById('input-password').value = '';
@@ -59,13 +32,16 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
           timeout: 3000,
         });
       } else {
-        Meteor.call('addEnrollmentInfo', params);
-        Alert.success(i18n.getTranslation('alert', 'success.enroll'), {
-          position: 'bottom',
-          effect: 'genie',
-          timeout: 3000,
+        Meteor.call('addEnrollmentInfo', params, (err)=>{
+          if (!err) {
+            Alert.success(i18n.getTranslation('alert', 'success.enroll'), {
+              position: 'bottom',
+              effect: 'genie',
+              timeout: 3000,
+            });
+            browserHistory.push('/my-page');
+          }
         });
-        this.formReset();
       }
     });
   }
@@ -73,7 +49,6 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
   render() {
     return (
       <div>
-        <Header/>
         <div className="center enroll-center">
           <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
             <div className="position">
@@ -110,7 +85,6 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
             <Validation.components.Button className="button-style enroll-button">{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
           </Validation.components.Form>
           <BackButton link="register"/>
-          <Alert stack={{limit: 1}} />
         </div>
       </div>
     );

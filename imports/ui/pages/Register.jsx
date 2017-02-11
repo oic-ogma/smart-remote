@@ -1,42 +1,14 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
-import Header from '../components/Header';
 import Validation from 'react-validation';
 import '../../api/validator/form_validator';
 import { Grid } from 'react-bootstrap';
 import Alert from 'react-s-alert';
-import 'react-s-alert/dist/s-alert-default.css';
-import 'react-s-alert/dist/s-alert-css-effects/genie.css';
 import BackButton from '../components/BackButton';
-import { browserHistory } from 'react-router';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class Register extends TrackerReact(React.Component) {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      isAuthenticated: Meteor.userId() !== null,
-      locale: i18n.getLocale(),
-    };
-    this.onLocale = this.onLocale.bind(this);
-  }
-
-  onLocale(locale) {
-    this.setState({locale});
-  }
-
-  componentWillMount() {
-    if (this.state.isAuthenticated) {
-      browserHistory.push('/my-page');
-    }
-    i18n.onChangeLocale(this.onLocale);
-  }
-
-  componentWillUnmount() {
-    i18n.offChangeLocale(this.onLocale);
-  }
-
   formReset() {
     document.getElementById('input-email').value = '';
     document.getElementById('input-confirm-email').value = '';
@@ -69,7 +41,6 @@ export default class Register extends TrackerReact(React.Component) {
   render() {
     return (
       <div>
-        <Header/>
         <Grid className="center register-center">
           <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
             <Validation.components.Input
@@ -94,7 +65,6 @@ export default class Register extends TrackerReact(React.Component) {
             </Validation.components.Button>
           </Validation.components.Form>
           <BackButton link="sign-in"/>
-          <Alert stack={{limit: 1}} />
         </Grid>
       </div>
     );

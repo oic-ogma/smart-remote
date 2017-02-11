@@ -1,39 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import Header from '../components/Header';
 import Validation from 'react-validation';
 import { Grid } from 'react-bootstrap';
 import '../../api/validator/form_validator';
 import Alert from 'react-s-alert';
 import BackButton from '../components/BackButton';
-import { browserHistory } from 'react-router';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class ForgotPassword extends TrackerReact(React.Component) {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      isAuthenticated: Meteor.userId() !== null,
-      locale: i18n.getLocale(),
-    };
-    this.onLocale = this.onLocale.bind(this);
-  }
-
-  onLocale(locale) {
-    this.setState({locale});
-  }
-
-  componentWillMount() {
-    if (this.state.isAuthenticated) {
-      browserHistory.push('/my-page');
-    }
-    i18n.onChangeLocale(this.onLocale);
-  }
-
-  componentWillUnmount() {
-    i18n.offChangeLocale(this.onLocale);
-  }
-
   formReset() {
     document.getElementById('input-reset-email').value = '';
   }
@@ -68,7 +42,6 @@ export default class ForgotPassword extends TrackerReact(React.Component) {
   render() {
     return (
       <div>
-        <Header />
         <Grid className="center forgot-password-center">
           <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
             <Validation.components.Input
@@ -84,7 +57,6 @@ export default class ForgotPassword extends TrackerReact(React.Component) {
           </Validation.components.Form>
         </Grid>
         <BackButton link="sign-in"/>
-        <Alert stack={{limit: 1}} />
       </div>
     );
   }

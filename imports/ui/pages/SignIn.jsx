@@ -1,7 +1,6 @@
 import React from 'react';
 import {Meteor} from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
-import Header from '../components/Header';
 import { Grid, Col, Row } from 'react-bootstrap';
 import { Link, browserHistory } from 'react-router';
 import Alert from 'react-s-alert';
@@ -9,30 +8,6 @@ import BackButton from '../components/BackButton';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class SignIn extends TrackerReact(React.Component) {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      isAuthenticated: Meteor.userId() !== null,
-      locale: i18n.getLocale(),
-    };
-    this.onLocale = this.onLocale.bind(this);
-  }
-
-  onLocale(locale) {
-    this.setState({locale});
-  }
-
-  componentWillMount() {
-    if (this.state.isAuthenticated) {
-      browserHistory.push('/my-page');
-    }
-    i18n.onChangeLocale(this.onLocale);
-  }
-
-  componentWillUnmount() {
-    i18n.offChangeLocale(this.onLocale);
-  }
-
   handleSubmit(event) {
     event.preventDefault();
     let email = event.target.email.value;
@@ -53,7 +28,6 @@ export default class SignIn extends TrackerReact(React.Component) {
   render() {
     return (
       <div>
-        <Header/>
         <Grid className="center sign-in-center">
         <form onSubmit = {this.handleSubmit.bind(this)}>
           <Row>
@@ -87,7 +61,6 @@ export default class SignIn extends TrackerReact(React.Component) {
         </div>
         </Grid>
         <BackButton link="/"/>
-        <Alert stack={{limit: 1}} />
       </div>
     );
   }

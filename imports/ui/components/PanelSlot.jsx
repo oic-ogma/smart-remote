@@ -52,7 +52,6 @@ export default class PanelSlot extends TrackerReact(React.Component) {
       return (
         <div>
           <button className = 'button-style' onClick={() => this.addButtonPanel() }><Glyphicon glyph='plus'/></button>
-          <Alert stack={{limit: 1}} />
         </div>
       );
     } else {

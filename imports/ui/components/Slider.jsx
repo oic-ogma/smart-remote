@@ -12,10 +12,6 @@ export default class Slider extends React.Component {
     this.logout = this.logout.bind(this);
   }
 
-  showLeft() {
-    this.refs.left.show();
-  }
-
   logout(e) {
     e.preventDefault();
     Meteor.logout((err)=> {
@@ -63,10 +59,18 @@ export default class Slider extends React.Component {
 
     return (
       <div>
-        <Menu ref="left" alignment="left" styles={ styles }>
-          <RadiumLink id="button-register"  className="slider-font" style={{ textDecoration: 'none'}} to="/button-register">{i18n.getTranslation('slider', 'registerButton')}</RadiumLink>
-          <RadiumLink id="add-button-panel" className="slider-font" style={{ textDecoration: 'none'}} to="/add-button-panel">{i18n.getTranslation('slider', 'addButton')}</RadiumLink>
-          <RadiumLink id="add-smart-retemo" className="slider-font" style={{ textDecoration: 'none'}} to="/add-smart-remote">{i18n.getTranslation('slider', 'addSmartRemote')}</RadiumLink>
+        <Menu styles={ styles } onStateChange={ this.isMenuOpen } isOpen={ false }>
+          <RadiumLink id="button-register"  className="slider-font" style={{ textDecoration: 'none'}} to="/my-page/button-register">
+            {i18n.getTranslation('slider', 'registerButton')}
+          </RadiumLink>
+
+          <RadiumLink id="add-button-panel" className="slider-font" style={{ textDecoration: 'none'}} to="/my-page/add-button-panel">
+            {i18n.getTranslation('slider', 'addButton')}
+          </RadiumLink>
+
+          <RadiumLink id="add-smart-retemo" className="slider-font" style={{ textDecoration: 'none'}} to="/my-page/add-smart-remote">
+            {i18n.getTranslation('slider', 'addSmartRemote')}
+          </RadiumLink>
           <button className="slider-font" onClick={this.logout}>{i18n.getTranslation('slider', 'signOut')}</button>
         </Menu>
       </div>

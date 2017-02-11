@@ -1,39 +1,13 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
-import Header from '../components/Header';
 import Validation from 'react-validation';
 import { Grid } from 'react-bootstrap';
 import '../../api/validator/form_validator';
 import Alert from 'react-s-alert';
 import BackButton from '../components/BackButton';
-import { browserHistory } from 'react-router';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class ResetPassword extends TrackerReact(React.Component) {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      isAuthenticated: Meteor.userId() !== null,
-      locale: i18n.getLocale(),
-    };
-    this.onLocale = this.onLocale.bind(this);
-  }
-
-  onLocale(locale) {
-    this.setState({locale});
-  }
-
-  componentWillMount() {
-    if (this.state.isAuthenticated) {
-      browserHistory.push('/my-page');
-    }
-    i18n.onChangeLocale(this.onLocale);
-  }
-
-  componentWillUnmount() {
-    i18n.offChangeLocale(this.onLocale);
-  }
-
   formReset() {
     document.getElementById('new-password').value = '';
     document.getElementById('new-password-again').value = '';
@@ -62,7 +36,6 @@ export default class ResetPassword extends TrackerReact(React.Component) {
   render() {
     return (
       <div>
-        <Header/>
         <Grid className="center reset-password-center">
           <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
             <Validation.components.Input
@@ -85,7 +58,6 @@ export default class ResetPassword extends TrackerReact(React.Component) {
             />
             <Validation.components.Button className="button-style reset-password-button">{i18n.getTranslation('resetPassword', 'update')}</Validation.components.Button>
           </Validation.components.Form>
-          <Alert stack={{limit: 1}} />
         </Grid>
         <BackButton link="sign-in"/>
       </div>
