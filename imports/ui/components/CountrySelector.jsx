@@ -1,5 +1,5 @@
 import React from 'react';
-import { countryList } from '../lib/country_list';
+import { countryList } from './country_list/country_list';
 import { getLanguage } from '../../startup/client/language';
 
 export default class CountrySelector extends React.Component {
