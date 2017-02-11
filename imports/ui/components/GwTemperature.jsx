@@ -19,6 +19,7 @@ export default class GwTemperature extends React.Component {
 
   componentDidMount() {
     this.getTemperature();
+  // 繰り返して呼び出すとき処理が重いから注意が必要
   //   Meteor.setInterval(function() {
   //     this.getTemperature();
   //   }.bind(this)
