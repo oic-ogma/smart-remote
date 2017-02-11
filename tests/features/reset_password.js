@@ -1,7 +1,7 @@
 import faker from 'faker';
 
-describe('パスワードリセット @watch', function() {
-  it('forgot-passwordページまで移動できる', function() {
+describe('パスワードリセット @watch', ()=> {
+  it('forgot-passwordページまで移動できる', ()=> {
     browser.url('http://localhost:3000/');
     browser.waitForExist('.sign-in');
     browser.click('.sign-in');
@@ -11,7 +11,7 @@ describe('パスワードリセット @watch', function() {
     expect(browser.waitForExist('.forgot-password-button')).to.equal(true);
   });
 
-  it('登録されてないメールアドレスを入力したらエラーメッセージが表示される。', function() {
+  it('登録されてないメールアドレスを入力したらエラーメッセージが表示される。', ()=> {
     browser.waitForExist('#input-reset-email');
     browser.setValue('#input-reset-email', faker.internet.email());
     browser.waitForExist('.forgot-password-button');

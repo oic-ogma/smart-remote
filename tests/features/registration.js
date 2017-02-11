@@ -1,5 +1,5 @@
-describe('登録ページ', function() {
-  it('正しくないメールアドレスが入力されたら、エラーメッセージが表示される', function() {
+describe('登録ページ', ()=> {
+  it('正しくないメールアドレスが入力されたら、エラーメッセージが表示される', ()=> {
     browser.url('http://localhost:3000/register');
     browser.waitForExist('#input-email');
     browser.setValue('#input-email', 'test');
@@ -8,7 +8,7 @@ describe('登録ページ', function() {
     expect(browser.waitForExist('#input-email')).to.equal(true);
   });
 
-  it('正しいメールアドレスが入力されたら、エラーメッセージが表示されない', function() {
+  it('正しいメールアドレスが入力されたら、エラーメッセージが表示されない', ()=> {
     browser.url('http://localhost:3000/register');
     browser.waitForExist('#input-email');
     browser.setValue('#input-email', 'test@test.com');
@@ -17,7 +17,7 @@ describe('登録ページ', function() {
     expect(browser.waitForExist('#input-email')).to.equal(true);
   });
 
-  it('同じではないメールアドレスを入力したら、エラーメッセージが表示される', function() {
+  it('同じではないメールアドレスを入力したら、エラーメッセージが表示される', ()=> {
     browser.url('http://localhost:3000/register');
     browser.waitForExist('#input-email');
     browser.setValue('#input-email', 'test@test.com');
@@ -29,7 +29,7 @@ describe('登録ページ', function() {
     expect(browser.waitForExist('#input-email')).to.equal(true);
   });
 
-  it('同じメールアドレスを入力したら、エラーメッセージが表示されない', function() {
+  it('同じメールアドレスを入力したら、エラーメッセージが表示されない', ()=> {
     browser.url('http://localhost:3000/register');
     browser.waitForExist('#input-email');
     browser.setValue('#input-email', 'test@test.com');
