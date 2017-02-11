@@ -178,6 +178,15 @@ module.exports = {
     'space-before-function-paren': [2, 'never'], // http://eslint.org/docs/rules/space-before-function-paren
     'space-infix-ops': 2,            // http://eslint.org/docs/rules/space-infix-ops
     'spaced-comment': 2,            // http://eslint.org/docs/rules/spaced-comment (previously known as spaced-line-comment)
+    'quotes': ['error', 'single'],
+    'space-infix-ops': ['error', {'int32Hint': false}],
+    'object-curly-spacing': [2, 'always'],
+
+    /** React **/
     'react/display-name': 0,
+    'react/jsx-curly-spacing': [2, 'always'],
+    'react/jsx-equals-spacing': [2, 'always'],
+    'react/jsx-indent': [2, 'tab'| 2],
+    'react/jsx-wrap-multilines': 2,
   }
 };
