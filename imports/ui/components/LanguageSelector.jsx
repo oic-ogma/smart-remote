@@ -30,7 +30,7 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
   }
 
   generateTitle() {
-    let style = {
+    const style = {
       languageStyle: {
         color: '#fff',
       },
@@ -51,7 +51,7 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
   }
 
   render() {
-    let style = {
+    const style = {
       buttonStyle: {
         backgroundColor: 'rgba(0, 0, 0, 0)',
         borderStyle: 'none',

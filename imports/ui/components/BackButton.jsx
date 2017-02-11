@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export default class BackButton extends React.Component {
   render() {
-    let style = {
+    const style = {
       position: 'absolute',
       bottom: '20px',
       left: '20px',

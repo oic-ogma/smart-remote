@@ -27,7 +27,7 @@ export default class GwTemperature extends React.Component {
   }
 
   render() {
-    let style = {
+    const style = {
       fontSize: 24,
     };
     if (this.state.temperatureResponse) {

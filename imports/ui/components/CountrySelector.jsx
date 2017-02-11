@@ -4,7 +4,7 @@ import { getLanguage } from '../../startup/client/language';
 
 export default class CountrySelector extends React.Component {
   render() {
-    let style = {
+    const style = {
       selector: {
         color: '#fff',
         border: 'none',
@@ -20,7 +20,7 @@ export default class CountrySelector extends React.Component {
       },
     };
     let options = [];
-    let countryListCurrentLang = countryList[getLanguage()];
+    const countryListCurrentLang = countryList[getLanguage()];
     for (let countryCode in countryListCurrentLang) {
       if (countryListCurrentLang.hasOwnProperty(countryCode)) {
         options.push(

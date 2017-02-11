@@ -10,8 +10,8 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 export default class SignIn extends TrackerReact(React.Component) {
   handleSubmit(event) {
     event.preventDefault();
-    let email = event.target.email.value;
-    let password = event.target.password.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
     Meteor.loginWithPassword(email, password, (error) => {
       if (error) {
         Alert.error(i18n.getTranslation('alert', 'error.signIn'), {

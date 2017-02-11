@@ -3,7 +3,7 @@ import Validation from 'react-validation';
 import validator from 'validator';
 import i18n from 'meteor/universe:i18n';
 
-let style = {
+const style = {
   validationText: {
     color: 'red',
     fontSize: '12px',

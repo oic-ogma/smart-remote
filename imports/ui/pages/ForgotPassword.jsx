@@ -14,7 +14,7 @@ export default class ForgotPassword extends TrackerReact(React.Component) {
 
   handleSubmit(event) {
     event.preventDefault();
-    let emailVar = event.target.email.value;
+    const emailVar = event.target.email.value;
     Meteor.call('sendForgotPasswordEmail', i18n.getLocale(), emailVar, (error) => {
       if (!error) {
         this.formReset();

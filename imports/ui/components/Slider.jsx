@@ -22,7 +22,7 @@ export default class Slider extends React.Component {
   }
 
   render() {
-    let styles = {
+    const styles = {
       bmBurgerButton: {
         position: 'relative',
         width: '20px',

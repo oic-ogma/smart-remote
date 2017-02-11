@@ -53,12 +53,12 @@ Meteor.methods({
           emailData.address = user.emails[0].address;
           emailData.urlWithoutHash = url.replace('#/', '') + '/' + language;
           emailData.supportEmail = 'support@smart-remote.tech';
-          let html  = SSR.render('enrollment', emailData);
+          const html  = SSR.render('enrollment', emailData);
           return html;
         },
       };
 
-      let userObject = Accounts.createUser({
+      const userObject = Accounts.createUser({
         email: address,
       });
       if (userObject) {
@@ -91,7 +91,7 @@ Meteor.methods({
           emailData.address = user.emails[0].address;
           emailData.urlWithoutHash = url.replace('#/', '') + '/' + language;
           emailData.supportEmail = 'support@smart-remote.tech';
-          let html  = SSR.render('resetPassword', emailData);
+          const html  = SSR.render('resetPassword', emailData);
           return html;
         },
       };

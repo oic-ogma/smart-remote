@@ -16,8 +16,8 @@ export default class Register extends TrackerReact(React.Component) {
 
   handleSubmit(event) {
     event.preventDefault();
-    let emailVar = event.target.registerEmail.value;
-    let confirmEmailVar = event.target.confirmEmail.value;
+    const emailVar = event.target.registerEmail.value;
+    const confirmEmailVar = event.target.confirmEmail.value;
     if (emailVar === confirmEmailVar) {
       Meteor.call('sendEnrollmentEmail', i18n.getLocale(), emailVar, (error) => {
         if (error) {
