@@ -5,10 +5,10 @@ import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 export default class LanguageSelector extends TrackerReact(React.Component) {
   setLocaleLanguage(language) {
-    if ( language === 'ja' ) {
-      i18n.setLocale( 'ja' );
+    if (language === 'ja') {
+      i18n.setLocale('ja');
     } else {
-      i18n.setLocale( 'en' );
+      i18n.setLocale('en');
     }
   }
 
@@ -16,12 +16,12 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
     const bufferLang = i18n.getLanguageName();
     let lang = '';
 
-    if ( bufferLang === 'Japanese'
+    if (bufferLang === 'Japanese'
          || bufferLang === 'JAPANESE'
          || bufferLang === 'ja'
          || bufferLang === 'Japanese (Japan)'
          || bufferLang === 'JA'
-         || bufferLang === 'ja-JP' ) {
+         || bufferLang === 'ja-JP') {
       lang = 'ja';
     } else {
       lang = 'en';
@@ -47,7 +47,7 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
   }
 
   componentDidMount() {
-    this.setLocaleLanguage( this.getLanguage() );
+    this.setLocaleLanguage(this.getLanguage());
   }
 
   render() {

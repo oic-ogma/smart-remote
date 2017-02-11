@@ -11,7 +11,7 @@ const findUserByEmail = (address) => {
 
 describe('メール', function() {
   describe('ユーザー登録', function() {
-    beforeEach( function() {
+    beforeEach(function() {
       resetDatabase();
     });
 

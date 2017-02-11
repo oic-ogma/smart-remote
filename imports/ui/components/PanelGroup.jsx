@@ -4,7 +4,7 @@ import { Glyphicon, Col } from 'react-bootstrap';
 import PanelSlot from './PanelSlot';
 
 export default class PanelGroup extends TrackerReact(React.Component) {
-  constructor( props ) {
+  constructor(props) {
     super(props);
   }
 
@@ -19,7 +19,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
           <Glyphicon glyph='plus'/>
         </div>
       );
-    } else if ( this.props.groupType === 'button-widget' ) {
+    } else if (this.props.groupType === 'button-widget') {
       const buttonStyle = {
         height: '15vh',
         width: '85%',

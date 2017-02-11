@@ -15,7 +15,7 @@ import MyPage from '../../ui/pages/MyPage';
 import AddButtonPanel from '../../ui/pages/AddButtonPanel';
 import Error404Page from '../../ui/pages/Error404Page';
 
-Meteor.startup( () => {
+Meteor.startup(() => {
   render(
     <Router history={ browserHistory }>
       <Route path='/' component={ LoggedOut }>
@@ -37,6 +37,6 @@ Meteor.startup( () => {
 
       <Route path='*' component={ Error404Page }/>
     </Router>,
-    document.getElementById( 'react-root' )
+    document.getElementById('react-root')
   );
 });

@@ -8,7 +8,7 @@ export default class GwTemperature extends React.Component {
   }
 
   getTemperature() {
-    Meteor.call('getTemperature', ( error, result ) => {
+    Meteor.call('getTemperature', (error, result) => {
       if (error) {
         this.setState({ temperatureResponse: '--' });
       } else {

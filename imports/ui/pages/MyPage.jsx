@@ -6,7 +6,7 @@ import { ButtonLayout } from '../../api/button_layout/button_layout';
 
 export default class MyPage extends TrackerReact(React.Component) {
   componentDidMount() {
-    Meteor.call( 'addDataFirstLogin' );
+    Meteor.call('addDataFirstLogin');
   }
 
   buttonLayout() {

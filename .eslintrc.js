@@ -181,6 +181,7 @@ module.exports = {
     'quotes': ['error', 'single'],
     'space-infix-ops': ['error', {'int32Hint': false}],
     'object-curly-spacing': [2, 'always'],
+    'space-in-parens': ['error', 'never'],
 
     /** React **/
     'react/display-name': 0,

@@ -2,7 +2,7 @@ import { HTTP } from 'meteor/http';
 import { ButtonLibrary, ButtonLibrarySchema } from '../../../api/button_library/button_library';
 import { SmartRemoteRegistry } from '../../smart_remote_registry/smart_remote_registry';
 
-const getSmartRemoteIndex = ( buttonObject ) => {
+const getSmartRemoteIndex = (buttonObject) => {
   return SmartRemoteRegistry.findOne({ _id: buttonObject.registryId });
 };
 
@@ -19,7 +19,7 @@ const getPhotonCredentials = () => {
   return userObject[0].photonCredentials;
 };
 
-export const setIrStart = ( spritData0 ) => {
+export const setIrStart = (spritData0) => {
   const photonCredentials = getPhotonCredentials();
   HTTP.post(
     'https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irInsertS',
@@ -32,7 +32,7 @@ export const setIrStart = ( spritData0 ) => {
   );
 };
 
-export const setIr = ( spritData ) => {
+export const setIr = (spritData) => {
   const photonCredentials = getPhotonCredentials();
   HTTP.post(
     'https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irInsert',
@@ -45,7 +45,7 @@ export const setIr = ( spritData ) => {
   );
 };
 
-export const setIrEnd = ( registryIndex ) => {
+export const setIrEnd = (registryIndex) => {
   const photonCredentials = getPhotonCredentials();
   HTTP.post(
     'https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irInsertE',
@@ -66,9 +66,9 @@ const isUniqueButtonTitle = (buttonTitle) => {
 };
 
 Meteor.methods({
-  sendIr: ( buttonObject ) => {
+  sendIr: (buttonObject) => {
     const photonCredentials = getPhotonCredentials();
-    const index = getSmartRemoteIndex( buttonObject ).photonIndex;
+    const index = getSmartRemoteIndex(buttonObject).photonIndex;
     HTTP.post(
       'https://api.particle.io/v1/devices/' + photonCredentials.deviceId + '/irSend',
       {

@@ -23,7 +23,7 @@ const canSendResetPasswordEmail = (userObject) => {
     if (!!userObject.services.password.reset) {
       const tokenDate = userObject.services.password.reset.when;
       const currentTime = moment();
-      const timeDifference = currentTime.diff( tokenDate, 'minutes' );
+      const timeDifference = currentTime.diff(tokenDate, 'minutes');
       if (timeDifference >= 5) {
         return true;
       } else {
@@ -48,10 +48,10 @@ Meteor.methods({
         subject() {
           return i18n.getTranslation('emailTemplates.enrollAccount', 'subject');
         },
-        html( user, url ) {
+        html(user, url) {
           let emailData = {};
           emailData.address = user.emails[0].address;
-          emailData.urlWithoutHash = url.replace( '#/', '' ) + '/' + language;
+          emailData.urlWithoutHash = url.replace('#/', '') + '/' + language;
           emailData.supportEmail = 'support@smart-remote.tech';
           let html  = SSR.render('enrollment', emailData);
           return html;
@@ -86,10 +86,10 @@ Meteor.methods({
         subject() {
           return i18n.getTranslation('emailTemplates.resetPassword', 'subject');
         },
-        html( user, url ) {
+        html(user, url) {
           let emailData = {};
           emailData.address = user.emails[0].address;
-          emailData.urlWithoutHash = url.replace( '#/', '' ) + '/' + language;
+          emailData.urlWithoutHash = url.replace('#/', '') + '/' + language;
           emailData.supportEmail = 'support@smart-remote.tech';
           let html  = SSR.render('resetPassword', emailData);
           return html;
