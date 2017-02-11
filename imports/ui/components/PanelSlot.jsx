@@ -25,7 +25,7 @@ export default class PanelSlot extends TrackerReact(React.Component) {
       buttonId: this.props.buttonId,
     };
 
-    Meteor.call( "addButton", params, ( error ) => {
+    Meteor.call( 'addButton', params, ( error ) => {
       if ( error ) {
         Alert.error(i18n.getTranslation('myPage', 'alert.outOfMemory'), {
           position: 'bottom',
@@ -38,7 +38,7 @@ export default class PanelSlot extends TrackerReact(React.Component) {
   }
 
   sendIr( buttonObject ) {
-    Meteor.call( "sendIr", buttonObject );
+    Meteor.call( 'sendIr', buttonObject );
   }
 
   render() {

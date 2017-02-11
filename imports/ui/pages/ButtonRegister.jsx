@@ -17,11 +17,11 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
   }
 
   startReceiving() {
-    this.setState({receiveState: "receiving"});
+    this.setState({receiveState: 'receiving'});
   }
 
   finishReceiving() {
-    this.setState({receiveState: "received"});
+    this.setState({receiveState: 'received'});
   }
 
   formReset() {
@@ -54,7 +54,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
           timeout: 3000,
         });
         this.formReset();
-        this.setState({receiveState: "receive"});
+        this.setState({receiveState: 'receive'});
       }
       this.setState({processing: false});
     });
@@ -63,7 +63,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
   render() {
     return (
       <div>
-        <Grid className="center button-register-center">
+        <Grid className='center button-register-center'>
           <Validation.components.Form onSubmit={this.handleSubmit.bind(this)} >
             <Row>
               <Col>
@@ -87,17 +87,17 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
               </Col>
             </Row>
                 {
-                  (this.state.receiveState === "received")
+                  (this.state.receiveState === 'received')
                     ? <div>
                         <Row><Col><IrTest /></Col></Row>
                         <Row>
                           <Col>
                             {
                               this.state.processing
-                              ? <Validation.components.Button className="button-style button-register-margin" disabled>
+                              ? <Validation.components.Button className='button-style button-register-margin' disabled>
                                   {i18n.getTranslation('buttonRegister', 'register')}
                                 </Validation.components.Button>
-                              : <Validation.components.Button className="button-style button-register-margin">
+                              : <Validation.components.Button className='button-style button-register-margin'>
                                   {i18n.getTranslation('buttonRegister', 'register')}
                                 </Validation.components.Button>
                             }

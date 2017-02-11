@@ -7,21 +7,21 @@ export default class Header extends React.Component {
   render() {
     let style = {
       header: {
-        display: "flex",
-        alignItems: "center",
-        margin: "20px 0",
+        display: 'flex',
+        alignItems: 'center',
+        margin: '20px 0',
         middle: {
-          marginLeft: "10px",
+          marginLeft: '10px',
         },
         right: {
-          marginRight: "10px",
+          marginRight: '10px',
         },
       },
       h1: {
         margin: 0,
-        fontSize: "18px",
-        color: "#fff",
-        textAlign: "center",
+        fontSize: '18px',
+        color: '#fff',
+        textAlign: 'center',
       },
     };
 

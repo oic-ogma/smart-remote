@@ -7,17 +7,17 @@ export default class CountrySelector extends React.Component {
   render() {
     let style = {
       selector: {
-        color: "#fff",
-        border: "none",
-        borderRadius: "initial",
-        borderBottom: "1px solid #fff",
-        backgroundColor: "rgba(0, 0, 0, 0)",
-        padding: "5px",
-        marginTop: "36px",
-        width: "250px",
+        color: '#fff',
+        border: 'none',
+        borderRadius: 'initial',
+        borderBottom: '1px solid #fff',
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        padding: '5px',
+        marginTop: '36px',
+        width: '250px',
       },
       option: {
-        color: "#000",
+        color: '#000',
       },
     };
     let options = [];
@@ -32,8 +32,8 @@ export default class CountrySelector extends React.Component {
       }
     }
     return (
-      <div className="country-drop-down">
-        <select name="country" style={style.selector}>
+      <div className='country-drop-down'>
+        <select name='country' style={style.selector}>
           {options}
         </select>
       </div>

@@ -18,24 +18,24 @@ import Error404Page from '../../ui/pages/Error404Page';
 Meteor.startup( () => {
   render(
     <Router history={ browserHistory }>
-      <Route path="/" component={LoggedOut}>
+      <Route path='/' component={LoggedOut}>
         <IndexRoute component={Top}/>
-        <Route path="sign-in" component={SignIn}/>
-        <Route path="register" component={Register}/>
-        <Route path="enroll-account/:token/:language" component={EnrollAccount}/>
-        <Route path="forgot-password" component={ForgotPassword}/>
-        <Route path="reset-password/:token/:language" component={ResetPassword}/>
+        <Route path='sign-in' component={SignIn}/>
+        <Route path='register' component={Register}/>
+        <Route path='enroll-account/:token/:language' component={EnrollAccount}/>
+        <Route path='forgot-password' component={ForgotPassword}/>
+        <Route path='reset-password/:token/:language' component={ResetPassword}/>
       </Route>
 
-      <Route path="my-page" component={LoggedIn}>
+      <Route path='my-page' component={LoggedIn}>
         <IndexRoute component={MyPage}/>
-        <Route path=":editMode/:buttonType/:buttonId" component={MyPage}/>
-        <Route path="button-register" component={ButtonRegister}/>
-        <Route path="add-smart-remote" component={AddSmartRemote}/>
-        <Route path="add-button-panel" component={AddButtonPanel}/>
+        <Route path=':editMode/:buttonType/:buttonId' component={MyPage}/>
+        <Route path='button-register' component={ButtonRegister}/>
+        <Route path='add-smart-remote' component={AddSmartRemote}/>
+        <Route path='add-button-panel' component={AddButtonPanel}/>
       </Route>
 
-      <Route path="*" component={Error404Page}/>
+      <Route path='*' component={Error404Page}/>
     </Router>,
     document.getElementById( 'react-root' )
   );

@@ -12,7 +12,7 @@ export default class IrTest extends React.Component {
 
   irTestSend() {
     this.setState({sending: true});
-    Meteor.call("irTestSend");
+    Meteor.call('irTestSend');
     setTimeout(function() { this.setState({sending: false}); }.bind(this), 3000);
   }
 

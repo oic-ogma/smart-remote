@@ -2,7 +2,7 @@ import i18n from 'meteor/universe:i18n';
 import { check } from 'meteor/check';
 import { validate } from 'isemail';
 import { Accounts } from 'meteor/accounts-base';
-import moment from "moment";
+import moment from 'moment';
 
 const setServerLocale = (language) => {
   if (language !== 'ja') {
@@ -52,7 +52,7 @@ Meteor.methods({
           let emailData = {};
           emailData.address = user.emails[0].address;
           emailData.urlWithoutHash = url.replace( '#/', '' ) + '/' + language;
-          emailData.supportEmail = "support@smart-remote.tech";
+          emailData.supportEmail = 'support@smart-remote.tech';
           let html  = SSR.render('enrollment', emailData);
           return html;
         },
@@ -63,7 +63,7 @@ Meteor.methods({
       });
       if (userObject) {
         Accounts.sendEnrollmentEmail(userObject);
-        console.log(address + "にメールが送信された");
+        console.log(address + 'にメールが送信された');
         return userObject;
       } else {
         throw new Meteor.Error('Failed to send.');
@@ -90,7 +90,7 @@ Meteor.methods({
           let emailData = {};
           emailData.address = user.emails[0].address;
           emailData.urlWithoutHash = url.replace( '#/', '' ) + '/' + language;
-          emailData.supportEmail = "support@smart-remote.tech";
+          emailData.supportEmail = 'support@smart-remote.tech';
           let html  = SSR.render('resetPassword', emailData);
           return html;
         },
@@ -100,7 +100,7 @@ Meteor.methods({
         if (err) {
           throw new Meteor.Error(error.reason);
         } else {
-          console.log(address + "にパスワードリセットメールが送信された");
+          console.log(address + 'にパスワードリセットメールが送信された');
         }
       });
     } else {

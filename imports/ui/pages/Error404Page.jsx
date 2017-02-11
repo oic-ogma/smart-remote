@@ -27,13 +27,13 @@ export default class Error404Page extends React.Component {
   render() {
     return (
       <div>
-        <Grid className="center error-404-page">
+        <Grid className='center error-404-page'>
           <Row>
             <Col>
                 <span>{i18n.getTranslation('error404Page', 'topMessage')}</span>
-                <img src="img/404-dog.jpg" className="error-img" />
+                <img src='img/404-dog.jpg' className='error-img' />
                 <span>{i18n.getTranslation('error404Page', 'bottomMessage')}</span>
-                <Link to="/" className="sign-in-link sign-in-button">{i18n.getTranslation('error404Page', 'topPage')}</Link>
+                <Link to='/' className='sign-in-link sign-in-button'>{i18n.getTranslation('error404Page', 'topPage')}</Link>
             </Col>
           </Row>
         </Grid>

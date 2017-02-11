@@ -8,9 +8,9 @@ export default class GwTemperature extends React.Component {
   }
 
   getTemperature() {
-    Meteor.call("getTemperature", ( error, result ) => {
+    Meteor.call('getTemperature', ( error, result ) => {
       if (error) {
-        this.setState({temperatureResponse: "--"});
+        this.setState({temperatureResponse: '--'});
       } else {
         this.setState({temperatureResponse: result});
       }
@@ -32,8 +32,8 @@ export default class GwTemperature extends React.Component {
     if (this.state.temperatureResponse) {
       return (
         <div style={style}>
-          <Glyphicon glyph = "cloud"/>
-          { this.state.temperatureResponse + "℃" }
+          <Glyphicon glyph = 'cloud'/>
+          { this.state.temperatureResponse + '℃' }
         </div>
       );
     } else {

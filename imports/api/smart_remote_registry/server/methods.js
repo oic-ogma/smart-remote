@@ -9,22 +9,22 @@ Meteor.methods({
       for ( let i = 0; i < 50; i++ ) {
         if ( i % 4  === 0 ) {
           groupId++;
-          ButtonLayout.insert({ "buttons": [
+          ButtonLayout.insert({ 'buttons': [
             null,
             null,
             null,
             null,
           ],
-            "groupId": groupId,
-            "type": "button-panel",
-            "userId": Meteor.userId(),
+            'groupId': groupId,
+            'type': 'button-panel',
+            'userId': Meteor.userId(),
           });
         }
 
         SmartRemoteRegistry.insert({
-          "photonIndex": i,
-          "userId": Meteor.userId(),
-          "used": false,
+          'photonIndex': i,
+          'userId': Meteor.userId(),
+          'used': false,
         });
       }
     }

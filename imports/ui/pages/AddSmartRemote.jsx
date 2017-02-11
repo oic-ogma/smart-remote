@@ -29,7 +29,7 @@ export default class AddSmartRemote extends TrackerReact(React.Component) {
   render() {
     return (
       <div>
-        <Grid className="center button-register-center">
+        <Grid className='center button-register-center'>
           <Validation.components.Form onSubmit={this.handleSubmit.bind(this)} >
             <Row>
               <Col>

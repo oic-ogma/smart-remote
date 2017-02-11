@@ -23,7 +23,7 @@ export default class ForgotPassword extends TrackerReact(React.Component) {
           effect: 'genie',
           timeout: 3000,
         });
-      } else if (error.error === "Email already sent") {
+      } else if (error.error === 'Email already sent') {
         Alert.error(i18n.getTranslation('forgotPassword', 'alerts.alreadySent'), {
           position: 'bottom',
           effect: 'genie',
@@ -42,21 +42,21 @@ export default class ForgotPassword extends TrackerReact(React.Component) {
   render() {
     return (
       <div>
-        <Grid className="center forgot-password-center">
+        <Grid className='center forgot-password-center'>
           <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
             <Validation.components.Input
-              id="input-reset-email"
-              type="email"
+              id='input-reset-email'
+              type='email'
               value=''
-              name="email"
+              name='email'
               placeholder={i18n.getTranslation('forgotPassword', 'email')}
               validations={['required', 'email']}
-              className="input-style"
+              className='input-style'
             />
-            <Validation.components.Button className="button-style forgot-password-button">{i18n.getTranslation('forgotPassword', 'reset')}</Validation.components.Button>
+            <Validation.components.Button className='button-style forgot-password-button'>{i18n.getTranslation('forgotPassword', 'reset')}</Validation.components.Button>
           </Validation.components.Form>
         </Grid>
-        <BackButton link="sign-in"/>
+        <BackButton link='sign-in'/>
       </div>
     );
   }

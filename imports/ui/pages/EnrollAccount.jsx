@@ -49,9 +49,9 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
   render() {
     return (
       <div>
-        <div className="center enroll-center">
+        <div className='center enroll-center'>
           <Validation.components.Form onSubmit={this.handleSubmit.bind(this)}>
-            <div className="position">
+            <div className='position'>
               <Validation.components.Input
                 id='input-password'
                 className='input-style'
@@ -61,7 +61,7 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
                 placeholder={i18n.getTranslation('form', 'password')}
                 validations={['required', 'password']}/>
             </div>
-            <div className="position">
+            <div className='position'>
               <Validation.components.Input
                 id='input-confirm-password'
                 className='input-style'
@@ -72,7 +72,7 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
                 validations={['required', 'confirmPassword']}/>
             </div>
             <CountrySelector/>
-            <div className="position">
+            <div className='position'>
               <Validation.components.Input
                 id='input-city'
                 className='input-style'
@@ -82,9 +82,9 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
                 placeholder={i18n.getTranslation('form', 'city')}
                 validations={['required', 'city']}/>
             </div>
-            <Validation.components.Button className="button-style enroll-button">{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
+            <Validation.components.Button className='button-style enroll-button'>{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
           </Validation.components.Form>
-          <BackButton link="register"/>
+          <BackButton link='register'/>
         </div>
       </div>
     );

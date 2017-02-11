@@ -14,15 +14,15 @@ export default class ReceiveIR extends React.Component {
   render() {
     if (this.props.buttonState === 'receive') {
       return (
-        <button type="button" onClick={() => this.receiveIR()} className="button-style receive-button">{i18n.getTranslation('receiveIR', 'receive')}</button>
+        <button type='button' onClick={() => this.receiveIR()} className='button-style receive-button'>{i18n.getTranslation('receiveIR', 'receive')}</button>
       );
     } else if (this.props.buttonState === 'receiving') {
       return (
-        <button type="button" className="button-style receive-button receive-button-padding"><Loading type='bars' color='rgb(255, 255, 255)'/></button>
+        <button type='button' className='button-style receive-button receive-button-padding'><Loading type='bars' color='rgb(255, 255, 255)'/></button>
       );
     } else {
       return (
-        <button type="button" onClick={() => this.receiveIR()} className="button-style receive-button">{i18n.getTranslation('receiveIR', 'retry')}</button>
+        <button type='button' onClick={() => this.receiveIR()} className='button-style receive-button'>{i18n.getTranslation('receiveIR', 'retry')}</button>
       );
     }
   }

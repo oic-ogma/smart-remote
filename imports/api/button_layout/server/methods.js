@@ -12,7 +12,7 @@ const saveIr = ( irData, registryId ) =>{
   let bondIr = irData[0] + irData[1];
 
   let n = 60;
-  let  r = new RegExp( ".{1," + n + "}", "g");
+  let  r = new RegExp( '.{1,' + n + '}', 'g');
   let splitData = bondIr.match(r);
 
   setIrStart(splitData[0]);

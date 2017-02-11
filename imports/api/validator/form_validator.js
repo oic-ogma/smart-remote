@@ -5,11 +5,11 @@ import i18n from 'meteor/universe:i18n';
 
 let style = {
   validationText: {
-    color: "red",
-    fontSize: "12px",
+    color: 'red',
+    fontSize: '12px',
     marginTop: 3,
-    width: "250px",
-    position: "absolute",
+    width: '250px',
+    position: 'absolute',
   },
 };
 
@@ -55,7 +55,7 @@ Object.assign(Validation.rules, {
       return password.value === confirmPassword.value;
     },
     hint: () => {
-      return <p className="form-error is-visible" style={style.validationText}>{i18n.getTranslation('validator', 'confirmPassword')}</p>;
+      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'confirmPassword')}</p>;
     },
   },
   confirmEmail: {
@@ -72,7 +72,7 @@ Object.assign(Validation.rules, {
       return email.value === confirmEmail.value;
     },
     hint: () => {
-      return <p className="form-error is-visible" style={style.validationText}>{i18n.getTranslation('validator', 'confirmEmail')}</p>;
+      return <p className='form-error is-visible' style={style.validationText}>{i18n.getTranslation('validator', 'confirmEmail')}</p>;
     },
   },
   deviceId: {

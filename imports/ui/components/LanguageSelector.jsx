@@ -5,26 +5,26 @@ import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 export default class LanguageSelector extends TrackerReact(React.Component) {
   setLocaleLanguage(language) {
-    if ( language === "ja" ) {
-      i18n.setLocale( "ja" );
+    if ( language === 'ja' ) {
+      i18n.setLocale( 'ja' );
     } else {
-      i18n.setLocale( "en" );
+      i18n.setLocale( 'en' );
     }
   }
 
   getLanguage() {
     const bufferLang = i18n.getLanguageName();
-    let lang = "";
+    let lang = '';
 
-    if ( bufferLang === "Japanese"
-         || bufferLang === "JAPANESE"
-         || bufferLang === "ja"
-         || bufferLang === "Japanese (Japan)"
-         || bufferLang === "JA"
-         || bufferLang === "ja-JP" ) {
-      lang = "ja";
+    if ( bufferLang === 'Japanese'
+         || bufferLang === 'JAPANESE'
+         || bufferLang === 'ja'
+         || bufferLang === 'Japanese (Japan)'
+         || bufferLang === 'JA'
+         || bufferLang === 'ja-JP' ) {
+      lang = 'ja';
     } else {
-      lang = "en";
+      lang = 'en';
     }
     return lang;
   }
@@ -32,10 +32,10 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
   generateTitle() {
     let style = {
       languageStyle: {
-        color: "#fff",
+        color: '#fff',
       },
       iconStyle: {
-        marginRight: "3px",
+        marginRight: '3px',
       },
     };
     return (
@@ -53,8 +53,8 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
   render() {
     let style = {
       buttonStyle: {
-        backgroundColor: "rgba(0, 0, 0, 0)",
-        borderStyle: "none",
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        borderStyle: 'none',
       },
     };
 
@@ -67,8 +67,8 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
             id='language-selector'
             style={style.buttonStyle}
             >
-            <MenuItem id="lang-ja" onClick={() => this.setLocaleLanguage("ja")}>ja</MenuItem>
-            <MenuItem id="lang-en" onClick={() => this.setLocaleLanguage("en")}>en</MenuItem>
+            <MenuItem id='lang-ja' onClick={() => this.setLocaleLanguage('ja')}>ja</MenuItem>
+            <MenuItem id='lang-en' onClick={() => this.setLocaleLanguage('en')}>en</MenuItem>
           </DropdownButton>
         </div>
       );

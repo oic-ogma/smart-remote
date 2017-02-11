@@ -12,8 +12,8 @@ describe('パスワードリセット @watch', function() {
   });
 
   it('登録されてないメールアドレスを入力したらエラーメッセージが表示される。', function() {
-    browser.waitForExist("#input-reset-email");
-    browser.setValue("#input-reset-email", faker.internet.email());
+    browser.waitForExist('#input-reset-email');
+    browser.setValue('#input-reset-email', faker.internet.email());
     browser.waitForExist('.forgot-password-button');
     browser.click('.forgot-password-button');
 
