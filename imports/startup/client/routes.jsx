@@ -25,7 +25,7 @@ Meteor.startup( () => {
       <Route path="forgot-password" component={ForgotPassword}/>
       <Route path="reset-password/:token/:language" component={ResetPassword}/>
       <Route path="my-page" component={MyPage}/>
-      <Route path="my-page/:editMode/:buttonType/:buttonId" component={MyPage}/>
+      <Route path="my-page/:mode/:buttonType/:buttonId" component={MyPage}/>
       <Route path="add-button-panel" component={AddButtonPanel}/>
       <Route path="*" component={Error404Page}/>
     </Router>,

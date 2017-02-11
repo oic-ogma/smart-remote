@@ -42,7 +42,7 @@ export default class MyPage extends TrackerReact(React.Component) {
               <Col sm={6} md={6}>
               <PanelGroup
                 groupId={buttonLayoutSingle.groupId}
-                editMode={this.props.params.editMode}
+                mode={this.props.params.mode}
                 buttonType={this.props.params.buttonType}
                 groupType={buttonLayoutSingle.type}
                 buttonArray={buttonLayoutSingle.buttons}
