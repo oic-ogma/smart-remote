@@ -185,7 +185,7 @@ module.exports = {
     /** React **/
     'react/display-name': 0,
     'react/jsx-curly-spacing': [2, 'always'],
-    'react/jsx-equals-spacing': [2, 'always'],
+    'react/jsx-equals-spacing': [2, 'never'],
     'react/jsx-indent': [2, 'tab'| 2],
     'react/jsx-wrap-multilines': 2,
   }

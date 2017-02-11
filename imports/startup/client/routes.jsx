@@ -29,7 +29,7 @@ Meteor.startup( () => {
 
       <Route path='my-page' component={LoggedIn}>
         <IndexRoute component={MyPage}/>
-        <Route path=':editMode/:buttonType/:buttonId' component={MyPage}/>
+        <Route path=':mode/:buttonType/:buttonId' component={MyPage}/>
         <Route path='button-register' component={ButtonRegister}/>
         <Route path='add-smart-remote' component={AddSmartRemote}/>
         <Route path='add-button-panel' component={AddButtonPanel}/>
