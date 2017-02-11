@@ -59,9 +59,8 @@ export default class Register extends TrackerReact(React.Component) {
               placeholder={ i18n.getTranslation('form', 'confirmEmail') }
               validations={ ['confirmEmail'] }
               className='input-style'/>
-            <Validation.components.Button
-              className='button-style register-button'>
-              {i18n.getTranslation('form', 'registerBtn')}
+            <Validation.components.Button className='button-style register-button'>
+              { i18n.getTranslation('form', 'registerBtn') }
             </Validation.components.Button>
           </Validation.components.Form>
           <BackButton link='sign-in'/>

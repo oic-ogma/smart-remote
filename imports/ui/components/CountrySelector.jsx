@@ -3,7 +3,6 @@ import { countryList } from './country_list/country_list';
 import { getLanguage } from '../../startup/client/language';
 
 export default class CountrySelector extends React.Component {
-
   render() {
     let style = {
       selector: {
@@ -26,7 +25,7 @@ export default class CountrySelector extends React.Component {
       if (countryListCurrentLang.hasOwnProperty(countryCode)) {
         options.push(
           <option style={ style.option } key={ countryCode } value={ countryCode }>
-            {countryListCurrentLang[countryCode]}
+            { countryListCurrentLang[countryCode] }
           </option>
         );
       }
@@ -34,7 +33,7 @@ export default class CountrySelector extends React.Component {
     return (
       <div className='country-drop-down'>
         <select name='country' style={ style.selector }>
-          {options}
+          { options }
         </select>
       </div>
     );

@@ -53,7 +53,7 @@ export default class AddSmartRemote extends TrackerReact(React.Component) {
             </Row>
             <Row>
               <Col>
-                <Validation.components.Button className='button-style add-photon-button'>{i18n.getTranslation('addPhoton', 'register')}</Validation.components.Button>
+                <Validation.components.Button className='button-style add-photon-button'>{ i18n.getTranslation('addPhoton', 'register') }</Validation.components.Button>
               </Col>
             </Row>
           </Validation.components.Form>

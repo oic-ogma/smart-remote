@@ -3,7 +3,6 @@ import LanguageSelector from './LanguageSelector';
 import { Grid, Col, Row } from 'react-bootstrap';
 
 export default class Header extends React.Component {
-
   render() {
     let style = {
       header: {

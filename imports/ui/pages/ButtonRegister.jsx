@@ -95,10 +95,10 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
                       {
                         this.state.processing ?
                           <Validation.components.Button className='button-style button-register-margin' disabled>
-                            {i18n.getTranslation('buttonRegister', 'register')}
+                            { i18n.getTranslation('buttonRegister', 'register') }
                           </Validation.components.Button> :
                           <Validation.components.Button className='button-style button-register-margin'>
-                            {i18n.getTranslation('buttonRegister', 'register')}
+                            { i18n.getTranslation('buttonRegister', 'register') }
                           </Validation.components.Button>
                       }
                     </Col>

@@ -16,7 +16,7 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
             return (
               <li key={ buttonLibrarySingle._id }>
                 <Link to={ '/my-page/add/panel/' + buttonLibrarySingle._id }>
-                  {buttonLibrarySingle.buttonTitle}
+                  { buttonLibrarySingle.buttonTitle }
                 </Link>
               </li>
             );

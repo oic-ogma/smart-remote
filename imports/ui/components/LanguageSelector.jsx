@@ -66,7 +66,7 @@ export default class LanguageSelector extends TrackerReact(React.Component) {
             noCaret
             id='language-selector'
             style={ style.buttonStyle }
-            >
+          >
             <MenuItem id='lang-ja' onClick={ () => this.setLocaleLanguage('ja') }>ja</MenuItem>
             <MenuItem id='lang-en' onClick={ () => this.setLocaleLanguage('en') }>en</MenuItem>
           </DropdownButton>

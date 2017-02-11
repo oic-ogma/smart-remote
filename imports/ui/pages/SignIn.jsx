@@ -49,15 +49,15 @@ export default class SignIn extends TrackerReact(React.Component) {
               </Col>
             </Row>
             <Row>
-              <Link to='forgot-password' className='forgot-password'>{i18n.getTranslation('signIn', 'forgotPassword')}</Link>
+              <Link to='forgot-password' className='forgot-password'>{ i18n.getTranslation('signIn', 'forgotPassword') }</Link>
             </Row>
             <Row>
-              <button type='submit' className='button-style'>{i18n.getTranslation('form', 'signIn')}</button>
+              <button type='submit' className='button-style'>{ i18n.getTranslation('form', 'signIn') }</button>
             </Row>
           </form>
           <div className='sign-in-box'>
-            <span className='sign-in-message'>{i18n.getTranslation('signIn', 'needAccount')}</span>
-            <Link to='register' className='sign-in-link sign-in-button'>{i18n.getTranslation('signIn', 'signUp')}</Link>
+            <span className='sign-in-message'>{ i18n.getTranslation('signIn', 'needAccount') }</span>
+            <Link to='register' className='sign-in-link sign-in-button'>{ i18n.getTranslation('signIn', 'signUp') }</Link>
           </div>
         </Grid>
         <BackButton link='/'/>

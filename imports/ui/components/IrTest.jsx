@@ -20,7 +20,7 @@ export default class IrTest extends React.Component {
     let disabled = this.state.sending ? 'disabled' : '';
     return (
       <button type='button' className='button-style button-register-margin' onClick={ this.irTestSend } disabled={ disabled }>
-        {i18n.getTranslation('irTest', 'testButton')}
+        { i18n.getTranslation('irTest', 'testButton') }
       </button>
     );
   }

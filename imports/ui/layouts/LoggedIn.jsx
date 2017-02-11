@@ -40,7 +40,7 @@ export default class LoggedIn extends TrackerReact(React.Component) {
         <div>
           <Header/>
           <Slider/>
-          {this.props.children}
+          { this.props.children }
           <Alert stack={ { limit: 1 } } />
         </div>
       );

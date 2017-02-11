@@ -37,7 +37,7 @@ export default class LoggedOut extends TrackerReact(React.Component) {
     return (
       <div>
         <Header/>
-        {childrenWithProps}
+        { childrenWithProps }
         <Alert stack={ { limit: 1 } } />
       </div>
     );

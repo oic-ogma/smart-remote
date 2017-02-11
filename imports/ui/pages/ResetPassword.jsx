@@ -23,7 +23,7 @@ export default class ResetPassword extends TrackerReact(React.Component) {
           effect: 'genie',
           timeout: 3000,
         });
-      } else if (error.reason === 'Token expired' ) {
+      } else if (error.reason === 'Token expired') {
         Alert.error(i18n.getTranslation('resetPassword', 'alerts.tokenExpired'), {
           position: 'bottom',
           effect: 'genie',
@@ -56,7 +56,9 @@ export default class ResetPassword extends TrackerReact(React.Component) {
               placeholder={ i18n.getTranslation('resetPassword', 'newPasswordAgain') }
               validations={ ['required', 'confirmPassword'] }
             />
-            <Validation.components.Button className='button-style reset-password-button'>{i18n.getTranslation('resetPassword', 'update')}</Validation.components.Button>
+            <Validation.components.Button className='button-style reset-password-button'>
+              { i18n.getTranslation('resetPassword', 'update') }
+            </Validation.components.Button>
           </Validation.components.Form>
         </Grid>
         <BackButton link='sign-in'/>

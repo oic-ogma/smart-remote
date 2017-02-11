@@ -16,6 +16,7 @@ export default class BackButton extends React.Component {
     );
   }
 }
+
 BackButton.propTypes = {
   link: React.PropTypes.string.isRequired,
 };

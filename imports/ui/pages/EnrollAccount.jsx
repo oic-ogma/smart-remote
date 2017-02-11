@@ -82,7 +82,7 @@ export default class EnrollAccount extends TrackerReact(React.Component) {
                 placeholder={ i18n.getTranslation('form', 'city') }
                 validations={ ['required', 'city'] }/>
             </div>
-            <Validation.components.Button className='button-style enroll-button'>{i18n.getTranslation('form', 'enrollBtn')}</Validation.components.Button>
+            <Validation.components.Button className='button-style enroll-button'>{ i18n.getTranslation('form', 'enrollBtn') }</Validation.components.Button>
           </Validation.components.Form>
           <BackButton link='register'/>
         </div>
