@@ -24,9 +24,15 @@ export const ButtonLayoutSchema = new SimpleSchema({
     type: [Object],
     label: "レイアウトに登録されているボタンを保存する配列",
   },
-  "buttons.$": {
+  "buttons.$buttonId": {
     type: String,
-    label: "ボタン単品のIDとsmartRemoteRegistryのID",
+    label: "ボタン単品のID",
+    min: 17,
+    max: 17,
+  },
+  "buttons.$.registryId": {
+    type: String,
+    label: "smartRemoteRegistryのID",
     min: 17,
     max: 17,
   },
