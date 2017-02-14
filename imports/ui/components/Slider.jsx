@@ -14,10 +14,8 @@ export default class Slider extends React.Component {
 
   logout(e) {
     e.preventDefault();
-    Meteor.logout((err)=> {
-      if (!err) {
-        browserHistory.push('/sign-in');
-      }
+    Meteor.logout(()=> {
+      browserHistory.push('/sign-in');
     });
   }
 
