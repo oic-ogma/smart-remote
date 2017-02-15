@@ -6,6 +6,6 @@ i18n.addTranslations('ja', {
 
 i18n.addTranslations('en', {
   addButton: {
-    error: 'No buttons added.',
+    error: 'No buttons registered.',
   },
 });
