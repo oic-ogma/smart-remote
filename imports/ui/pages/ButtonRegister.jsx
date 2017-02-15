@@ -33,6 +33,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
     event.preventDefault();
     const buttonTitle = event.target.buttonTitle.value;
     Meteor.call('insertIrData', buttonTitle, (error) => {
+      this.setState({ processing: false });
       if (error) {
         if (error.error === 'Not unique id.') {
           Alert.error(i18n.getTranslation('buttonRegister', 'alerts.notUnique'), {
@@ -48,15 +49,14 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
           });
         }
       } else {
+        this.setState({ receiveState: 'receive' });
+        this.formReset();
         Alert.success(i18n.getTranslation('buttonRegister', 'alerts.success'), {
           position: 'bottom',
           effect: 'genie',
           timeout: 3000,
         });
-        this.formReset();
-        this.setState({ receiveState: 'receive' });
       }
-      this.setState({ processing: false });
     });
   }
 
