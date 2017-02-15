@@ -39,7 +39,7 @@ export default class MyPage extends TrackerReact(React.Component) {
       );
     } else {
       return (
-        <div className='center error-404-page'>
+        <div className='center warning'>
           { i18n.getTranslation('myPage', 'noButtonsAdded') }
         </div>
       );

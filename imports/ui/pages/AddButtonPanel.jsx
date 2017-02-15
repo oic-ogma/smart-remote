@@ -31,7 +31,7 @@ export default class AddButtonPanel extends TrackerReact(React.Component) {
       );
     } else {
       return (
-        <div className='center error-404-page'>
+        <div className='center warning'>
           { i18n.getTranslation('addButton', 'error') }
         </div>
       );
