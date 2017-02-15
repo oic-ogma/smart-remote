@@ -12,7 +12,7 @@ export const ButtonLibrarySchema = new SimpleSchema({
     type: String,
     label: 'ボタン表示するときのタイトル',
     min: 1,
-    max: 12,
+    max: 20,
   },
   irData: {
     type: String,
