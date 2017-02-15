@@ -20,19 +20,18 @@ export default class MyPage extends TrackerReact(React.Component) {
   render() {
     if (this.buttonCount() || this.props.params.mode === 'add') {
       return (
-        <div>
+        <div className='mypage'>
           { this.buttonLayout().map((buttonLayoutSingle) => {
             return (
-              <Col sm={ 6 } md={ 6 } key={ buttonLayoutSingle._id }>
-                <PanelGroup
-                  groupId={ buttonLayoutSingle.groupId }
-                  mode={ this.props.params.mode }
-                  buttonType={ this.props.params.buttonType }
-                  groupType={ buttonLayoutSingle.type }
-                  buttonArray={ buttonLayoutSingle.buttons }
-                  buttonId={ this.props.params.buttonId }
-                />
-              </Col>
+              <PanelGroup
+                key={ buttonLayoutSingle._id }
+                groupId={ buttonLayoutSingle.groupId }
+                mode={ this.props.params.mode }
+                buttonType={ this.props.params.buttonType }
+                groupType={ buttonLayoutSingle.type }
+                buttonArray={ buttonLayoutSingle.buttons }
+                buttonId={ this.props.params.buttonId }
+              />
             );
           })}
         </div>
