@@ -13,13 +13,18 @@ export default class MyPage extends TrackerReact(React.Component) {
     return ButtonLayout.find({}).fetch();
   }
 
+  buttonCount() {
+    return ButtonLayout.find({ 'buttons': { $elemMatch: { $ne: null } } }).count();
+  }
+
   render() {
-    return (
-      <div>
-        { this.buttonLayout().map((buttonLayoutSingle) => {
-          return (
-            <Col sm={ 6 } md={ 6 } key={ buttonLayoutSingle._id }>
+    if (this.buttonCount() || this.props.params.mode === 'add') {
+      return (
+        <div className='mypage'>
+          { this.buttonLayout().map((buttonLayoutSingle) => {
+            return (
               <PanelGroup
+                key={ buttonLayoutSingle._id }
                 groupId={ buttonLayoutSingle.groupId }
                 mode={ this.props.params.mode }
                 buttonType={ this.props.params.buttonType }
@@ -27,11 +32,17 @@ export default class MyPage extends TrackerReact(React.Component) {
                 buttonArray={ buttonLayoutSingle.buttons }
                 buttonId={ this.props.params.buttonId }
               />
-            </Col>
-          );
-        })}
-      </div>
-    );
+            );
+          })}
+        </div>
+      );
+    } else {
+      return (
+        <div className='center warning'>
+          { i18n.getTranslation('myPage', 'noButtonsAdded') }
+        </div>
+      );
+    }
   }
 }
 

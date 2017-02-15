@@ -9,6 +9,25 @@ export default class PanelGroup extends TrackerReact(React.Component) {
   }
 
   render() {
+    let style = {
+      parent: {
+        width: '50%',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        justifyContent: 'space-around',
+        color: '#fff',
+      },
+      child: {
+        width: '100%',
+        height: '50%',
+        textAlign: 'center',
+        marginBottom: '4px',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+      }
+    };
     if (
       this.props.mode === 'add'
       && (this.props.buttonType === 'widget' || this.props.buttonType === 'graph-widget')
@@ -31,8 +50,8 @@ export default class PanelGroup extends TrackerReact(React.Component) {
       );
     } else {
       return (
-        <div>
-          <Col smOffset={ 1 } mdOffset={ 1 } sm={ 5 } md={ 5 }>
+        <div style={ style.parent }>
+          <div style={ style.child }>
             <PanelSlot
               groupId={ this.props.groupId }
               id={ 0 }
@@ -40,9 +59,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
               buttonType={ this.props.buttonType }
               buttonObject={ this.props.buttonArray[0] }
               buttonId={ this.props.buttonId } />
-          </Col>
 
-          <Col sm={ 5 } md={ 5 }>
             <PanelSlot
               groupId={ this.props.groupId }
               id={ 1 }
@@ -50,9 +67,8 @@ export default class PanelGroup extends TrackerReact(React.Component) {
               buttonType={ this.props.buttonType }
               buttonObject={ this.props.buttonArray[1] }
               buttonId={ this.props.buttonId } />
-          </Col>
-
-          <Col smOffset={ 1 } mdOffset={ 1 } sm={ 5 } md={ 5 }>
+          </div>
+          <div style={ style.child }>
             <PanelSlot
             groupId={ this.props.groupId }
             id={ 2 }
@@ -60,9 +76,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
             buttonType={ this.props.buttonType }
             buttonObject={ this.props.buttonArray[2] }
             buttonId={ this.props.buttonId } />
-          </Col>
 
-          <Col sm={ 5 } md={ 5 }>
             <PanelSlot
             groupId={ this.props.groupId }
             id={ 3 }
@@ -70,7 +84,7 @@ export default class PanelGroup extends TrackerReact(React.Component) {
             buttonType={ this.props.buttonType }
             buttonObject={ this.props.buttonArray[3] }
             buttonId={ this.props.buttonId } />
-          </Col>
+          </div>
         </div>
       );
     }

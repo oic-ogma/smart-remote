@@ -5,25 +5,37 @@ import { Link } from 'react-router';
 
 export default class AddButtonPanel extends TrackerReact(React.Component) {
   buttonLibrary() {
-    return ButtonLibrary.find({}).fetch();
+    if (ButtonLibrary.find({}).count()) {
+      return ButtonLibrary.find({}).fetch();
+    } else {
+      return null;
+    }
   }
 
   render() {
-    return (
-      <div>
-        <ul className='add-button-panel-lists'>
-          { this.buttonLibrary().map((buttonLibrarySingle) => {
-            return (
-              <li key={ buttonLibrarySingle._id }>
-                <Link to={ '/my-page/add/panel/' + buttonLibrarySingle._id }>
-                  { buttonLibrarySingle.buttonTitle }
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    );
+    if (this.buttonLibrary()) {
+      return (
+        <div>
+          <ul className='add-button-panel-lists'>
+            { this.buttonLibrary().map((buttonLibrarySingle) => {
+              return (
+                <li key={ buttonLibrarySingle._id }>
+                  <Link to={ '/my-page/add/panel/' + buttonLibrarySingle._id }>
+                    { buttonLibrarySingle.buttonTitle }
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <div className='center warning'>
+          { i18n.getTranslation('addButton', 'error') }
+        </div>
+      );
+    }
   }
 }
 
