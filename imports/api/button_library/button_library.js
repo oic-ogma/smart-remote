@@ -4,23 +4,19 @@ export const ButtonLibrary = new Mongo.Collection('buttonLibrary');
 export const ButtonLibrarySchema = new SimpleSchema({
   userId: {
     type: String,
-    label: "ユーザーID",
+    label: 'ユーザーID',
     min: 17,
     max: 17,
   },
   buttonTitle: {
     type: String,
-    label: "ボタン表示するときのタイトル",
+    label: 'ボタン表示するときのタイトル',
     min: 1,
     max: 12,
   },
   irData: {
-    type: [String],
-    label: "赤外線情報が保存される配列",
-  },
-  "irData.$": {
     type: String,
-    label: "赤外線情報",
-    max: 622,
+    label: '赤外線情報',
+    max: 1000,
   },
 });

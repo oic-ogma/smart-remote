@@ -4,7 +4,7 @@ import { Glyphicon, Col } from 'react-bootstrap';
 import PanelSlot from './PanelSlot';
 
 export default class PanelGroup extends TrackerReact(React.Component) {
-  constructor( props ) {
+  constructor(props) {
     super(props);
   }
 
@@ -19,56 +19,56 @@ export default class PanelGroup extends TrackerReact(React.Component) {
           <Glyphicon glyph='plus'/>
         </div>
       );
-    } else if ( this.props.groupType === 'button-widget' ) {
+    } else if (this.props.groupType === 'button-widget') {
       const buttonStyle = {
         height: '15vh',
         width: '85%',
       };
       return (
         <div>
-          <Col><button style={buttonStyle} className = 'button-style'>widget</button></Col>
+          <Col><button style={ buttonStyle } className='button-style'>widget</button></Col>
         </div>
       );
     } else {
       return (
         <div>
-          <Col smOffset={1} mdOffset={1} sm={5} md={5}>
+          <Col smOffset={ 1 } mdOffset={ 1 } sm={ 5 } md={ 5 }>
             <PanelSlot
-              groupId={this.props.groupId}
-              id={0}
-              mode={this.props.mode}
-              buttonType={this.props.buttonType}
-              buttonObject={this.props.buttonArray[0]}
+              groupId={ this.props.groupId }
+              id={ 0 }
+              mode={ this.props.mode }
+              buttonType={ this.props.buttonType }
+              buttonObject={ this.props.buttonArray[0] }
               buttonId={ this.props.buttonId } />
           </Col>
 
-          <Col sm={5} md={5}>
+          <Col sm={ 5 } md={ 5 }>
             <PanelSlot
-              groupId={this.props.groupId}
-              id={1}
-              mode={this.props.mode}
-              buttonType={this.props.buttonType}
-              buttonObject={this.props.buttonArray[1]}
+              groupId={ this.props.groupId }
+              id={ 1 }
+              mode={ this.props.mode }
+              buttonType={ this.props.buttonType }
+              buttonObject={ this.props.buttonArray[1] }
               buttonId={ this.props.buttonId } />
           </Col>
 
-          <Col smOffset={1} mdOffset={1} sm={5} md={5}>
+          <Col smOffset={ 1 } mdOffset={ 1 } sm={ 5 } md={ 5 }>
             <PanelSlot
-            groupId={this.props.groupId}
-            id={2}
-            mode={this.props.mode}
-            buttonType={this.props.buttonType}
-            buttonObject={this.props.buttonArray[2]}
+            groupId={ this.props.groupId }
+            id={ 2 }
+            mode={ this.props.mode }
+            buttonType={ this.props.buttonType }
+            buttonObject={ this.props.buttonArray[2] }
             buttonId={ this.props.buttonId } />
           </Col>
 
-          <Col sm={5} md={5}>
+          <Col sm={ 5 } md={ 5 }>
             <PanelSlot
-            groupId={this.props.groupId}
-            id={3}
-            mode={this.props.mode}
-            buttonType={this.props.buttonType}
-            buttonObject={this.props.buttonArray[3]}
+            groupId={ this.props.groupId }
+            id={ 3 }
+            mode={ this.props.mode }
+            buttonType={ this.props.buttonType }
+            buttonObject={ this.props.buttonArray[3] }
             buttonId={ this.props.buttonId } />
           </Col>
         </div>

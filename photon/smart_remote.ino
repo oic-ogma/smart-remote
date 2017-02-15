@@ -1,14 +1,14 @@
 // This #include statement was automatically added by the Particle IDE.
-#include "Adafruit_BMP085/Adafruit_BMP085.h"
+#include 'Adafruit_BMP085/Adafruit_BMP085.h'
 #define indexNumber 600
 Adafruit_BMP085 sensor;
 
-String irSendDataBuff = "";
-String irData1 = "";
-String irData2 = "";
-String temperature = "";
-String pressure = "";
-String motion = "";
+String irSendDataBuff = '';
+String irData1 = '';
+String irData2 = '';
+String temperature = '';
+String pressure = '';
+String motion = '';
 char irSendData[50][1000];
 unsigned long motionTime;
 
@@ -24,23 +24,23 @@ void setup() {
   // irSend
   pinMode(D3, OUTPUT);
 
-  Particle.function("irReceive", irReceive);
-  Particle.function("irSend", irSend);
-  Particle.function("irAddData",irAddData);
-  Particle.function("irTestSend",irTestSend);
+  Particle.function('irReceive', irReceive);
+  Particle.function('irSend', irSend);
+  Particle.function('irAddData',irAddData);
+  Particle.function('irTestSend',irTestSend);
 
-  Particle.variable("irData1",irData1);
-  Particle.variable("irData2",irData2);
-  Particle.variable("temperature",temperature);
-  Particle.variable("pressure",pressure);
-  Particle.variable("motion",motion);
+  Particle.variable('irData1',irData1);
+  Particle.variable('irData2',irData2);
+  Particle.variable('temperature',temperature);
+  Particle.variable('pressure',pressure);
+  Particle.variable('motion',motion);
 
   motionTime = millis();
 
   // Initialize Sensor BMP180
   // this delete will be usage fault!not delete!!
   if (!sensor.begin()) {
-    Serial.println("No sensor found, please check wiring!");
+    Serial.println('No sensor found, please check wiring!');
     while (1) {}
   }
 }
@@ -50,12 +50,12 @@ void loop() {
   // motion sensor
   if (motionTime < millis()) {
     if (analogRead(A0) > 2000) {
-      motion = "1";
-      Particle.variable("motion", motion);
+      motion = '1';
+      Particle.variable('motion', motion);
       motionTime = millis() + 30000;
     } else {
-      motion = "0";
-      Particle.variable("motion", motion);
+      motion = '0';
+      Particle.variable('motion', motion);
       motionTime = millis();
     }
   }
@@ -138,15 +138,15 @@ int irAddData(String irData) {
     return 1;
   }
   char buff[1000];
-  irSendDataBuff = "";
+  irSendDataBuff = '';
   irSendDataBuff = String(irSendData[index]);
 
   irData.remove(0,1);
-  if (irData.charAt(0) != 44 && irSendDataBuff.charAt(irSendDataBuff.length()-1) != 44 && irSendDataBuff != "") {
-    irSendDataBuff += ",";
+  if (irData.charAt(0) != 44 && irSendDataBuff.charAt(irSendDataBuff.length()-1) != 44 && irSendDataBuff != '') {
+    irSendDataBuff += ',';
   }
   if (irData.charAt(0) == 44 && irSendDataBuff.charAt(irSendDataBuff.length()-1) == 44) {
-    irSendDataBuff += "0";
+    irSendDataBuff += '0';
   }
   irSendDataBuff += irData;
   irSendDataBuff.toCharArray(irSendData[index], 1000);
@@ -159,7 +159,7 @@ int irSend(String index) {
   }
   else {
     String charsConvertString = String(irSendData[index.toInt()]);
-    Particle.publish("irData",charsConvertString);
+    Particle.publish('irData',charsConvertString);
     char stringConvertChars[1000];
     charsConvertString.toCharArray(stringConvertChars, charsConvertString.length());
     int irDataInt[400]={0};
@@ -218,7 +218,7 @@ int irSend(String index) {
     		delayMicroseconds(7);
     	} while (timeLength > micros() - timeStart);
     }
-    Particle.publish("Send","send");
+    Particle.publish('Send','send');
     return 0;
   }
 }
@@ -227,7 +227,7 @@ int irTestSend(String command)
 {
   digitalWrite(D6, HIGH);
   String charsConvertString = irData1 + irData2;
-  Particle.publish("irData",charsConvertString);
+  Particle.publish('irData',charsConvertString);
   char stringConvertChars[1000];
   charsConvertString.toCharArray(stringConvertChars, charsConvertString.length());
   int irDataInt[400]={0};
@@ -290,15 +290,15 @@ int irTestSend(String command)
 }
 
 int irReceive(String command) {
-  irData1 = "";
-  irData2 = "";
+  irData1 = '';
+  irData2 = '';
 	unsigned long time;
 	unsigned long mill;
   static int state_prev = HIGH;
   static unsigned long microsTime_prev = 0;
   digitalWrite(D6, HIGH);
   time = millis() + 5000;
-  Particle.publish("start",(String)time);
+  Particle.publish('start',(String)time);
   int state;
   int flag = 0;
   int count = 0;
@@ -310,11 +310,11 @@ int irReceive(String command) {
 	    if (flag > 0) {
 	      if (count<200) {
           irData1 = String(irData1+(String)((microsTime - microsTime_prev)/100));
-          irData1 = String(irData1+",");
+          irData1 = String(irData1+',');
 	      }
         else {
           irData2 = String(irData2+(String)((microsTime - microsTime_prev)/100));
-	        irData2 = String(irData2+",");
+	        irData2 = String(irData2+',');
 	      }
 	      count += 1;
 	    }
@@ -325,8 +325,8 @@ int irReceive(String command) {
       break;
     }
   }
-  Particle.variable("irData1",irData1);
-  Particle.variable("irData2",irData2);
+  Particle.variable('irData1',irData1);
+  Particle.variable('irData2',irData2);
   digitalWrite(D6, LOW);
   return 0;
 }
@@ -334,6 +334,6 @@ int irReceive(String command) {
 void PublishSensorInfo() {
   temperature = String((int)sensor.readTemperature() - 10);
   pressure = String(sensor.readPressure()/100.0);
-  Particle.variable("temperature", temperature);
-  Particle.variable("pressure", pressure);
+  Particle.variable('temperature', temperature);
+  Particle.variable('pressure', pressure);
 }

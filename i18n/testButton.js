@@ -1,11 +1,11 @@
 i18n.addTranslations('en', {
   irTest: {
-    testButton: "Test send",
+    testButton: 'Test send',
   },
 });
 
 i18n.addTranslations('ja', {
   irTest: {
-    testButton: "テスト送信",
+    testButton: 'テスト送信',
   },
 });
