@@ -24,7 +24,7 @@ export const ButtonLayoutSchema = new SimpleSchema({
     type: [Object],
     label: "レイアウトに登録されているボタンを保存する配列",
   },
-  "buttons.$buttonId": {
+  "buttons.$.buttonId": {
     type: String,
     label: "ボタン単品のID",
     min: 17,
