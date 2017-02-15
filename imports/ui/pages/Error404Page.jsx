@@ -27,7 +27,7 @@ export default class Error404Page extends React.Component {
   render() {
     return (
       <div>
-        <Grid className='center error-404-page'>
+        <Grid className='center warning'>
           <Row>
             <Col>
               <span>{ i18n.getTranslation('error404Page', 'topMessage') }</span>

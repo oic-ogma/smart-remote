@@ -4,3 +4,5 @@ run/settings.json
 dev_bundle
 package.tar.gz
 .vscode/launch.json
+client.sh
+.vscode/settings.json
