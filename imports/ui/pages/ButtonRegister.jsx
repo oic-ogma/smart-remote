@@ -125,7 +125,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
     } else {
       return (
         <div>
-          <Grid className='center error-404-page'>
+          <Grid className='center warning'>
             <Row>
               <Col xsOffset={ 1 } xs={ 10 } mdOffset={ 1 } md={ 10 }>
                 <span>{ i18n.getTranslation('buttonRegister', 'error') }</span>
