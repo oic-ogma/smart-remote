@@ -1,5 +1,6 @@
 i18n.addTranslations('en', {
   slider: {
+    myPage: 'My page',
     addButton: 'Add button',
     registerButton: 'Register button',
     addSmartRemote: 'Add smart remote',
@@ -9,6 +10,7 @@ i18n.addTranslations('en', {
 
 i18n.addTranslations('ja', {
   slider: {
+    myPage: 'マイページ',
     addButton: 'ボタンを追加',
     registerButton: 'ボタンを登録',
     addSmartRemote: 'スマートリモートを追加',

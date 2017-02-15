@@ -58,6 +58,10 @@ export default class Slider extends React.Component {
     return (
       <div>
         <Menu styles={ styles } onStateChange={ this.isMenuOpen } isOpen={ false }>
+          <RadiumLink id='my-page'  className='slider-font' style={ { textDecoration: 'none' } } to='/my-page'>
+            { i18n.getTranslation('slider', 'myPage') }
+          </RadiumLink>
+
           <RadiumLink id='button-register'  className='slider-font' style={ { textDecoration: 'none' } } to='/my-page/button-register'>
             { i18n.getTranslation('slider', 'registerButton') }
           </RadiumLink>
