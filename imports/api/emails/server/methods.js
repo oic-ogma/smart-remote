@@ -2,7 +2,7 @@ import i18n from 'meteor/universe:i18n';
 import { check } from 'meteor/check';
 import { validate } from 'isemail';
 import { Accounts } from 'meteor/accounts-base';
-import moment from "moment";
+import moment from 'moment';
 
 const setServerLocale = (language) => {
   if (language !== 'ja') {
@@ -23,7 +23,7 @@ const canSendResetPasswordEmail = (userObject) => {
     if (!!userObject.services.password.reset) {
       const tokenDate = userObject.services.password.reset.when;
       const currentTime = moment();
-      const timeDifference = currentTime.diff( tokenDate, 'minutes' );
+      const timeDifference = currentTime.diff(tokenDate, 'minutes');
       if (timeDifference >= 5) {
         return true;
       } else {
@@ -48,22 +48,22 @@ Meteor.methods({
         subject() {
           return i18n.getTranslation('emailTemplates.enrollAccount', 'subject');
         },
-        html( user, url ) {
+        html(user, url) {
           let emailData = {};
           emailData.address = user.emails[0].address;
-          emailData.urlWithoutHash = url.replace( '#/', '' ) + '/' + language;
-          emailData.supportEmail = "support@smart-remote.tech";
-          let html  = SSR.render('enrollment', emailData);
+          emailData.urlWithoutHash = url.replace('#/', '') + '/' + language;
+          emailData.supportEmail = 'support@smart-remote.tech';
+          const html  = SSR.render('enrollment', emailData);
           return html;
         },
       };
 
-      let userObject = Accounts.createUser({
+      const userObject = Accounts.createUser({
         email: address,
       });
       if (userObject) {
         Accounts.sendEnrollmentEmail(userObject);
-        console.log(address + "にメールが送信された");
+        console.log(address + 'にメールが送信された');
         return userObject;
       } else {
         throw new Meteor.Error('Failed to send.');
@@ -76,7 +76,7 @@ Meteor.methods({
   sendForgotPasswordEmail: (language, address) => {
     check(language, String);
     check(address, String);
-    const userObject = Meteor.users.findOne({'emails.address': address});
+    const userObject = Meteor.users.findOne({ 'emails.address': address });
     const canSend = canSendResetPasswordEmail(userObject);
     if (canSend) {
       setServerLocale(language);
@@ -86,12 +86,12 @@ Meteor.methods({
         subject() {
           return i18n.getTranslation('emailTemplates.resetPassword', 'subject');
         },
-        html( user, url ) {
+        html(user, url) {
           let emailData = {};
           emailData.address = user.emails[0].address;
-          emailData.urlWithoutHash = url.replace( '#/', '' ) + '/' + language;
-          emailData.supportEmail = "support@smart-remote.tech";
-          let html  = SSR.render('resetPassword', emailData);
+          emailData.urlWithoutHash = url.replace('#/', '') + '/' + language;
+          emailData.supportEmail = 'support@smart-remote.tech';
+          const html  = SSR.render('resetPassword', emailData);
           return html;
         },
       };
@@ -100,7 +100,7 @@ Meteor.methods({
         if (err) {
           throw new Meteor.Error(error.reason);
         } else {
-          console.log(address + "にパスワードリセットメールが送信された");
+          console.log(address + 'にパスワードリセットメールが送信された');
         }
       });
     } else {

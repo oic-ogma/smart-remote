@@ -3,7 +3,7 @@
 
 machine:
   environment:
-    _JAVA_OPTIONS: "-Xms512m -Xmx1024m"
+    _JAVA_OPTIONS: '-Xms512m -Xmx1024m'
     METEOR_CMD: ${HOME}/.meteor/meteor
     CHIMP_PATH: ./node_modules/.bin/
     CHIMP_CMD: ./node_modules/.bin/chimp
@@ -15,8 +15,8 @@ machine:
 dependencies:
   cache_directories:
     - ~/.meteor
-    - "~/.npm"
-    - "/opt/circleci/nodejs/v4.4.7/lib/node_modules"
+    - '~/.npm'
+    - '/opt/circleci/nodejs/v4.4.7/lib/node_modules'
 
   pre:
     - mkdir -p ~/.meteor

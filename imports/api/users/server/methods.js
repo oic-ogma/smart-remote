@@ -1,5 +1,11 @@
 import { Profile, PhotonCredentials } from '../users';
+
 Meteor.methods({
+  checkPhotonCredentials: () =>{
+    if (!Meteor.user().photonCredentials) {
+      throw new Meteor.Error('error');
+    }
+  },
   addEnrollmentInfo: (params) => {
     Profile.validate(params);
     Meteor.users.update(
