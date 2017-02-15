@@ -13,7 +13,18 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
     this.state = {
       receiveState: 'receive',
       processing: false,
+      hasPhotonCredentials: false,
     };
+  }
+
+  componentWillMount() {
+    Meteor.call('checkPhotonCredentials', (error) => {
+      if (error) {
+        this.setState({ hasPhotonCredentials: false });
+      } else {
+        this.setState({ hasPhotonCredentials: true });
+      }
+    });
   }
 
   startReceiving() {
@@ -61,54 +72,68 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
   }
 
   render() {
-    return (
-      <div>
-        <Grid className='center button-register-center'>
-          <Validation.components.Form onSubmit={ this.handleSubmit.bind(this) } >
+    if (this.state.hasPhotonCredentials) {
+      return (
+        <div>
+          <Grid className='center button-register-center'>
+            <Validation.components.Form onSubmit={ this.handleSubmit.bind(this) } >
+              <Row>
+                <Col>
+                  <Validation.components.Input
+                    id='input-button-title'
+                    className='input-style'
+                    type='text'
+                    name='buttonTitle'
+                    value=''
+                    placeholder={ i18n.getTranslation('buttonRegister', 'buttonTitle') }
+                    validations={ ['required', 'buttonTitle'] }/>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <ReceiveIR
+                    buttonState={ this.state.receiveState }
+                    startReceiving={ () => this.startReceiving() }
+                    finishReceiving={ () => this.finishReceiving() }
+                  />
+                </Col>
+              </Row>
+              {
+                (this.state.receiveState === 'received') ?
+                  <div>
+                    <Row><Col><IrTest /></Col></Row>
+                    <Row>
+                      <Col>
+                        {
+                          this.state.processing ?
+                            <Validation.components.Button className='button-style button-register-margin' disabled>
+                              { i18n.getTranslation('buttonRegister', 'register') }
+                            </Validation.components.Button> :
+                            <Validation.components.Button className='button-style button-register-margin'>
+                              { i18n.getTranslation('buttonRegister', 'register') }
+                            </Validation.components.Button>
+                        }
+                      </Col>
+                    </Row>
+                  </div> :
+                  null
+              }
+            </Validation.components.Form>
+          </Grid>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Grid className='center warning'>
             <Row>
-              <Col>
-                <Validation.components.Input
-                  id='input-button-title'
-                  className='input-style'
-                  type='text'
-                  name='buttonTitle'
-                  value=''
-                  placeholder={ i18n.getTranslation('buttonRegister', 'buttonTitle') }
-                  validations={ ['required', 'buttonTitle'] }/>
+              <Col xsOffset={ 1 } xs={ 10 } mdOffset={ 1 } md={ 10 }>
+                <span>{ i18n.getTranslation('buttonRegister', 'error') }</span>
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <ReceiveIR
-                  buttonState={ this.state.receiveState }
-                  startReceiving={ () => this.startReceiving() }
-                  finishReceiving={ () => this.finishReceiving() }
-                />
-              </Col>
-            </Row>
-            {
-              (this.state.receiveState === 'received') ?
-                <div>
-                  <Row><Col><IrTest /></Col></Row>
-                  <Row>
-                    <Col>
-                      {
-                        this.state.processing ?
-                          <Validation.components.Button className='button-style button-register-margin' disabled>
-                            { i18n.getTranslation('buttonRegister', 'register') }
-                          </Validation.components.Button> :
-                          <Validation.components.Button className='button-style button-register-margin'>
-                            { i18n.getTranslation('buttonRegister', 'register') }
-                          </Validation.components.Button>
-                      }
-                    </Col>
-                  </Row>
-                </div> :
-                null
-            }
-          </Validation.components.Form>
-        </Grid>
-      </div>
-    );
+          </Grid>
+        </div>
+      );
+    }
   }
 }
