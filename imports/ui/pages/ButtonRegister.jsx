@@ -13,7 +13,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
     this.state = {
       receiveState: 'receive',
       processing: false,
-      hasPhotonCredentials: false,
+      hasPhotonCredentials: undefined,
     };
   }
 
@@ -122,7 +122,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
           </Grid>
         </div>
       );
-    } else {
+    } else if (this.state.hasPhotonCredentials === false) {
       return (
         <div>
           <Grid className='center warning'>
@@ -134,6 +134,8 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
           </Grid>
         </div>
       );
+    } else {
+      return null;
     }
   }
 }
