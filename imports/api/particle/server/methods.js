@@ -2,6 +2,14 @@ import { HTTP } from 'meteor/http';
 import { ButtonLibrary, ButtonLibrarySchema } from '../../../api/button_library/button_library';
 import { SmartRemoteRegistry } from '../../smart_remote_registry/smart_remote_registry';
 
+export const validatePhotonCredentials = (accessToken) => {
+  if (HTTP.call('GET', 'https://api.particle.io/v1/devices\?access_token=' + accessToken)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const getSmartRemoteIndex = (buttonObject) => {
   return SmartRemoteRegistry.findOne({ _id: buttonObject.registryId });
 };

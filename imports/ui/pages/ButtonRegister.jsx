@@ -18,7 +18,7 @@ export default class ButtonRegister extends TrackerReact(React.Component) {
   }
 
   componentWillMount() {
-    Meteor.call('checkPhotonCredentials', (error) => {
+    Meteor.call('hasPhotonCredentials', (error) => {
       if (error) {
         this.setState({ hasPhotonCredentials: false });
       } else {

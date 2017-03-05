@@ -4,7 +4,10 @@ i18n.addTranslations('en', {
     deviceId: 'Device ID',
     accessToken: 'Access token',
     register: 'Register',
-    success: 'Successfully registered Photon device!',
+    alerts: {
+      success: 'Successfully registered Photon device!',
+      invalidToken: 'Invalid access token.',
+    },
   },
 });
 
@@ -14,6 +17,9 @@ i18n.addTranslations('ja', {
     deviceId: 'デバイスID',
     accessToken: 'アクセストークン',
     register: '登録',
-    success: '正常にPhotonの登録できました。',
+    alerts: {
+      success: '正常にPhotonの登録できました。',
+      invalidToken: 'アクセストークンが間違っています。',
+    },
   },
 });

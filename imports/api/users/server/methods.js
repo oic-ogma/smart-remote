@@ -1,7 +1,8 @@
 import { Profile, PhotonCredentials } from '../users';
+import { validatePhotonCredentials } from '../../particle/server/methods';
 
 Meteor.methods({
-  checkPhotonCredentials: () =>{
+  hasPhotonCredentials: () =>{
     if (!Meteor.user().photonCredentials) {
       throw new Meteor.Error('error');
     }
@@ -23,16 +24,20 @@ Meteor.methods({
   },
   addPhotonInfo: (params) => {
     PhotonCredentials.validate(params);
-    Meteor.users.update(
-      Meteor.userId(),
-      {
-        $set: {
-          photonCredentials: {
-            'deviceId': params.deviceId,
-            'accessToken': params.accessToken,
+    if (validatePhotonCredentials(params.accessToken)) {
+      Meteor.users.update(
+        Meteor.userId(),
+        {
+          $set: {
+            photonCredentials: {
+              'deviceId': params.deviceId,
+              'accessToken': params.accessToken,
+            },
           },
-        },
-      }
-    );
+        }
+      );
+    } else {
+      throw new Meteor.Error('Invalid access token.');
+    }
   },
 });

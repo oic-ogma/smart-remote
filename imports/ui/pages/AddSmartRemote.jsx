@@ -17,7 +17,13 @@ export default class AddSmartRemote extends TrackerReact(React.Component) {
       if (!error) {
         document.getElementById('input-device-id').value = '';
         document.getElementById('input-access-token').value = '';
-        Alert.success(i18n.getTranslation('addPhoton', 'success'), {
+        Alert.success(i18n.getTranslation('addPhoton', 'alerts.success'), {
+          position: 'bottom',
+          effect: 'genie',
+          timeout: 3000,
+        });
+      } else {
+        Alert.error(i18n.getTranslation('addPhoton', 'alerts.invalidToken'), {
           position: 'bottom',
           effect: 'genie',
           timeout: 3000,
