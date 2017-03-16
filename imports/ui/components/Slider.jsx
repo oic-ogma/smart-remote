@@ -73,6 +73,11 @@ export default class Slider extends React.Component {
           <RadiumLink id='add-smart-retemo' className='slider-font' style={ { textDecoration: 'none' } } to='/my-page/add-smart-remote'>
             { i18n.getTranslation('slider', 'addSmartRemote') }
           </RadiumLink>
+
+          <RadiumLink id='add-smart-retemo' className='slider-font' style={ { textDecoration: 'none' } } to='/my-page/add-graph-widget'>
+            { i18n.getTranslation('slider', 'addGraphWidget') }
+          </RadiumLink>
+
           <button className='slider-font' onClick={ this.logout }>{ i18n.getTranslation('slider', 'signOut') }</button>
         </Menu>
       </div>

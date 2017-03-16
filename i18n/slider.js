@@ -4,6 +4,7 @@ i18n.addTranslations('en', {
     addButton: 'Add button',
     registerButton: 'Register button',
     addSmartRemote: 'Add smart remote',
+    addGraphWidget: 'Add graph widget',
     signOut: 'Sign out',
   },
 });
@@ -14,6 +15,7 @@ i18n.addTranslations('ja', {
     addButton: 'ボタンを追加',
     registerButton: 'ボタンを登録',
     addSmartRemote: 'スマートリモートを追加',
+    addGraphWidget: 'グラフウィジェットの追加',
     signOut: 'ログアウト',
   },
 });

@@ -13,6 +13,7 @@ import ResetPassword from '../../ui/pages/ResetPassword';
 import Top from '../../ui/pages/Top';
 import MyPage from '../../ui/pages/MyPage';
 import AddButtonPanel from '../../ui/pages/AddButtonPanel';
+import AddGraphWidget from '../../ui/pages/AddGraphWidget';
 import Error404Page from '../../ui/pages/Error404Page';
 
 Meteor.startup(() => {
@@ -33,6 +34,7 @@ Meteor.startup(() => {
         <Route path='button-register' component={ ButtonRegister }/>
         <Route path='add-smart-remote' component={ AddSmartRemote }/>
         <Route path='add-button-panel' component={ AddButtonPanel }/>
+        <Route path='add-graph-widget' component={ AddGraphWidget }/>
       </Route>
 
       <Route path='*' component={ Error404Page }/>
