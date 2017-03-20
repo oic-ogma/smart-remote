@@ -10,3 +10,8 @@ Meteor.publish('buttonLayout', function() {
     return this.ready();
   }
 });
+
+Meteor.publish("userData", function () {
+  return Meteor.users.find({_id: this.userId},
+                           {fields: {'other': 1, 'things': 1}});
+});
